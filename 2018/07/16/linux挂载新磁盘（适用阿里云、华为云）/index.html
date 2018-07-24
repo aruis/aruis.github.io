@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>linux挂载新磁盘（适用阿里云、华为云） | 槛槛之间，点点滴滴</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + 'dc0b3f580e4dfc98653bf8c517228321';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+  </script></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">linux挂载新磁盘（适用阿里云、华为云）</h1><a id="logo" href="/.">槛槛之间，点点滴滴</a><p class="description">企图做个槛外人，但其实不过在槛槛之间徘徊罢了</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">linux挂载新磁盘（适用阿里云、华为云）</h1><div class="post-meta">Jul 16, 2018<span> | </span><span class="category"><a href="/categories/程序人生/">程序人生</a></span></div><a class="disqus-comment-count" data-disqus-identifier="2018/07/16/linux挂载新磁盘（适用阿里云、华为云）/" href="/2018/07/16/linux挂载新磁盘（适用阿里云、华为云）/#disqus_thread"></a><div class="post-content"><p>公司项目用的是华为的云服务器，刚申请了新的硬盘资源，需要手动分区挂载。虽然华为没给啥资料，但是不是还有阿里云嘛。所以结合阿里云的资料。我们就可以在华为云实操一把了。附里云资料地址<a href="https://help.aliyun.com/document_detail/25426.html?spm=a2c4g.11186623.2.4.nTZpwz" target="_blank" rel="noopener">Linux 格式化和挂载数据盘</a></p>
+<ol>
+<li><code>fdisk -l</code>查看服务器是否识别到新硬盘的接入，一般会在最后，返回<figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">磁盘 /dev/xvde：<span class="number">536.9</span> GB, <span class="number">536870912000</span> 字节，<span class="number">1048576000</span> 个扇区</span><br><span class="line">Units = 扇区 of <span class="number">1</span> * <span class="number">512</span> = <span class="number">512</span> bytes</span><br><span class="line">扇区大小(逻辑/物理)：<span class="number">512</span> 字节 / <span class="number">512</span> 字节</span><br><span class="line">I/O 大小(最小/最佳)：<span class="number">512</span> 字节 / <span class="number">512</span> 字节</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>说明识别到一个500多G的硬盘，记录下这个硬盘设备号<code>/dev/xvde</code>(这是个变量，你那里不一定跟我一样)</p>
+<ol start="2">
+<li><code>fdisk /dev/xvde</code>对上面的新硬盘进行分区操作，这是一个交互式命令，首先输入<code>n</code>，也就是创建新分区的意思，如果就打算分一个区的话，后续就按根据提示输入一路回车，到如下界面：<img src="/media/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-16%2009.20.59.png" alt="屏幕快照 2018-07-16 09.20.59"><br>此时输入<code>wq</code>将分区表写入磁盘，并退出。会收到提示：<br><img src="/media/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-16%2009.22.56.png" alt="屏幕快照 2018-07-16 09.22.56"></li>
+<li><code>fdisk -l</code>再次执行此命令，可以看到新分区信息（一般在最后）<br><img src="/media/15317042937460.jpg" alt=""></li>
+<li><code>mkfs.ext4 /dev/xvde1</code>将这个分区格式化成ext4文件系统。如图：<br><img src="/media/15317044049926.jpg" alt=""></li>
+<li><code>mount /dev/xvde1 /mnt</code>挂载分区</li>
+<li><code>df -h</code>可以查看到新挂载的分区，此时分区已经可以使用了。但是还没有开机自动挂载，如果要开机自动挂载，还需做第7步</li>
+<li>保险起见，先备份<code>fstab</code>，执行命令<code>cp /etc/fstab /etc/fstab.bak</code>，然后执行<code>echo /dev/xvde1 /mnt ext4 defaults 0 0 &gt;&gt; /etc/fstab</code>。之后即使重启，分区也会自动挂载喽。可以通过<code>df -h</code>看到效果：<br><img src="/media/15317048391668.jpg" alt=""></li>
+</ol>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>aruis</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/2018/07/16/linux挂载新磁盘（适用阿里云、华为云）/">http://www.kankanzhijian.com/2018/07/16/linux挂载新磁盘（适用阿里云、华为云）/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客文章均系本人原创，转载请注名出处</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="http://www.kankanzhijian.com/2018/07/16/linux挂载新磁盘（适用阿里云、华为云）/" data-id="cjjz0b750000aioxv2az0zta2" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADK0lEQVR42u3aUVLrQAwEQO5/6bwDgJ0ZKdRLlvYXFYy9vfkYJO3XV3w9bq+r+5O//X7n/dOunvn1Gxc2Njb2h7DzBV29Pv85f9r9Rlw9p/h6sLGxsY9jJyF0v+gkuvLPN2tLIhAbGxsbe79Bs1jK14mNjY2NnTxutllJUymPN2xsbGzsWeO+XUSxoFFX/xd7adjY2Nhvz35tLP3fn39lvo2NjY39xuxHeb0qYNph7Wy1lyvBxsbGPoidB8BmC5IBwGZUMHsONjY29hnsZGSbL32zoNl4YNhIwsbGxj6I3QbV/YPaYmDWJGoHwNEWYGNjYx/EbhtDSZOojZm8zdSWPfV3jo2Njf327LbMyEOubfq3x3qSkLv8HBsbG/sg9j548vvz7csLiVkbCxsbG/skdttYzw/iJFs5Q84++WGyjY2NjX0EexZsbSMpHyrPfpsPqoejX2xsbOw3Zs+iaFNgtKHYHtyJ7sHGxsY+jj1bSvvKPJza4KwHCdjY2NgHsTe1Sz7ivacmG5RvZdvewsbGxv509mwYsCk/2tZ/29KKNhcbGxv7IPZ9XO3bRvkRn82YoW17YWNjY5/H3mBa5GuP8my2CRsbG/s89r7tnlBncZiPH/KBMTY2NvYZ7Dweot2KxwybxtD+C8DGxsY+j13nW3zlgDz8kjc++cKwsbGxD2LPljhD5mXD7L15GYONjY19Ers9Ijlb1qzl1I4WijuxsbGxD2Xn8dM2hvJGVdLc3w+PsbGxsU9i5635/ZA1HyrPYq/+HBsbG/sgdn7rpm2UhNYmUGcbgY2NjX0Gux6OxsPXzRKT9axaXdjY2NjHsdsx6iyQEkYbqMNRMTY2NvZx7Nk/9O0necmRjxyGY2ZsbGzsI9iP8mpDri058q+hjcyi1sHGxsb+KPYq9xZj2vzQz2wL2oExNjY29qezZy/Lt2Mz4t2UK0/Wj42NjX0cOz+ss//btjh5VR3xQ4BhY2Nj/0l2Hmb7Azf7w5pPShFsbGzsP8m+D4y22dS29dt4u9x6bGxs7OPY7VLaAiOPxjzqViUQNjY29kHsPAY2Q4X2GNBs2JDHJDY2NvYR7H8UEoaSzlW4YQAAAABJRU5ErkJggg==">分享</a><div class="tags"><a href="/tags/Linux/">Linux</a></div><div class="post-nav"><a class="pre" href="/2018/07/17/用Gradle打包Vue前端程序/">用Gradle打包Vue前端程序</a><a class="next" href="/2018/07/15/用了docker之后性能损耗多少/">用了docker之后性能损耗多少？</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
+    this.page.url = 'http://www.kankanzhijian.com/2018/07/16/linux挂载新磁盘（适用阿里云、华为云）/';
+    this.page.identifier = '2018/07/16/linux挂载新磁盘（适用阿里云、华为云）/';
+    this.page.title = 'linux挂载新磁盘（适用阿里云、华为云）';
+  };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
+url: 'https://disqus.com/next/config.json',
+timeout: 2500,
+type: 'GET',
+success: function(){
+  var d = document;
+  var s = d.createElement('script');
+  s.src = '//kankanzhijian.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', + new Date());
+  (d.head || d.body).appendChild(s);
+  $('.disqus_click_btn').css('display', 'none');
+},
+error: function() {
+  $('.disqus_click_btn').css('display', 'block');
+}
+});</script><script type="text/javascript" id="disqus-click-load">$('.btn_click_load').click(() => {  //click to load comments
+    (() => { // DON'T EDIT BELOW THIS LINE
+        var d = document;
+        var s = d.createElement('script');
+        s.src = '//kankanzhijian.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    $('.disqus_click_btn').css('display','none');
+});</script><script type="text/javascript" id="disqus-count-script">$(function() {
+     var xhr = new XMLHttpRequest();
+     xhr.open('GET', '//disqus.com/next/config.json', true);
+     xhr.timeout = 2500;
+     xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4 && xhr.status === 200) {
+         $('.post-meta .post-comments-count').show();
+         var s = document.createElement('script');
+         s.id = 'dsq-count-scr';
+         s.src = 'https://kankanzhijian.disqus.com/count.js';
+         s.async = true;
+         (document.head || document.body).appendChild(s);
+       }
+     };
+     xhr.ontimeout = function () { xhr.abort(); };
+     xhr.send(null);
+   });
+</script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/实用技巧/">实用技巧</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文艺中年/">文艺中年</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/程序人生/">程序人生</a><span class="category-list-count">10</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/代理/" style="font-size: 15px;">代理</a> <a href="/tags/gradle/" style="font-size: 15px;">gradle</a> <a href="/tags/PostgreSQL/" style="font-size: 15px;">PostgreSQL</a> <a href="/tags/Vert-x/" style="font-size: 15px;">Vert.x</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/cas/" style="font-size: 15px;">cas</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Docker/" style="font-size: 15px;">Docker</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/24/小诗一首/">小诗一首</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/23/IntelliJ-IDEA在Winodws下Gradle乱码问题/">IntelliJ IDEA在Winodws下Gradle乱码问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/22/PostgreSQL里一条SQL统计合计与小计/">PostgreSQL里一条SQL统计合计与小计</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/21/Vert-x异步方法转同步/">Vert.x异步方法转同步</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/20/如何在cas登录成功页面显示用户名/">如何在cas登录成功页面显示用户名</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/19/CentOS系统使用Shadowsocks搭建代理服务/">CentOS系统使用Shadowsocks搭建代理服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/18/用Gradle自动发布程序至Linux服务器/">用Gradle自动发布程序至Linux服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/17/用Gradle打包Vue前端程序/">用Gradle打包Vue前端程序</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/16/linux挂载新磁盘（适用阿里云、华为云）/">linux挂载新磁盘（适用阿里云、华为云）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/15/用了docker之后性能损耗多少/">用了docker之后性能损耗多少？</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//kankanzhijian.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">槛槛之间，点点滴滴.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
