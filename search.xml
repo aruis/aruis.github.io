@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+    
+    <entry>
+      <title>linux免密登录不起作用解决办法</title>
+      <link href="/2018/07/25/linux%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+      <url>/2018/07/25/linux%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+      <content type="html"><![CDATA[<p>已经把公钥添加到<code>~/.ssh/authorized_keys</code>文件之后，有时候依然无法实现免密码登录。后来才发现，是因为有些文件的权限放大了。想想也是，如果<code>authorized_keys</code>文件，是其他用户也能编辑的。那岂不是多了个后门，可以帮助其他用户绕到当前用户了。<br>所以重点在于几个关键文件是否把权限集中在自己手上，并且无论如何是不允许其他用户编辑的。<br>总结为以下几条命令<br><figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">chmod 700 ~<span class="string">/.ssh</span></span><br><span class="line">chmod 600 ~<span class="string">/.ssh/authorized_keys</span></span><br></pre></td></tr></table></figure></p><p>有时候，光有上面两句还搞不定，我发现还得追加一句<br><figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">chmod <span class="number">755</span> ~</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>小诗一首</title>
+      <link href="/2018/07/24/%E5%B0%8F%E8%AF%97%E4%B8%80%E9%A6%96/"/>
+      <url>/2018/07/24/%E5%B0%8F%E8%AF%97%E4%B8%80%E9%A6%96/</url>
+      <content type="html"><![CDATA[<p><img src="/media/DSC04458.jpg" alt=""></p><h3 id="都谓彭城多霾日，"><a href="#都谓彭城多霾日，" class="headerlink" title="都谓彭城多霾日，"></a>都谓彭城多霾日，</h3><h3 id="落笔春城溅靛青。"><a href="#落笔春城溅靛青。" class="headerlink" title="落笔春城溅靛青。"></a>落笔春城溅靛青。</h3><h3 id="天公莫要惜颜色，"><a href="#天公莫要惜颜色，" class="headerlink" title="天公莫要惜颜色，"></a>天公莫要惜颜色，</h3><h3 id="几许蔚蓝伴我行。"><a href="#几许蔚蓝伴我行。" class="headerlink" title="几许蔚蓝伴我行。"></a>几许蔚蓝伴我行。</h3><h4 id="——戊戌年六月偶瞥于徐州"><a href="#——戊戌年六月偶瞥于徐州" class="headerlink" title="——戊戌年六月偶瞥于徐州"></a>——戊戌年六月偶瞥于徐州</h4>]]></content>
+      
+      <categories>
+          
+          <category> 文艺中年 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
+      <title>IntelliJ IDEA在Winodws下Gradle乱码问题</title>
+      <link href="/2018/07/23/IntelliJ-IDEA%E5%9C%A8Winodws%E4%B8%8BGradle%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/"/>
+      <url>/2018/07/23/IntelliJ-IDEA%E5%9C%A8Winodws%E4%B8%8BGradle%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/</url>
+      <content type="html"><![CDATA[<p>恐怕没有哪个中国程序员没被字符编码的问题坑过吧。本以为把能设置字符集的地方，都设置成<code>UTF-8</code>就不会踩坑。可是现实是残酷的。<br>比如在中文windows系统环境下，如果使用IntelliJ IDEA开发工具，同时跑gradle项目，那就要小心了。<br>需要在<code>File | Settings | Build, Execution, Deployment | Gradle</code>下，找到<code>Gradle VM options</code>，然后填入配置<code>-Dfile.encoding=UTF-8</code><br>还有一种方法，可以通过修改gradle.bat这个文件来实现，改文件通常存放于，<code>GRADLE_HOME</code>下的<code>bin</code>目录，找到<code>set DEFAULT_JVM_OPTS=</code>修改为<code>set DEFAULT_JVM_OPTS=&quot;-Dfile.encoding=UTF-8&quot;</code>即可。</p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> gradle </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>PostgreSQL里一条SQL统计合计与小计</title>
+      <link href="/2018/07/22/PostgreSQL%E9%87%8C%E4%B8%80%E6%9D%A1SQL%E7%BB%9F%E8%AE%A1%E5%90%88%E8%AE%A1%E4%B8%8E%E5%B0%8F%E8%AE%A1/"/>
+      <url>/2018/07/22/PostgreSQL%E9%87%8C%E4%B8%80%E6%9D%A1SQL%E7%BB%9F%E8%AE%A1%E5%90%88%E8%AE%A1%E4%B8%8E%E5%B0%8F%E8%AE%A1/</url>
+      <content type="html"><![CDATA[<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  <span class="keyword">CASE</span> <span class="keyword">WHEN</span> <span class="keyword">GROUPING</span>(student) = <span class="number">1</span></span><br><span class="line">    <span class="keyword">THEN</span> <span class="string">'合计'</span></span><br><span class="line">  <span class="keyword">ELSE</span> student <span class="keyword">END</span>,</span><br><span class="line">  <span class="keyword">CASE</span> <span class="keyword">WHEN</span>  <span class="keyword">GROUPING</span>(student) &lt;&gt; <span class="number">1</span> <span class="keyword">and</span> <span class="keyword">GROUPING</span>(course) = <span class="number">1</span></span><br><span class="line">    <span class="keyword">THEN</span> <span class="string">'小计'</span></span><br><span class="line">  <span class="keyword">ELSE</span> course <span class="keyword">END</span>,</span><br><span class="line">  <span class="keyword">sum</span>(score.score)</span><br><span class="line"><span class="keyword">FROM</span> score</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">ROLLUP</span> (student, course)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">GROUPING</span>(student) <span class="keyword">DESC</span> ,student <span class="keyword">DESC</span>, <span class="keyword">GROUPING</span>(course) <span class="keyword">DESC</span> ,course <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PostgreSQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>Vert.x异步方法转同步</title>
+      <link href="/2018/07/21/Vert-x%E5%BC%82%E6%AD%A5%E6%96%B9%E6%B3%95%E8%BD%AC%E5%90%8C%E6%AD%A5/"/>
+      <url>/2018/07/21/Vert-x%E5%BC%82%E6%AD%A5%E6%96%B9%E6%B3%95%E8%BD%AC%E5%90%8C%E6%AD%A5/</url>
+      <content type="html"><![CDATA[<p>以前用Vert.x的时候就有这样的疑问，如果我提供的方法是基于Vert.x异步实现的。如何被一个同步的应用调用呢，比如Spring。当时我一度以为要自己开一个线程，然后不断轮询结果，之后再返回，通过这样，把一个异步的方法，包装成同步的方法。<br>后来在使用<code>vertx-pac4j</code>的时候，无意中看到它源码中，也有我上面说的场景使用。就在<code>org.pac4j.vertx.context.session.VertxSessionStore</code>类的这一段：<br><figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">@Override</span><br><span class="line">   <span class="keyword">public</span> Session getSession(<span class="keyword">String</span> sessionId) &#123;</span><br><span class="line">       final CompletableFuture&lt;io.vertx.ext.web.Session&gt; vertxSessionFuture = <span class="keyword">new</span> <span class="type">CompletableFuture</span>&lt;&gt;();</span><br><span class="line">       sessionStore.<span class="keyword">get</span>(sessionId, asyncResult -&gt; &#123;</span><br><span class="line">           <span class="keyword">if</span> (asyncResult.succeeded()) &#123;</span><br><span class="line">               vertxSessionFuture.complete(asyncResult.result());</span><br><span class="line">           &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               vertxSessionFuture.completeExceptionally(asyncResult.cause());</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line">       final CompletableFuture&lt;Session&gt; pac4jSessionFuture = vertxSessionFuture.thenApply(session -&gt; &#123;</span><br><span class="line">           <span class="keyword">if</span> (session != <span class="literal">null</span>) &#123;</span><br><span class="line">               <span class="keyword">return</span> <span class="keyword">new</span> <span class="type">VertxSession</span>(session);</span><br><span class="line">           &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="keyword">return</span> pac4jSessionFuture.<span class="keyword">get</span>();</span><br><span class="line">       &#125; <span class="keyword">catch</span> (InterruptedException|ExecutionException e) &#123;</span><br><span class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> <span class="type">TechnicalException</span>(e);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p><p>可以明显看到<code>sessionStore.get</code>是的常规的Vert.x异步调用。<br>基于这种应用方式，我尝试用<code>groovy</code>模仿写了一下，效果显著，代码如下：<br><figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> io.vertx.core.Vertx</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.CompletableFuture</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">String</span> sayHello() &#123;</span><br><span class="line"></span><br><span class="line">    def future = <span class="keyword">new</span> CompletableFuture()</span><br><span class="line"></span><br><span class="line">    Vertx vertx = Vertx.vertx()</span><br><span class="line">    vertx.setTimer(<span class="number">3000</span>, &#123;</span><br><span class="line">        future.complete(<span class="string">"hello world"</span>)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">return</span> future.thenApply(&#123;</span><br><span class="line">        <span class="built_in">return</span> it</span><br><span class="line">    &#125;).<span class="built_in">get</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">println</span>(sayHello())</span><br></pre></td></tr></table></figure></p><p>上面这种写法，主要还是依赖了java1.8的<code>CompletableFuture</code>类，后续我会单独开文章讲解这个类的使用。今天就先到这里吧。</p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vert.x </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>如何在cas登录成功页面显示用户名</title>
+      <link href="/2018/07/20/%E5%A6%82%E4%BD%95%E5%9C%A8cas%E7%99%BB%E5%BD%95%E6%88%90%E5%8A%9F%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E7%94%A8%E6%88%B7%E5%90%8D/"/>
+      <url>/2018/07/20/%E5%A6%82%E4%BD%95%E5%9C%A8cas%E7%99%BB%E5%BD%95%E6%88%90%E5%8A%9F%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E7%94%A8%E6%88%B7%E5%90%8D/</url>
+      <content type="html"><![CDATA[<p><a href="https://www.apereo.org/projects/cas" target="_blank" rel="noopener">CAS</a>这种本来业务场景就很细分，再加上其上古时代存续至今的特质。估计还在用它的公司已经不多了。间接导致，其中文资料比较匮乏。<br>领导说，想再cas成功后的欢迎页，也就是<code>casGenericSuccess.jsp</code>页面，可以显示<code>欢迎:xxx</code>的字样。<br>不得不说，这个需求非常常规。然而不仅cas默认没有实现，甚至翻遍google，都很难找到满意的答案。比较有参考价值的可能就是<a href="https://groups.google.com/forum/#!topic/jasig-cas-user/q_pjYXCe7ko" target="_blank" rel="noopener">google groups</a>上的这篇。居然要借助额外的jar包(还是个已停止维护的)才能实现。不得已，只能自己想办法。<br>现在给出我的思路：</p><ol><li>在<code>deployerConfigContext.xml</code>文件中，找到<code>authenticationHandlers</code>参数，其应该对应一个类。十有八九，那个类是你自己实现的，如果不是，可以自己继承一下原有参数配置的类。</li><li>然后在那个类里的<code>authenticate</code>方法，可以通过追加<code>HttpSession session = RequestContextHolder.getRequestAttributes().getSessionMutex().session as HttpSession</code>这么一行，获取到<code>session</code>，这就嗨皮了。</li><li>可以在<code>authenticate</code>方法需要返回<code>true</code>的时候，之前增加一行<code>session.setAttribute(&quot;username&quot;,balabala);</code>，这样我们就顺利把username塞到<code>session</code>里的</li><li>最后，修改<code>casGenericSuccess.jsp</code>，在需要显示用户名的地方，加入<code>&lt;%=session.getAttribute(&quot;username&quot;)%&gt;</code>，就可以实现在登录成功页面显示用户名了</li><li>如果想显示更复杂数据内容，可以留意下<code>deployerConfigContext.xml</code>里面的<code>credentialsToPrincipalResolvers</code>所对应的类。它的时间节点是判定用户登录成功之后，组织用户信息用的。</li></ol>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> cas </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>CentOS系统使用Shadowsocks搭建代理服务</title>
+      <link href="/2018/07/19/CentOS%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8Shadowsocks%E6%90%AD%E5%BB%BA%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1/"/>
+      <url>/2018/07/19/CentOS%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8Shadowsocks%E6%90%AD%E5%BB%BA%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1/</url>
+      <content type="html"><![CDATA[<ol><li>确认pip是否安装，命令<code>pip help</code>，返回如图信息，说明已安装<br><img src="/media/15319616591142.jpg" alt=""><br>如果返回下图，说明未安装<br><img src="/media/15319617008516.jpg" alt=""><br>未安装需要执行以下子步骤：<ul><li><code>yum -y install epel-release</code></li><li><code>yum install python-pip</code></li></ul></li><li>通过pip安装shadowsocks，命令<code>pip install shadowsocks</code></li><li><p>准备shadowsocks的配置文件，找个地方放就行，比如<code>/root/shadowsocks.json</code>，文件内容如下：</p><figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"server"</span>: <span class="string">"0.0.0.0"</span>,</span><br><span class="line">  <span class="string">"server_port"</span>: <span class="number">1988</span>,</span><br><span class="line">  <span class="string">"local_address"</span>: <span class="string">"0.0.0.0"</span>,</span><br><span class="line">  <span class="string">"local_port"</span>: <span class="number">1080</span>,</span><br><span class="line">  <span class="string">"password"</span>: “xyz<span class="string">",</span></span><br><span class="line">  <span class="string">"timeout"</span>: <span class="number">300</span>,</span><br><span class="line">  <span class="string">"method"</span>: <span class="string">"aes-256-cfb"</span>,</span><br><span class="line">  <span class="string">"fast_open"</span>: false,</span><br><span class="line">  <span class="string">"workers"</span>: <span class="number">5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p> 其中<code>server_port</code>、<code>passoword</code>、<code>method</code>三个参数比较重要，分别对应:代理服务所在端口、链接密码、加密方式，回头要用到。</p></li><li>准备好配置文件之后，就可以启动shadowsocks服务了，命令为<code>ssserver -c /root/shadowsocks.json -d start</code>，至此shadowsocks服务启动完毕，然后就可以用客户端连接了。</li><li>客户端下载地址在都在github上，这里给出最常用的mac版和windows版<ul><li><a href="https://github.com/shadowsocks/ShadowsocksX-NG/releases" target="_blank" rel="noopener">mac</a></li><li><a href="https://github.com/shadowsocks/shadowsocks-windows/releases" target="_blank" rel="noopener">windows</a></li></ul></li><li>客户端安装完毕，就可以配置服务器连接了，这里给个参考配置：<br> <img src="/media/15319627604059.jpg" alt=""><br>地址就是服务器所在的地址，备注随意，剩下的三个配置，正好对应上面提过的配置。</li><li>确定shadowsocks client是启动状态，就可以享受不一样的网络了。</li></ol>]]></content>
+      
+      <categories>
+          
+          <category> 实用技巧 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 代理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>用Gradle自动发布程序至Linux服务器</title>
+      <link href="/2018/07/18/%E7%94%A8Gradle%E8%87%AA%E5%8A%A8%E5%8F%91%E5%B8%83%E7%A8%8B%E5%BA%8F%E8%87%B3Linux%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+      <url>/2018/07/18/%E7%94%A8Gradle%E8%87%AA%E5%8A%A8%E5%8F%91%E5%B8%83%E7%A8%8B%E5%BA%8F%E8%87%B3Linux%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+      <content type="html"><![CDATA[<p>你的重复劳动，一定能找“人”帮你做，聪明的程序员一定是拒绝重复的。由于公司条件限制，暂时用不上<code>jenkins</code>，先拿<code>gradle</code>救救急也是不错的。今天要实现的是，通过gradle发布静态站点到服务器。这样可以和上回的<a href="http://www.kankanzhijian.com/2018/07/17/用Gradle打包Vue前端程序/">用Gradle打包Vue前端程序</a>保持一定的连贯性。当然本帖拿来发布<code>war</code>包也是ok的。</p><ul><li>首先追加gradle插件，参考写法</li></ul><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">plugins</span> &#123;</span><br><span class="line">    <span class="attribute">id</span> <span class="string">'org.hidetake.ssh'</span> version <span class="string">'2.9.0'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>或者<br><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="keyword">buildscript</span> &#123;</span><br><span class="line">  <span class="keyword">repositories</span> &#123;</span><br><span class="line">    jcenter()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">dependencies</span> &#123;</span><br><span class="line">    <span class="keyword">classpath</span> <span class="string">'org.hidetake:gradle-ssh-plugin:2.9.0'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">apply plugin: <span class="string">'org.hidetake.ssh'</span></span><br></pre></td></tr></table></figure></p><ul><li>配置插件</li></ul><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">remotes</span> &#123;</span><br><span class="line">    <span class="section">webServer</span> &#123;</span><br><span class="line">        <span class="attribute">host</span> = <span class="string">'192.168.1.100'</span></span><br><span class="line">        user = <span class="string">'develop'</span></span><br><span class="line">        port = <span class="number">22</span></span><br><span class="line">        password = <span class="string">'xyz'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>如果觉得密码服务器密码明文写在这里不安全，可以用公钥ssh的方案，那么这里可以用<code>identity = file(&#39;id_rsa&#39;)</code>代替掉<code>password = &#39;xyz&#39;</code></p><ul><li>配置完Gradle SSH Plugin，就可以自己写<code>task</code>实现上传文件了。下面贴段我的</li></ul><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="keyword">task</span> deployPortal &#123;</span><br><span class="line">    <span class="keyword">group</span> = <span class="string">'release'</span></span><br><span class="line">    dependsOn zipPortal</span><br><span class="line">    <span class="keyword">doLast</span> &#123;</span><br><span class="line">        ssh.run &#123;</span><br><span class="line">            session(remotes.webServer) &#123;</span><br><span class="line">                put <span class="keyword">from</span>: <span class="string">"$buildDir/portal.zip"</span>, <span class="keyword">into</span>: <span class="string">"/home/develop/"</span></span><br><span class="line">                <span class="keyword">def</span> result = execute <span class="string">'unzip -o  /home/develop/portal.zip -d /home/develop/portal/'</span></span><br><span class="line">                <span class="keyword">println</span>(result)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这个task的主要作用就是把压缩好的静态站点上传至服务器，然后再解压缩。重点就两句话，第一句<code>put from: &quot;本地文件&quot;, into: &quot;服务器路径&quot;</code>，实现文件上传功能。第二句<code>execute &#39;执行shell命令&#39;</code>，实现通过shell命令，解压缩文件。</p><ul><li><p>至于中间那句<code>dependsOn zipPortal</code>表示执行发布task之前，先要把文件准备好，这个<code>zipPortal</code>task我是这么写的</p>  <figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="keyword">task</span> zipPortal(type: Zip) &#123;</span><br><span class="line">    dependsOn(<span class="string">':portal:build'</span>)</span><br><span class="line">    <span class="keyword">from</span> <span class="string">'portal/www'</span></span><br><span class="line">    archiveName <span class="string">'portal.zip'</span></span><br><span class="line">    <span class="keyword">destinationDir</span> buildDir</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>换句话说，如果你是要上传<code>war</code>包的话，可能就不是<code>dependsOn zipPortal</code>而是<code>dependsOn war</code>了。其他的地方，大同小异。</p></li></ul>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> gradle </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>用Gradle打包Vue前端程序</title>
+      <link href="/2018/07/17/%E7%94%A8Gradle%E6%89%93%E5%8C%85Vue%E5%89%8D%E7%AB%AF%E7%A8%8B%E5%BA%8F/"/>
+      <url>/2018/07/17/%E7%94%A8Gradle%E6%89%93%E5%8C%85Vue%E5%89%8D%E7%AB%AF%E7%A8%8B%E5%BA%8F/</url>
+      <content type="html"><![CDATA[<p>我这边打包和发布程序，属于重度依赖Gradle的状态。所以纵容前端程序游离在这个体系外，不利于团队的整体协作。于是有了这篇文章。<br>其实很简单，首先我们需要一个以Gradle为基石的项目，把前后端项目组织成这样<br><figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">myproject</span><br><span class="line">├── build.gradle</span><br><span class="line">├── frontend</span><br><span class="line">│   ├── build</span><br><span class="line">│   ├── index.html</span><br><span class="line">│   ├── node_modules</span><br><span class="line">│   ├── package.json</span><br><span class="line">│   └── src</span><br><span class="line">├── javaweb</span><br><span class="line">│   ├── build</span><br><span class="line">│   ├── build.gradle</span><br><span class="line">│   ├── out</span><br><span class="line">│   └── src</span><br><span class="line">└── settings.gradle</span><br></pre></td></tr></table></figure></p><p>其中<code>frontend</code>文件夹就是<code>vue</code>项目的存放路径，我们先在此文件夹中，追加文件<code>build.gradle</code>，放至在package.json隔壁。填上很简单的内容：<br><figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">  <span class="built_in">id</span> <span class="string">"com.palantir.npm-run"</span> <span class="built_in">version</span> <span class="string">"0.5.0"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>代表这个项目要用到gradle-npm-run的插件<br>然后修改settings.gradle，追加一行<br><code>include &#39;frontend&#39;</code>，这样gradle就能顺利识别vue前端项目了，并且依靠插件，我们获得了这几个task<br><img src="/media/15317809896046.jpg" alt="-w148"><br>其中<code>build</code>就可以实现通过<code>gradle frontend:build</code>的命令，实现gradle对vue项目的打包了。<br>明天，我将继续讲解，如何用gardle实现像Linux服务器，敬请期待。</p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> gradle </tag>
+            
+            <tag> 前端 </tag>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>linux挂载新磁盘（适用阿里云、华为云）</title>
+      <link href="/2018/07/16/linux%E6%8C%82%E8%BD%BD%E6%96%B0%E7%A3%81%E7%9B%98%EF%BC%88%E9%80%82%E7%94%A8%E9%98%BF%E9%87%8C%E4%BA%91%E3%80%81%E5%8D%8E%E4%B8%BA%E4%BA%91%EF%BC%89/"/>
+      <url>/2018/07/16/linux%E6%8C%82%E8%BD%BD%E6%96%B0%E7%A3%81%E7%9B%98%EF%BC%88%E9%80%82%E7%94%A8%E9%98%BF%E9%87%8C%E4%BA%91%E3%80%81%E5%8D%8E%E4%B8%BA%E4%BA%91%EF%BC%89/</url>
+      <content type="html"><![CDATA[<p>公司项目用的是华为的云服务器，刚申请了新的硬盘资源，需要手动分区挂载。虽然华为没给啥资料，但是不是还有阿里云嘛。所以结合阿里云的资料。我们就可以在华为云实操一把了。附里云资料地址<a href="https://help.aliyun.com/document_detail/25426.html?spm=a2c4g.11186623.2.4.nTZpwz" target="_blank" rel="noopener">Linux 格式化和挂载数据盘</a></p><ol><li><code>fdisk -l</code>查看服务器是否识别到新硬盘的接入，一般会在最后，返回<figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">磁盘 /dev/xvde：<span class="number">536.9</span> GB, <span class="number">536870912000</span> 字节，<span class="number">1048576000</span> 个扇区</span><br><span class="line">Units = 扇区 of <span class="number">1</span> * <span class="number">512</span> = <span class="number">512</span> bytes</span><br><span class="line">扇区大小(逻辑/物理)：<span class="number">512</span> 字节 / <span class="number">512</span> 字节</span><br><span class="line">I/O 大小(最小/最佳)：<span class="number">512</span> 字节 / <span class="number">512</span> 字节</span><br></pre></td></tr></table></figure></li></ol><p>说明识别到一个500多G的硬盘，记录下这个硬盘设备号<code>/dev/xvde</code>(这是个变量，你那里不一定跟我一样)</p><ol start="2"><li><code>fdisk /dev/xvde</code>对上面的新硬盘进行分区操作，这是一个交互式命令，首先输入<code>n</code>，也就是创建新分区的意思，如果就打算分一个区的话，后续就按根据提示输入一路回车，到如下界面：<img src="/media/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-16%2009.20.59.png" alt="屏幕快照 2018-07-16 09.20.59"><br>此时输入<code>wq</code>将分区表写入磁盘，并退出。会收到提示：<br><img src="/media/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-07-16%2009.22.56.png" alt="屏幕快照 2018-07-16 09.22.56"></li><li><code>fdisk -l</code>再次执行此命令，可以看到新分区信息（一般在最后）<br><img src="/media/15317042937460.jpg" alt=""></li><li><code>mkfs.ext4 /dev/xvde1</code>将这个分区格式化成ext4文件系统。如图：<br><img src="/media/15317044049926.jpg" alt=""></li><li><code>mount /dev/xvde1 /mnt</code>挂载分区</li><li><code>df -h</code>可以查看到新挂载的分区，此时分区已经可以使用了。但是还没有开机自动挂载，如果要开机自动挂载，还需做第7步</li><li>保险起见，先备份<code>fstab</code>，执行命令<code>cp /etc/fstab /etc/fstab.bak</code>，然后执行<code>echo /dev/xvde1 /mnt ext4 defaults 0 0 &gt;&gt; /etc/fstab</code>。之后即使重启，分区也会自动挂载喽。可以通过<code>df -h</code>看到效果：<br><img src="/media/15317048391668.jpg" alt=""></li></ol>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>用了docker之后性能损耗多少？</title>
+      <link href="/2018/07/15/%E7%94%A8%E4%BA%86docker%E4%B9%8B%E5%90%8E%E6%80%A7%E8%83%BD%E6%8D%9F%E8%80%97%E5%A4%9A%E5%B0%91/"/>
+      <url>/2018/07/15/%E7%94%A8%E4%BA%86docker%E4%B9%8B%E5%90%8E%E6%80%A7%E8%83%BD%E6%8D%9F%E8%80%97%E5%A4%9A%E5%B0%91/</url>
+      <content type="html"><![CDATA[<p>Docker的一大优势，就是拥有微乎其微的性能损耗，换来良好的硬件资源隔离效果。虽然各大厂商都在主要业务领域使用了Docker，已经从侧面表明Docker的性能损耗不是个什么问题。但是较真的同学，肯定还是想知道Docker到底有没有损耗呢，损耗多少。<br>这里我用PostgreSQL数据库做个简单的对比测试。分别在同一台服务器的Docker内外个各装一个10.3版本的PostgreSQL。然后执行同一个SQL。SQL如下：<br><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">with cte as ( <span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">  (</span><br><span class="line">    <span class="keyword">VALUES</span> (uuid_generate_v4(), <span class="string">'xiaoming'</span>,<span class="number">10</span>, <span class="string">'语文'</span>),</span><br><span class="line">      (uuid_generate_v4(), <span class="string">'xiaohong'</span>,<span class="number">12</span>, <span class="string">'数学'</span>),</span><br><span class="line">      (uuid_generate_v4(), <span class="string">'xiaoli'</span>,<span class="number">11</span>, <span class="string">'英语'</span>),</span><br><span class="line">      (uuid_generate_v4(), <span class="string">'xiaozhi'</span>,<span class="number">11</span>, <span class="string">'英语'</span>),</span><br><span class="line">      (uuid_generate_v4(), <span class="string">'xiaoxin'</span>,<span class="number">11</span>, <span class="string">'英语'</span>)</span><br><span class="line">  )</span><br><span class="line">    <span class="keyword">AS</span> tmp (<span class="keyword">id</span>, <span class="keyword">name</span>,age, fav))</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> array_to_json(array_agg(row_to_json(cte)))</span><br><span class="line"><span class="keyword">from</span> cte;</span><br></pre></td></tr></table></figure></p><p>因为不是从硬盘IO，所以这条SQL更贴近于CPU密集型的场景。压测功能是依托JMH开发的，源码已经上传至<a href="https://github.com/aruis/somebenchmark/tree/sqlbench" target="_blank" rel="noopener">https://github.com/aruis/somebenchmark/tree/sqlbench</a>，下面直接看结果：<br><img src="/media/15316574043348.jpg" alt="-w567"><br>可以看到第一行的吞吐量，大概是第二行的95%，亦即是说，在我这个应用场景下，Docker有5%的性能损耗。<br>应该可以给大家做个参考。</p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PostgreSQL </tag>
+            
+            <tag> Docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>用JMH做简单的JVM性能测试</title>
+      <link href="/2018/07/14/%E7%94%A8JMH%E5%81%9A%E7%AE%80%E5%8D%95%E7%9A%84JVM%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/"/>
+      <url>/2018/07/14/%E7%94%A8JMH%E5%81%9A%E7%AE%80%E5%8D%95%E7%9A%84JVM%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/</url>
+      <content type="html"><![CDATA[<p>写java也有年头了，有时候遇到对比某几种方法性能的情景，都是自己傻傻的打印<code>new Date()</code>计算时间差。现在想来，这种原始的方式，就跟不会用IDE Debug，只会<code>System.out.println()</code>打印调试没什么区别。<br>这次被人安利<code>JMH</code>，说来惭愧，是我在Twitter上质疑<code>Vert.x</code>采用了效率不高的Json序列化库，影响了其在<a href="https://www.techempower.com/benchmarks/" target="_blank" rel="noopener">techempower</a>的成绩。结果<a href="https://twitter.com/julienviet" target="_blank" rel="noopener">@julienviet</a>神回复我说”you should make a JMH microbenchmark to find out”，所以才有了这篇，利用JMH做Json序列化速度对比的文章。<br>这是测试结果：<br><img src="/media/15315228604634.jpg" alt="-w783"><br>可以看到<code>Vert.x</code>的Json序列化速度还是出类拔萃的，当然，其本质还是实用的<code>jackson</code><br>上代码：<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.aruistar.benchmark;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.aruistar.benchmark.model.User;</span><br><span class="line"><span class="keyword">import</span> com.jsoniter.output.JsonStream;</span><br><span class="line"><span class="keyword">import</span> groovy.json.JsonBuilder;</span><br><span class="line"><span class="keyword">import</span> groovy.json.JsonOutput;</span><br><span class="line"><span class="keyword">import</span> org.openjdk.jmh.annotations.Benchmark;</span><br><span class="line"><span class="keyword">import</span> org.openjdk.jmh.runner.Runner;</span><br><span class="line"><span class="keyword">import</span> org.openjdk.jmh.runner.RunnerException;</span><br><span class="line"><span class="keyword">import</span> org.openjdk.jmh.runner.options.Options;</span><br><span class="line"><span class="keyword">import</span> org.openjdk.jmh.runner.options.OptionsBuilder;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JsonToStringBenchmark</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> RunnerException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Options opt = <span class="keyword">new</span> OptionsBuilder()</span><br><span class="line">                .include(JsonToStringBenchmark.class.getSimpleName())</span><br><span class="line">                .forks(<span class="number">1</span>)</span><br><span class="line">                .warmupIterations(<span class="number">2</span>)</span><br><span class="line">                .measurementIterations(<span class="number">3</span>)</span><br><span class="line">                .build();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> Runner(opt).run();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//    @Benchmark</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testJsonObjectToBuffer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> User(<span class="string">"Hello, World!"</span>, <span class="string">"tomcat"</span>, <span class="number">10</span>, <span class="string">"angular"</span>, <span class="keyword">true</span>).toBuffer();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Benchmark</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testJsonObjectToString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> User(<span class="string">"Hello, World!"</span>, <span class="string">"tomcat"</span>, <span class="number">10</span>, <span class="string">"angular"</span>, <span class="keyword">true</span>).toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Benchmark</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testJsonBuilder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> JsonBuilder(<span class="keyword">new</span> User(<span class="string">"Hello, World!"</span>, <span class="string">"tomcat"</span>, <span class="number">10</span>, <span class="string">"angular"</span>, <span class="keyword">true</span>).getMap()).toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Benchmark</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testJsonOutput</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        JsonOutput.toJson(<span class="keyword">new</span> User(<span class="string">"Hello, World!"</span>, <span class="string">"tomcat"</span>, <span class="number">10</span>, <span class="string">"angular"</span>, <span class="keyword">true</span>).getMap());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Benchmark</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testJsoniter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        JsonStream.serialize(<span class="keyword">new</span> User(<span class="string">"Hello, World!"</span>, <span class="string">"tomcat"</span>, <span class="number">10</span>, <span class="string">"angular"</span>, <span class="keyword">true</span>).getMap());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.aruistar.benchmark.model;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.vertx.core.json.JsonObject;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">JsonObject</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String name, String username, <span class="keyword">int</span> age, String title, <span class="keyword">boolean</span> bool)</span> </span>&#123;</span><br><span class="line">        put(<span class="string">"name"</span>, name);</span><br><span class="line">        put(<span class="string">"age"</span>, age);</span><br><span class="line">        put(<span class="string">"title"</span>, title);</span><br><span class="line">        put(<span class="string">"bool"</span>, bool);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>源码地址，<a href="https://github.com/aruis/somebenchmark" target="_blank" rel="noopener">https://github.com/aruis/somebenchmark</a></p><p>需要注意的是，如果在IDEA打开，想直接通过main方法启动，需要执行如下步骤<br><figure class="highlight xl"><table><tr><td class="code"><pre><span class="line">Do you have org.openjdk.jmh:jmh-generator-annprocess on your classpath?</span><br><span class="line">If yes, <span class="keyword">is</span> annotation processing enabled <span class="built_in">in</span> your IDE? You can find the checkbox under</span><br><span class="line">P<span class="function"><span class="title">references</span> -&gt;</span> B<span class="function"><span class="title">uild</span>, Execution, Deployment -&gt;</span> C<span class="function"><span class="title">ompiler</span> -&gt;</span> Annotation Processors</span><br></pre></td></tr></table></figure></p><ul><li>参考[<a href="https://github.com/artyushov/idea-jmh-plugin/issues/13]" target="_blank" rel="noopener">https://github.com/artyushov/idea-jmh-plugin/issues/13]</a></li></ul>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>PostgreSQL数组类型数据一条sql实现翻译</title>
+      <link href="/2018/07/13/PostgreSQL%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E4%B8%80%E6%9D%A1sql%E5%AE%9E%E7%8E%B0%E7%BF%BB%E8%AF%91/"/>
+      <url>/2018/07/13/PostgreSQL%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E4%B8%80%E6%9D%A1sql%E5%AE%9E%E7%8E%B0%E7%BF%BB%E8%AF%91/</url>
+      <content type="html"><![CDATA[<p>PostgreSQL的ARRAY类型是个非常实用的类型。以往在设计“多选”这种业务场景的时候，要么需要设计子表，要么弄个varchar字段，存放<code>1,3,5</code>这种逗号隔开的数据。现在有了原生支持的ARRAY类型，终于可以大胆的把多选的数据id放在这个字段里了。<br>接踵而至的问题是，如何一次性实现数组字段的数据翻译呢。比如实际数据是<code>{1,3,5}</code>，关联查询后，希望看到<code>{红,黄,蓝}</code><br>话不多说，直接上sql<br><figure class="highlight n1ql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> app_message.id,app_message.ids_at_auth_user__to,</span><br><span class="line">  <span class="built_in">array_agg</span>(auth_user.v_username) <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> app_message.id) <span class="keyword">as</span> av_username_at_auth_user</span><br><span class="line"><span class="keyword">from</span> app_message</span><br><span class="line">  <span class="keyword">join</span> auth_user <span class="keyword">on</span> auth_user.id = <span class="keyword">ANY</span> (ids_at_auth_user__to)</span><br></pre></td></tr></table></figure></p><p><code>app_message</code>是个收发消息表，里面<code>ids_at_auth_user__to</code>字段是个ARRAY，存储了<code>auth_user</code>表的若干个id，代表收件箱的人（多人）<br><img src="/media/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-04-27%2011.41.45.png" alt="屏幕快照 2018-04-27 11.41.45"></p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PostgreSQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+  
+  
+</search>

@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>用Gradle自动发布程序至Linux服务器 | 槛槛之间，点点滴滴</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + 'dc0b3f580e4dfc98653bf8c517228321';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+  </script></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">用Gradle自动发布程序至Linux服务器</h1><a id="logo" href="/.">槛槛之间，点点滴滴</a><p class="description">企图做个槛外人，但其实不过在槛槛之间徘徊罢了</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">用Gradle自动发布程序至Linux服务器</h1><div class="post-meta">Jul 18, 2018<span> | </span><span class="category"><a href="/categories/程序人生/">程序人生</a></span></div><a class="disqus-comment-count" data-disqus-identifier="2018/07/18/用Gradle自动发布程序至Linux服务器/" href="/2018/07/18/用Gradle自动发布程序至Linux服务器/#disqus_thread"></a><div class="post-content"><p>你的重复劳动，一定能找“人”帮你做，聪明的程序员一定是拒绝重复的。由于公司条件限制，暂时用不上<code>jenkins</code>，先拿<code>gradle</code>救救急也是不错的。今天要实现的是，通过gradle发布静态站点到服务器。这样可以和上回的<a href="http://www.kankanzhijian.com/2018/07/17/用Gradle打包Vue前端程序/">用Gradle打包Vue前端程序</a>保持一定的连贯性。当然本帖拿来发布<code>war</code>包也是ok的。</p>
+<ul>
+<li>首先追加gradle插件，参考写法</li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">plugins</span> &#123;</span><br><span class="line">    <span class="attribute">id</span> <span class="string">'org.hidetake.ssh'</span> version <span class="string">'2.9.0'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>或者<br><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="keyword">buildscript</span> &#123;</span><br><span class="line">  <span class="keyword">repositories</span> &#123;</span><br><span class="line">    jcenter()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">dependencies</span> &#123;</span><br><span class="line">    <span class="keyword">classpath</span> <span class="string">'org.hidetake:gradle-ssh-plugin:2.9.0'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">apply plugin: <span class="string">'org.hidetake.ssh'</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>配置插件</li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">remotes</span> &#123;</span><br><span class="line">    <span class="section">webServer</span> &#123;</span><br><span class="line">        <span class="attribute">host</span> = <span class="string">'192.168.1.100'</span></span><br><span class="line">        user = <span class="string">'develop'</span></span><br><span class="line">        port = <span class="number">22</span></span><br><span class="line">        password = <span class="string">'xyz'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果觉得密码服务器密码明文写在这里不安全，可以用公钥ssh的方案，那么这里可以用<code>identity = file(&#39;id_rsa&#39;)</code>代替掉<code>password = &#39;xyz&#39;</code></p>
+<ul>
+<li>配置完Gradle SSH Plugin，就可以自己写<code>task</code>实现上传文件了。下面贴段我的</li>
+</ul>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="keyword">task</span> deployPortal &#123;</span><br><span class="line">    <span class="keyword">group</span> = <span class="string">'release'</span></span><br><span class="line">    dependsOn zipPortal</span><br><span class="line">    <span class="keyword">doLast</span> &#123;</span><br><span class="line">        ssh.run &#123;</span><br><span class="line">            session(remotes.webServer) &#123;</span><br><span class="line">                put <span class="keyword">from</span>: <span class="string">"$buildDir/portal.zip"</span>, <span class="keyword">into</span>: <span class="string">"/home/develop/"</span></span><br><span class="line">                <span class="keyword">def</span> result = execute <span class="string">'unzip -o  /home/develop/portal.zip -d /home/develop/portal/'</span></span><br><span class="line">                <span class="keyword">println</span>(result)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个task的主要作用就是把压缩好的静态站点上传至服务器，然后再解压缩。重点就两句话，第一句<code>put from: &quot;本地文件&quot;, into: &quot;服务器路径&quot;</code>，实现文件上传功能。第二句<code>execute &#39;执行shell命令&#39;</code>，实现通过shell命令，解压缩文件。</p>
+<ul>
+<li><p>至于中间那句<code>dependsOn zipPortal</code>表示执行发布task之前，先要把文件准备好，这个<code>zipPortal</code>task我是这么写的</p>
+  <figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="keyword">task</span> zipPortal(type: Zip) &#123;</span><br><span class="line">    dependsOn(<span class="string">':portal:build'</span>)</span><br><span class="line">    <span class="keyword">from</span> <span class="string">'portal/www'</span></span><br><span class="line">    archiveName <span class="string">'portal.zip'</span></span><br><span class="line">    <span class="keyword">destinationDir</span> buildDir</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>换句话说，如果你是要上传<code>war</code>包的话，可能就不是<code>dependsOn zipPortal</code>而是<code>dependsOn war</code>了。其他的地方，大同小异。</p>
+</li>
+</ul>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>aruis</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/2018/07/18/用Gradle自动发布程序至Linux服务器/">http://www.kankanzhijian.com/2018/07/18/用Gradle自动发布程序至Linux服务器/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客文章均系本人原创，转载请注名出处</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="http://www.kankanzhijian.com/2018/07/18/用Gradle自动发布程序至Linux服务器/" data-id="cjk0e4uxj000o13xvmk9ekd3r" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADIUlEQVR42u3aS27jQAwFwNz/0p5tgEHk90gFiNqllSEI6q7Wgubn6yu+Xt+u73eun2nf8//v/YqrCxsbG/sh7Nfl9dMz11v5aZVr3vXb8jdfW7CxsbFPZc82utni9f3ro79hXWxsbOwPZichLQmHSQhs34CNjY2NPUsektAySzxmd7CxsbE/k52HnE3zIE9s8oP79VoaNjY29p9n513Rv//7V/rb2NjY2H+Y/SqvNgHYD+LkwalQYGNjYx/EzgNA/uc+L/FsnmwDGDY2Nvap7DY8JCHqzRnH4S0f2anXxcbGxj6IfVdBJx+suU482opQfuhv+tvY2NjYD2e3bdTZ85u2azvoU+OxsbGxH8ueIdtUZF9yasPYm/1gY2NjH8febCJpx7bTMu3x1SkNNjY29nHsfBNtCnF9EO1B33UHGxsb+zz2XY2BPMBs1m1DMjY2NvbZ7E3hfsa4a+CyXQsbGxv709jt8GUeQtqS0z6AYWNjY5/NngWAPMDkpfzZQGfbqHjT6MXGxsZ+IHvTuM3Tg1nTt/0A7dFjY2Njn8HelPjb9GPDyJvQUdjDxsbGPojdJhjJkkm5J28Y5NRiZAcbGxv7IHaeALSt1jwHuqthXLQcsLGxsQ9iz4r7m9Gc5Gg2YawoTmFjY2MfwR72EMpN50WfWZKT7wobGxv7VHabBtx1TO2wTvuGYVEJGxsb+7HsfYhqE5hNcWrTVMDGxsY+iZ3/fd8PzbQlp3zdzSFiY2NjfwI7f13+fDvEORsGWtWfsLGxsR/Lbkv27aBPHtJmIz6zsSFsbGzsp7M3A5Sbtm4eMvehcZWvYGNjYz+EnQSGduByc6B56b8tS2FjY2Ofzb4rLcm3fldIq8tk2NjY2EewX+W1bwbPGhJtoHoTGrGxsbEPYs8CwL4dO9t0+7vdITY2NvZz2Un4mbV7N4nEfsU3JS1sbGzs49htyNkEj1kjYV8/+3FkBxsbG/vD2HmykbcN8uLUXY1nbGxsbOxZ2b2F5Y2EthyGjY2NfR57tpV9OWk2vnPDp8LGxsY+iJ2HgVkRZ9MkyA83/yTY2NjYB7H/AZ/IpYGOhMDuAAAAAElFTkSuQmCC">分享</a><div class="tags"><a href="/tags/gradle/">gradle</a></div><div class="post-nav"><a class="pre" href="/2018/07/19/CentOS系统使用Shadowsocks搭建代理服务/">CentOS系统使用Shadowsocks搭建代理服务</a><a class="next" href="/2018/07/17/用Gradle打包Vue前端程序/">用Gradle打包Vue前端程序</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
+    this.page.url = 'http://www.kankanzhijian.com/2018/07/18/用Gradle自动发布程序至Linux服务器/';
+    this.page.identifier = '2018/07/18/用Gradle自动发布程序至Linux服务器/';
+    this.page.title = '用Gradle自动发布程序至Linux服务器';
+  };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
+url: 'https://disqus.com/next/config.json',
+timeout: 2500,
+type: 'GET',
+success: function(){
+  var d = document;
+  var s = d.createElement('script');
+  s.src = '//kankanzhijian.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', + new Date());
+  (d.head || d.body).appendChild(s);
+  $('.disqus_click_btn').css('display', 'none');
+},
+error: function() {
+  $('.disqus_click_btn').css('display', 'block');
+}
+});</script><script type="text/javascript" id="disqus-click-load">$('.btn_click_load').click(() => {  //click to load comments
+    (() => { // DON'T EDIT BELOW THIS LINE
+        var d = document;
+        var s = d.createElement('script');
+        s.src = '//kankanzhijian.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    $('.disqus_click_btn').css('display','none');
+});</script><script type="text/javascript" id="disqus-count-script">$(function() {
+     var xhr = new XMLHttpRequest();
+     xhr.open('GET', '//disqus.com/next/config.json', true);
+     xhr.timeout = 2500;
+     xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4 && xhr.status === 200) {
+         $('.post-meta .post-comments-count').show();
+         var s = document.createElement('script');
+         s.id = 'dsq-count-scr';
+         s.src = 'https://kankanzhijian.disqus.com/count.js';
+         s.async = true;
+         (document.head || document.body).appendChild(s);
+       }
+     };
+     xhr.ontimeout = function () { xhr.abort(); };
+     xhr.send(null);
+   });
+</script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/实用技巧/">实用技巧</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文艺中年/">文艺中年</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/程序人生/">程序人生</a><span class="category-list-count">11</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/代理/" style="font-size: 15px;">代理</a> <a href="/tags/gradle/" style="font-size: 15px;">gradle</a> <a href="/tags/PostgreSQL/" style="font-size: 15px;">PostgreSQL</a> <a href="/tags/Vert-x/" style="font-size: 15px;">Vert.x</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/cas/" style="font-size: 15px;">cas</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/Docker/" style="font-size: 15px;">Docker</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/25/linux免密登录不起作用解决办法/">linux免密登录不起作用解决办法</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/24/小诗一首/">小诗一首</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/23/IntelliJ-IDEA在Winodws下Gradle乱码问题/">IntelliJ IDEA在Winodws下Gradle乱码问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/22/PostgreSQL里一条SQL统计合计与小计/">PostgreSQL里一条SQL统计合计与小计</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/21/Vert-x异步方法转同步/">Vert.x异步方法转同步</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/20/如何在cas登录成功页面显示用户名/">如何在cas登录成功页面显示用户名</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/19/CentOS系统使用Shadowsocks搭建代理服务/">CentOS系统使用Shadowsocks搭建代理服务</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/18/用Gradle自动发布程序至Linux服务器/">用Gradle自动发布程序至Linux服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/17/用Gradle打包Vue前端程序/">用Gradle打包Vue前端程序</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/16/linux挂载新磁盘（适用阿里云、华为云）/">linux挂载新磁盘（适用阿里云、华为云）</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//kankanzhijian.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">槛槛之间，点点滴滴.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
