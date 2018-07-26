@@ -6,7 +6,7 @@
       <title>编写跨操作系统Java代码时动态或许文件分隔符</title>
       <link href="/2018/07/26/%E7%BC%96%E5%86%99%E8%B7%A8%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FJava%E4%BB%A3%E7%A0%81%E6%97%B6%E5%8A%A8%E6%80%81%E6%88%96%E8%AE%B8%E6%96%87%E4%BB%B6%E5%88%86%E9%9A%94%E7%AC%A6/"/>
       <url>/2018/07/26/%E7%BC%96%E5%86%99%E8%B7%A8%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FJava%E4%BB%A3%E7%A0%81%E6%97%B6%E5%8A%A8%E6%80%81%E6%88%96%E8%AE%B8%E6%96%87%E4%BB%B6%E5%88%86%E9%9A%94%E7%AC%A6/</url>
-      <content type="html"><![CDATA[<h3 id="大概有以下几种思路"><a href="#大概有以下几种思路" class="headerlink" title="大概有以下几种思路"></a>大概有以下几种思路</h3><ol><li><code>File.separator`</code>系统相关的默认名称分隔符，为方便起见，表示为字符串。 该字符串包含单个字符，即separatorChar。`</li><li><code>FileSystems.getDefault().getSeparator()`</code>返回名称分隔符，表示为字符串。<br>名称分隔符用于分隔路径字符串中的名称。 实现可能支持多个名称分隔符，在这种情况下，此方法返回特定于实现的默认名称分隔符。 通过调用toString（）方法创建路径字符串时使用此分隔符。<br>对于默认提供程序，此方法返回与java.io.File.separator相同的分隔符。`</li><li><code>System.getProperty(&quot;file.separator&quot;)</code></li></ol><p>正常情况下，选择第一种，就ok了。第二种是在Java7时代追加的，功能更为强大。第三种也不错，因为额外提供通过<code>-Dfile.separator=</code>参数来指定的特性。</p>]]></content>
+      <content type="html"><![CDATA[<h3 id="大概有以下几种思路"><a href="#大概有以下几种思路" class="headerlink" title="大概有以下几种思路"></a>大概有以下几种思路</h3><ol><li><code>File.separator</code>系统相关的默认名称分隔符，为方便起见，表示为字符串。 该字符串包含单个字符，即separatorChar。</li><li><code>FileSystems.getDefault().getSeparator()</code>返回名称分隔符，表示为字符串。<br>名称分隔符用于分隔路径字符串中的名称。 实现可能支持多个名称分隔符，在这种情况下，此方法返回特定于实现的默认名称分隔符。 通过调用toString（）方法创建路径字符串时使用此分隔符。<br>对于默认提供程序，此方法返回与java.io.File.separator相同的分隔符。</li><li><code>System.getProperty(&quot;file.separator&quot;)</code></li></ol><p>正常情况下，选择第一种，就ok了。第二种是在Java7时代追加的，功能更为强大。第三种也不错，因为额外提供通过<code>-Dfile.separator=</code>参数来指定的特性。</p>]]></content>
       
       <categories>
           
