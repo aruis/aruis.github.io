@@ -3,6 +3,21 @@
   
     
     <entry>
+      <title>被忽略的IntelliJ IDEA常用快捷键</title>
+      <link href="/2018/07/28/%E8%A2%AB%E5%BF%BD%E7%95%A5%E7%9A%84IntelliJ-IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+      <url>/2018/07/28/%E8%A2%AB%E5%BF%BD%E7%95%A5%E7%9A%84IntelliJ-IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+      <content type="html"><![CDATA[<ul><li>跳转到方法声明处 （Go to declaration） ⌘B</li><li>快速查看声明（Open quick definition lookup）⇧⌘I</li><li>快速查看文档（Quick documentation lookup）^J</li><li>块级注释（Comment/uncomment with block comment）^⇧/</li><li>查找被调用处（Show usages）⌥⌘F7</li><li>在本文件高亮引用，可以用在return上（Highlight usages in file）⇧⌘F7</li><li>弹出重构窗口 ⌥⇧⌘T</li><li>补全代码（Complete statement）⇧⌘↩︎</li><li>查找功能（Find Action…）⇧⌘A，紧接着如果要给找到的功能设置快捷键，就继续⌥↩︎</li></ul>]]></content>
+      
+      <categories>
+          
+          <category> 实用技巧 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
       <title>制作macOS启动U盘命令</title>
       <link href="/2018/07/27/%E5%88%B6%E4%BD%9CmacOS%E5%90%AF%E5%8A%A8U%E7%9B%98%E5%91%BD%E4%BB%A4/"/>
       <url>/2018/07/27/%E5%88%B6%E4%BD%9CmacOS%E5%90%AF%E5%8A%A8U%E7%9B%98%E5%91%BD%E4%BB%A4/</url>
