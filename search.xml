@@ -122,7 +122,7 @@
       <title>IntelliJ IDEA在Winodws下Gradle乱码问题</title>
       <link href="/2018/07/23/IntelliJ-IDEA%E5%9C%A8Winodws%E4%B8%8BGradle%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/"/>
       <url>/2018/07/23/IntelliJ-IDEA%E5%9C%A8Winodws%E4%B8%8BGradle%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/</url>
-      <content type="html"><![CDATA[<p>恐怕没有哪个中国程序员没被字符编码的问题坑过吧。本以为把能设置字符集的地方，都设置成<code>UTF-8</code>就不会踩坑。可是现实是残酷的。<br>比如在中文windows系统环境下，如果使用IntelliJ IDEA开发工具，同时跑gradle项目，那就要小心了。<br>需要在<code>File | Settings | Build, Execution, Deployment | Gradle</code>下，找到<code>Gradle VM options</code>，然后填入配置<code>-Dfile.encoding=UTF-8</code><br>还有一种方法，可以通过修改gradle.bat这个文件来实现，改文件通常存放于，<code>GRADLE_HOME</code>下的<code>bin</code>目录，找到<code>set DEFAULT_JVM_OPTS=</code>修改为<code>set DEFAULT_JVM_OPTS=&quot;-Dfile.encoding=UTF-8&quot;</code>即可。</p>]]></content>
+      <content type="html"><![CDATA[<p>恐怕没有哪个中国程序员没被字符编码的问题坑过吧。本以为把能设置字符集的地方，都设置成<code>UTF-8</code>就不会踩坑。可是现实是残酷的。<br>比如在中文windows系统环境下，如果使用IntelliJ IDEA开发工具，同时跑gradle项目，那就要小心了。<br>需要在<br><code>File | Settings | Build, Execution, Deployment | Gradle</code><br>下，找到<code>Gradle VM options</code>，然后填入配置<code>-Dfile.encoding=UTF-8</code></p><p>还有一种方法，可以通过修改gradle.bat这个文件来实现，改文件通常存放于，<code>GRADLE_HOME</code>下的<code>bin</code>目录，找到<code>set DEFAULT_JVM_OPTS=</code>修改为<br><code>set DEFAULT_JVM_OPTS=&quot;-Dfile.encoding=UTF-8&quot;</code><br>即可。</p>]]></content>
       
       <categories>
           
@@ -134,6 +134,8 @@
         <tags>
             
             <tag> gradle </tag>
+            
+            <tag> 乱码 </tag>
             
         </tags>
       
