@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>tomcat中URL中文乱码问题</title>
+      <link href="/2018/07/29/tomcat%E4%B8%ADURL%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/"/>
+      <url>/2018/07/29/tomcat%E4%B8%ADURL%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/</url>
+      <content type="html"><![CDATA[<p>找到<br><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;Connector <span class="attribute">connectionTimeout</span>=<span class="string">"20000"</span> <span class="attribute">port</span>=<span class="string">"8080"</span> <span class="attribute">protocol</span>=<span class="string">"HTTP/1.1"</span> <span class="attribute">redirectPort</span>=<span class="string">"8443"</span> /&gt;</span><br></pre></td></tr></table></figure></p><p>追加配置为<br><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;Connector <span class="attribute">connectionTimeout</span>=<span class="string">"20000"</span> <span class="attribute">port</span>=<span class="string">"8080"</span> <span class="attribute">protocol</span>=<span class="string">"HTTP/1.1"</span> <span class="attribute">redirectPort</span>=<span class="string">"8443"</span> <span class="attribute">URIEncoding</span>=<span class="string">"UTF-8"</span>/&gt;</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tomcat </tag>
+            
+            <tag> 乱码 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>被忽略的IntelliJ IDEA常用快捷键</title>
       <link href="/2018/07/28/%E8%A2%AB%E5%BF%BD%E7%95%A5%E7%9A%84IntelliJ-IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
       <url>/2018/07/28/%E8%A2%AB%E5%BF%BD%E7%95%A5%E7%9A%84IntelliJ-IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
