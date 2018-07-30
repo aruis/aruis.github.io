@@ -3,6 +3,128 @@
   
     
     <entry>
+      <title>启动Docker容器后要注意的时区问题</title>
+      <link href="/2018/07/30/%E5%90%AF%E5%8A%A8Docker%E5%AE%B9%E5%99%A8%E5%90%8E%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E6%97%B6%E5%8C%BA%E9%97%AE%E9%A2%98/"/>
+      <url>/2018/07/30/%E5%90%AF%E5%8A%A8Docker%E5%AE%B9%E5%99%A8%E5%90%8E%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E6%97%B6%E5%8C%BA%E9%97%AE%E9%A2%98/</url>
+      <content type="html"><![CDATA[<p>对于中国用户来说，一般的docker容器启动后，如果执行<code>docker  exec -it xxxx date</code>会发现打印出来的时间，比当前北京时间早八个小时。所以需要调整容器的时区，主要有两个命令（要在容器内部执行）：</p><ul><li><code>cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</code></li><li><code>echo &quot;Asia/Shanghai&quot; &gt; /etc/timezone</code></li></ul><p>其中第一个命令就能解决不少问题，比如我用<code>PostgreSQL</code>的话，<code>select now()</code>就可以通过第一条命令修正。但是<code>Tomcat</code>等java相关的程序，还需要第二条命令，才能获得正确的时间。</p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>tomcat中URL中文乱码问题</title>
+      <link href="/2018/07/29/tomcat%E4%B8%ADURL%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/"/>
+      <url>/2018/07/29/tomcat%E4%B8%ADURL%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/</url>
+      <content type="html"><![CDATA[<p>找到<br><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;Connector <span class="attribute">connectionTimeout</span>=<span class="string">"20000"</span> <span class="attribute">port</span>=<span class="string">"8080"</span> <span class="attribute">protocol</span>=<span class="string">"HTTP/1.1"</span> <span class="attribute">redirectPort</span>=<span class="string">"8443"</span> /&gt;</span><br></pre></td></tr></table></figure></p><p>追加配置为<br><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;Connector <span class="attribute">connectionTimeout</span>=<span class="string">"20000"</span> <span class="attribute">port</span>=<span class="string">"8080"</span> <span class="attribute">protocol</span>=<span class="string">"HTTP/1.1"</span> <span class="attribute">redirectPort</span>=<span class="string">"8443"</span> <span class="attribute">URIEncoding</span>=<span class="string">"UTF-8"</span>/&gt;</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 乱码 </tag>
+            
+            <tag> tomcat </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>被忽略的IntelliJ IDEA常用快捷键</title>
+      <link href="/2018/07/28/%E8%A2%AB%E5%BF%BD%E7%95%A5%E7%9A%84IntelliJ-IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+      <url>/2018/07/28/%E8%A2%AB%E5%BF%BD%E7%95%A5%E7%9A%84IntelliJ-IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+      <content type="html"><![CDATA[<ul><li>跳转到方法声明处 （Go to declaration） ⌘B</li><li>快速查看声明（Open quick definition lookup）⇧⌘I</li><li>快速查看文档（Quick documentation lookup）^J</li><li>块级注释（Comment/uncomment with block comment）^⇧/</li><li>查找被调用处（Show usages）⌥⌘F7</li><li>在本文件高亮引用，可以用在return上（Highlight usages in file）⇧⌘F7</li><li>弹出重构窗口 ⌥⇧⌘T</li><li>补全代码（Complete statement）⇧⌘↩︎</li><li>查找功能（Find Action…）⇧⌘A，紧接着如果要给找到的功能设置快捷键，就继续⌥↩︎</li></ul>]]></content>
+      
+      <categories>
+          
+          <category> 实用技巧 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
+      <title>制作macOS启动U盘命令</title>
+      <link href="/2018/07/27/%E5%88%B6%E4%BD%9CmacOS%E5%90%AF%E5%8A%A8U%E7%9B%98%E5%91%BD%E4%BB%A4/"/>
+      <url>/2018/07/27/%E5%88%B6%E4%BD%9CmacOS%E5%90%AF%E5%8A%A8U%E7%9B%98%E5%91%BD%E4%BB%A4/</url>
+      <content type="html"><![CDATA[<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">sudo <span class="string">/Applications/Install</span>\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia <span class="params">--volume</span> <span class="string">/Volumes/Sierra</span> <span class="params">--applicationpath</span> <span class="string">/Applications/Install</span>\ macOS\ High\ Sierra.app <span class="params">--nointeraction</span></span><br></pre></td></tr></table></figure><p>其中<code>/Volumes/Sierra</code>的<code>Sierra</code>是U盘的命名。如下图所示。<br><img src="/media/15326512660951.jpg" alt=""></p>]]></content>
+      
+      <categories>
+          
+          <category> 实用技巧 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Mac </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>编写跨操作系统Java代码时动态或许文件分隔符</title>
+      <link href="/2018/07/26/%E7%BC%96%E5%86%99%E8%B7%A8%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FJava%E4%BB%A3%E7%A0%81%E6%97%B6%E5%8A%A8%E6%80%81%E6%88%96%E8%AE%B8%E6%96%87%E4%BB%B6%E5%88%86%E9%9A%94%E7%AC%A6/"/>
+      <url>/2018/07/26/%E7%BC%96%E5%86%99%E8%B7%A8%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FJava%E4%BB%A3%E7%A0%81%E6%97%B6%E5%8A%A8%E6%80%81%E6%88%96%E8%AE%B8%E6%96%87%E4%BB%B6%E5%88%86%E9%9A%94%E7%AC%A6/</url>
+      <content type="html"><![CDATA[<h3 id="大概有以下几种思路"><a href="#大概有以下几种思路" class="headerlink" title="大概有以下几种思路"></a>大概有以下几种思路</h3><ol><li><code>File.separator</code>系统相关的默认名称分隔符，为方便起见，表示为字符串。 该字符串包含单个字符，即separatorChar。</li><li><code>FileSystems.getDefault().getSeparator()</code>返回名称分隔符，表示为字符串。<br>名称分隔符用于分隔路径字符串中的名称。 实现可能支持多个名称分隔符，在这种情况下，此方法返回特定于实现的默认名称分隔符。 通过调用toString（）方法创建路径字符串时使用此分隔符。<br>对于默认提供程序，此方法返回与java.io.File.separator相同的分隔符。</li><li><code>System.getProperty(&quot;file.separator&quot;)</code></li></ol><p>正常情况下，选择第一种，就ok了。第二种是在Java7时代追加的，功能更为强大。第三种也不错，因为额外提供通过<code>-Dfile.separator=</code>参数来指定的特性。</p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>linux免密登录不起作用解决办法</title>
+      <link href="/2018/07/25/linux%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+      <url>/2018/07/25/linux%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+      <content type="html"><![CDATA[<p>已经把公钥添加到<code>~/.ssh/authorized_keys</code>文件之后，有时候依然无法实现免密码登录。后来才发现，是因为有些文件的权限放大了。想想也是，如果<code>authorized_keys</code>文件，是其他用户也能编辑的。那岂不是多了个后门，可以帮助其他用户绕到当前用户了。<br>所以重点在于几个关键文件是否把权限集中在自己手上，并且无论如何是不允许其他用户编辑的。<br>总结为以下几条命令<br><figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">chmod 700 ~<span class="string">/.ssh</span></span><br><span class="line">chmod 600 ~<span class="string">/.ssh/authorized_keys</span></span><br></pre></td></tr></table></figure></p><p>有时候，光有上面两句还搞不定，我发现还得追加一句<br><figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">chmod <span class="number">755</span> ~</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>小诗一首</title>
       <link href="/2018/07/24/%E5%B0%8F%E8%AF%97%E4%B8%80%E9%A6%96/"/>
       <url>/2018/07/24/%E5%B0%8F%E8%AF%97%E4%B8%80%E9%A6%96/</url>
@@ -21,7 +143,7 @@
       <title>IntelliJ IDEA在Winodws下Gradle乱码问题</title>
       <link href="/2018/07/23/IntelliJ-IDEA%E5%9C%A8Winodws%E4%B8%8BGradle%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/"/>
       <url>/2018/07/23/IntelliJ-IDEA%E5%9C%A8Winodws%E4%B8%8BGradle%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/</url>
-      <content type="html"><![CDATA[<p>恐怕没有哪个中国程序员没被字符编码的问题坑过吧。本以为把能设置字符集的地方，都设置成<code>UTF-8</code>就不会踩坑。可是现实是残酷的。<br>比如在中文windows系统环境下，如果使用IntelliJ IDEA开发工具，同时跑gradle项目，那就要小心了。<br>需要在<code>File | Settings | Build, Execution, Deployment | Gradle</code>下，找到<code>Gradle VM options</code>，然后填入配置<code>-Dfile.encoding=UTF-8</code><br>还有一种方法，可以通过修改gradle.bat这个文件来实现，改文件通常存放于，<code>GRADLE_HOME</code>下的<code>bin</code>目录，找到<code>set DEFAULT_JVM_OPTS=</code>修改为<code>set DEFAULT_JVM_OPTS=&quot;-Dfile.encoding=UTF-8&quot;</code>即可。</p>]]></content>
+      <content type="html"><![CDATA[<p>恐怕没有哪个中国程序员没被字符编码的问题坑过吧。本以为把能设置字符集的地方，都设置成<code>UTF-8</code>就不会踩坑。可是现实是残酷的。<br>比如在中文windows系统环境下，如果使用IntelliJ IDEA开发工具，同时跑gradle项目，那就要小心了。<br>需要在<br><code>File | Settings | Build, Execution, Deployment | Gradle</code><br>下，找到<code>Gradle VM options</code>，然后填入配置<code>-Dfile.encoding=UTF-8</code></p><p>还有一种方法，可以通过修改gradle.bat这个文件来实现，改文件通常存放于，<code>GRADLE_HOME</code>下的<code>bin</code>目录，找到<code>set DEFAULT_JVM_OPTS=</code>修改为<br><code>set DEFAULT_JVM_OPTS=&quot;-Dfile.encoding=UTF-8&quot;</code><br>即可。</p>]]></content>
       
       <categories>
           
@@ -33,6 +155,8 @@
         <tags>
             
             <tag> gradle </tag>
+            
+            <tag> 乱码 </tag>
             
         </tags>
       

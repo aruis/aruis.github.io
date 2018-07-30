@@ -3,9 +3,6 @@ title: linux挂载新磁盘（适用阿里云、华为云）
 date: 2018-07-16 08:39:04
 categories: 程序人生
 tags: Linux
-front-matter: 
-    toc: true
-    layout: single-column
 ---
 公司项目用的是华为的云服务器，刚申请了新的硬盘资源，需要手动分区挂载。虽然华为没给啥资料，但是不是还有阿里云嘛。所以结合阿里云的资料。我们就可以在华为云实操一把了。附里云资料地址[Linux 格式化和挂载数据盘](https://help.aliyun.com/document_detail/25426.html?spm=a2c4g.11186623.2.4.nTZpwz)
 
