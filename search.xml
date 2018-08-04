@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>JVM下最好用的前端自动化测试工具Geb</title>
+      <link href="/2018/08/04/JVM%E4%B8%8B%E6%9C%80%E5%A5%BD%E7%94%A8%E7%9A%84%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7Geb/"/>
+      <url>/2018/08/04/JVM%E4%B8%8B%E6%9C%80%E5%A5%BD%E7%94%A8%E7%9A%84%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7Geb/</url>
+      <content type="html"><![CDATA[<p>接触了<code>Angular</code>才知道前端有个端到端测试的说法，然后了解到有<code>WebDriver</code>这种神奇的存在，瞬间打开了新世纪的大门。后来几经寻觅，终于发现一个运行在<code>JVM</code>中的前端测试工具，那就是<a href="http://gebish.org" target="_blank" rel="noopener">Geb</a>。<br>来段代码：<br><figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">import</span> geb.<span class="keyword">Browser</span></span><br><span class="line"><span class="keyword"> </span></span><br><span class="line"><span class="keyword">Browser.drive </span>&#123;</span><br><span class="line">    go <span class="string">"http://myapp.com/login"</span></span><br><span class="line">     </span><br><span class="line">    <span class="meta">assert</span> $(<span class="string">"h1"</span>)<span class="meta">.text</span>() == <span class="string">"Please Login"</span></span><br><span class="line">     </span><br><span class="line">    $(<span class="string">"form.login"</span>).with &#123;</span><br><span class="line">        username = <span class="string">"admin"</span></span><br><span class="line">        password = <span class="string">"password"</span></span><br><span class="line">        login().click()</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="meta">assert</span> $(<span class="string">"h1"</span>)<span class="meta">.text</span>() == <span class="string">"Admin Section"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>是不是很易懂，一个有<code>Java</code>与<code>jQuery</code>基础的人应该非常容易上手。<br>还记得那个阿里员工抢月饼事件么，估计看了新闻之后，前端程序员都会觉得0门槛，但是后端程序员，可能就会觉得自己的技术栈鞭长莫及了。有了<code>Geb</code>，我们能做的事情会更多，也会更加方便。下一篇，我将介绍如何用<code>Geb</code>来实现京东抢券。</p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 前端 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>PostgreSQL中的几中常见索引及应用场景</title>
       <link href="/2018/08/03/PostgreSQL%E4%B8%AD%E7%9A%84%E5%87%A0%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%B4%A2%E5%BC%95%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/"/>
       <url>/2018/08/03/PostgreSQL%E4%B8%AD%E7%9A%84%E5%87%A0%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%B4%A2%E5%BC%95%E5%8F%8A%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/</url>
