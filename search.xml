@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>基于Geb的京东抢券</title>
+      <link href="/2018/08/05/%E5%9F%BA%E4%BA%8EGeb%E7%9A%84%E4%BA%AC%E4%B8%9C%E6%8A%A2%E5%88%B8/"/>
+      <url>/2018/08/05/%E5%9F%BA%E4%BA%8EGeb%E7%9A%84%E4%BA%AC%E4%B8%9C%E6%8A%A2%E5%88%B8/</url>
+      <content type="html"><![CDATA[<p>前面介绍过<a href="http://gebish.org" target="_blank" rel="noopener">Geb</a>是个好东西，可以用它实现web前端的自动化测试，自然用来解放双手，抢个券什么的不在话下。<br>这次我们主要瞄准京东。最佳的实验场所是京东的移动web版，即<a href="https://m.jd.com/" target="_blank" rel="noopener">https://m.jd.com/</a>，大概分为以下几个步骤：</p><ol><li>打开京东首页</li><li>点击登录按钮</li><li>填写登录用户名密码并登录</li><li>调整到需要抢券的页面</li><li>找到抢券按钮开抢</li></ol><p>下面贴一个，618某活动的抢券代码（现在已经下线了），仅供参考。<br><figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"> static <span class="function"><span class="keyword">def</span> <span class="title">checkin</span><span class="params">(String username, String password)</span></span> &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        FirefoxBinary firefoxBinary = new FirefoxBinary();</span><br><span class="line">/<span class="regexp">/        firefoxBinary.addCommandLineOptions("--headless");</span></span><br><span class="line"><span class="regexp">        FirefoxOptions firefoxOptions = new FirefoxOptions();</span></span><br><span class="line"><span class="regexp">        firefoxOptions.setBinary(firefoxBinary);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">        def browser = new Browser(driver: new FirefoxDriver(firefoxOptions))</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">        browser.with &#123;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">            go "https:/</span><span class="regexp">/m.jd.com"</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">            $(".jd-search-icon-login").click()</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">            $("#username").value(username)</span></span><br><span class="line"><span class="regexp">            $("#password").value(password)</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">            $("#loginBtn").click()</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">            sleep(5000)</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">            go "https:/</span><span class="regexp">/pro.m.jd.com/mall</span><span class="regexp">/active/q</span>KRVTAJL7v93L71TkJebPv5GJnE/index.html<span class="string">"</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">            $("</span><span class="comment">#m_1_14").children().each &#123;</span></span><br><span class="line">                it.click()</span><br><span class="line">                sleep(<span class="number">500</span>)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p><p>补充几个说明：</p><ol><li>我用的是<code>Firefox</code>浏览器。所以需要电脑事先装好该浏览器。</li><li>只装浏览器还不够，还需要相应的<code>WebDriver</code>驱动。如果找不到程序会报错的，可以根据错误提示下载该驱动。然后要把本地驱动文件地址设置一下，方便<code>Geb</code>识别，代码如下<code>System.setProperty(&quot;webdriver.gecko.driver&quot;, &quot;/root/geckodriver&quot;)</code></li><li><strong>无节目的Linux服务器可不可用呢？答案是可以</strong>，在安装完上面两样东西之后，只需要代码里添加<code>firefoxBinary.addCommandLineOptions(&quot;--headless&quot;);</code>就可以启动无界面的<code>Firefox</code>了</li></ol><h4 id="友情提醒"><a href="#友情提醒" class="headerlink" title="友情提醒"></a>友情提醒</h4><p>工具抢券也好、代码抢券也好，都是一种对普通消费者不公平的存在。建议学会之后，自用练手即可，切勿以此牟利。</p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Geb </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>JVM下最好用的前端自动化测试工具Geb</title>
       <link href="/2018/08/04/JVM%E4%B8%8B%E6%9C%80%E5%A5%BD%E7%94%A8%E7%9A%84%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7Geb/"/>
       <url>/2018/08/04/JVM%E4%B8%8B%E6%9C%80%E5%A5%BD%E7%94%A8%E7%9A%84%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7Geb/</url>
@@ -18,6 +39,8 @@
         <tags>
             
             <tag> 前端 </tag>
+            
+            <tag> Geb </tag>
             
         </tags>
       
@@ -265,11 +288,11 @@
       
         <tags>
             
+            <tag> IntelliJ IDEA </tag>
+            
             <tag> gradle </tag>
             
             <tag> 乱码 </tag>
-            
-            <tag> IntelliJ IDEA </tag>
             
         </tags>
       
