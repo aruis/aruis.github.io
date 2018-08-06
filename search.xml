@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>Cordova插件中定制build.gradle的方法</title>
+      <link href="/2018/08/06/cordova%E6%8F%92%E4%BB%B6%E4%B8%AD%E5%AE%9A%E5%88%B6build-gradle%E7%9A%84%E6%96%B9%E6%B3%95/"/>
+      <url>/2018/08/06/cordova%E6%8F%92%E4%BB%B6%E4%B8%AD%E5%AE%9A%E5%88%B6build-gradle%E7%9A%84%E6%96%B9%E6%B3%95/</url>
+      <content type="html"><![CDATA[<p>编写<code>cordova</code>插件的时候，有时候要有进一步设置<code>build.gradle</code>文件的需求，比如追加个依赖什么的。这中问题，可以通过设置<code>cordova</code>的<code>plugin.xml</code>来解决的。分为如下几个步骤：</p><ol><li><p>编写cordova.build文件，文件名可以随便叫，内容就放你需要追加的个性化内容，比如我的是</p> <figure class="highlight xquery"><table><tr><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    sourceSets &#123;</span><br><span class="line">        main &#123;</span><br><span class="line">            jniLibs.srcDirs = [<span class="string">'libs'</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>在<code>plugin.xml</code>文件中<code>&lt;platform name=&quot;android&quot;&gt;&lt;/platform&gt;</code>区域内追加配置</p> <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&lt;framework <span class="attribute">src</span>=<span class="string">"src/android/cordova.gradle"</span> <span class="attribute">custom</span>=<span class="string">"true"</span> <span class="attribute">type</span>=<span class="string">"gradleReference"</span>/&gt;</span><br></pre></td></tr></table></figure></li></ol><p>更多信息可以查阅文档 <a href="https://cordova.apache.org/docs/en/latest/plugin_ref/spec.html" target="_blank" rel="noopener">https://cordova.apache.org/docs/en/latest/plugin_ref/spec.html</a></p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Cordova </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>基于Geb的京东抢券</title>
       <link href="/2018/08/05/%E5%9F%BA%E4%BA%8EGeb%E7%9A%84%E4%BA%AC%E4%B8%9C%E6%8A%A2%E5%88%B8/"/>
       <url>/2018/08/05/%E5%9F%BA%E4%BA%8EGeb%E7%9A%84%E4%BA%AC%E4%B8%9C%E6%8A%A2%E5%88%B8/</url>
