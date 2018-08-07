@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>PostgreSQL删除数据库时提示other session using the database</title>
+      <link href="/2018/08/07/PostgreSQL%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%B6%E6%8F%90%E7%A4%BAother-session-using-the-database/"/>
+      <url>/2018/08/07/PostgreSQL%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%B6%E6%8F%90%E7%A4%BAother-session-using-the-database/</url>
+      <content type="html"><![CDATA[<p>PostgreSQL中，如果想drop一个正在被人连接的数据库，是不可以的。提示如下：<br><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line"><span class="attribute">postgres</span>=# drop database ka;</span><br><span class="line">ERROR:  database <span class="string">"ka"</span> is being accessed by other users</span><br><span class="line">DETAIL:  There is 1 other session using the database</span><br></pre></td></tr></table></figure></p><p>应对方法是要通过<code>pg_terminate_backend</code>系统内置函数，把对应库在线连接给清理掉，使用方法如下：<br><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> pg_terminate_backend(pg_stat_activity.pid)</span><br><span class="line">    <span class="keyword">FROM</span> pg_stat_activity</span><br><span class="line">    <span class="keyword">WHERE</span> pg_stat_activity.datname = <span class="string">'longruan-tongmei'</span></span><br><span class="line">      <span class="keyword">AND</span> pid &lt;&gt; pg_backend_pid();</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PostgreSQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Cordova插件中定制build.gradle的方法</title>
       <link href="/2018/08/06/cordova%E6%8F%92%E4%BB%B6%E4%B8%AD%E5%AE%9A%E5%88%B6build-gradle%E7%9A%84%E6%96%B9%E6%B3%95/"/>
       <url>/2018/08/06/cordova%E6%8F%92%E4%BB%B6%E4%B8%AD%E5%AE%9A%E5%88%B6build-gradle%E7%9A%84%E6%96%B9%E6%B3%95/</url>
@@ -309,11 +330,11 @@
       
         <tags>
             
-            <tag> IntelliJ IDEA </tag>
-            
             <tag> gradle </tag>
             
             <tag> 乱码 </tag>
+            
+            <tag> IntelliJ IDEA </tag>
             
         </tags>
       
