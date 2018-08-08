@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>Linux软硬链接核心异同</title>
+      <link href="/2018/08/08/Linux%E8%BD%AF%E7%A1%AC%E9%93%BE%E6%8E%A5%E6%A0%B8%E5%BF%83%E5%BC%82%E5%90%8C/"/>
+      <url>/2018/08/08/Linux%E8%BD%AF%E7%A1%AC%E9%93%BE%E6%8E%A5%E6%A0%B8%E5%BF%83%E5%BC%82%E5%90%8C/</url>
+      <content type="html"><![CDATA[<p><code>ln</code>命令，涉及到的软硬链接的核心概念已经被阐述的很多了。但是用的时候，到底用软链接，还是用硬链接，有时候还是会让人摸不着头绪。所以我尝试总结几点：</p><ol><li>软硬链接都能起到原始文件只占用一份磁盘资源的目的</li><li>硬链接不能针对文件夹，软链接无此限制</li><li>硬链接可以起到备份的作用，只要有硬链接在，原始文件就能访问；软链接无此效果</li><li>不论软链接，硬链接，<code>chmod</code>做的权限变更都具有传递性</li><li>软链接有个坑，如果原始文件删除之后，再创建一个同名的文件，软链接还会莫名其妙建立链接，这可能不一定是我们需要的</li></ol>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>PostgreSQL删除数据库时提示other session using the database</title>
       <link href="/2018/08/07/PostgreSQL%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%B6%E6%8F%90%E7%A4%BAother-session-using-the-database/"/>
       <url>/2018/08/07/PostgreSQL%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%B6%E6%8F%90%E7%A4%BAother-session-using-the-database/</url>
