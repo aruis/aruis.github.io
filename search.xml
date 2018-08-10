@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>PostgreSQL修改FDW相关配置</title>
+      <link href="/2018/08/10/PostgreSQL%E4%BF%AE%E6%94%B9FDW%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/"/>
+      <url>/2018/08/10/PostgreSQL%E4%BF%AE%E6%94%B9FDW%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/</url>
+      <content type="html"><![CDATA[<p>必要的时候要修改<code>PostgreSQL</code>中配置的外部服务器。有个<code>ALTER SERVER</code>命令是专门应对这种场景的。比如我的外部数据源服务器地址换了，只需要改下之前配置的<code>host</code>地址即可，<code>SQL</code>如下<br><figure class="highlight gams"><table><tr><td class="code"><pre><span class="line">ALTER SERVER foreign_server <span class="keyword">OPTIONS</span> (<span class="keyword">set</span> host <span class="comment">'192.168.0.88'</span><span class="comment">)</span>;</span><br></pre></td></tr></table></figure></p><p>更多内容可以查看官方文档[<a href="http://www.postgres.cn/docs/9.6/sql-alterserver.html]" target="_blank" rel="noopener">http://www.postgres.cn/docs/9.6/sql-alterserver.html]</a></p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PostgreSQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>PostgreSQL中的distinct on</title>
       <link href="/2018/08/09/PostgreSQL%E4%B8%AD%E7%9A%84distinct-on/"/>
       <url>/2018/08/09/PostgreSQL%E4%B8%AD%E7%9A%84distinct-on/</url>
@@ -372,11 +393,11 @@
       
         <tags>
             
+            <tag> IntelliJ IDEA </tag>
+            
             <tag> gradle </tag>
             
             <tag> 乱码 </tag>
-            
-            <tag> IntelliJ IDEA </tag>
             
         </tags>
       
