@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>家长的责任及义务</title>
+      <link href="/2018/08/13/%E5%AE%B6%E9%95%BF%E7%9A%84%E8%B4%A3%E4%BB%BB%E5%8F%8A%E4%B9%89%E5%8A%A1/"/>
+      <url>/2018/08/13/%E5%AE%B6%E9%95%BF%E7%9A%84%E8%B4%A3%E4%BB%BB%E5%8F%8A%E4%B9%89%E5%8A%A1/</url>
+      <content type="html"><![CDATA[<h2 id="身为家长，到底能为孩子做些什么，什么又是最重要的呢"><a href="#身为家长，到底能为孩子做些什么，什么又是最重要的呢" class="headerlink" title="身为家长，到底能为孩子做些什么，什么又是最重要的呢"></a>身为家长，到底能为孩子做些什么，什么又是最重要的呢</h2><h3 id="我认为按重要程度，依次有这几点"><a href="#我认为按重要程度，依次有这几点" class="headerlink" title="我认为按重要程度，依次有这几点"></a>我认为按重要程度，依次有这几点</h3><ol><li>和睦温馨的家庭氛围</li><li>不论工作、学习如何辛苦，始终不忘身体健康是第一要务</li><li>活到老学到老的人生态度</li><li>能够支持孩子从事学习活动的经济基础</li></ol>]]></content>
+      
+      <categories>
+          
+          <category> 文艺中年 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教育子女 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>分享一个Vert.x的自定义Launcher</title>
       <link href="/2018/08/12/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AAVert-x%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89Launcher/"/>
       <url>/2018/08/12/%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AAVert-x%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89Launcher/</url>
@@ -565,9 +586,9 @@
       
         <tags>
             
-            <tag> 前端 </tag>
-            
             <tag> gradle </tag>
+            
+            <tag> 前端 </tag>
             
             <tag> vue </tag>
             
