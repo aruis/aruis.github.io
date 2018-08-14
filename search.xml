@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>Vert.x项目监测代码变化自动冷重启</title>
+      <link href="/2018/08/14/Vert-x%E9%A1%B9%E7%9B%AE%E7%9B%91%E6%B5%8B%E4%BB%A3%E7%A0%81%E5%8F%98%E5%8C%96%E8%87%AA%E5%8A%A8%E5%86%B7%E9%87%8D%E5%90%AF/"/>
+      <url>/2018/08/14/Vert-x%E9%A1%B9%E7%9B%AE%E7%9B%91%E6%B5%8B%E4%BB%A3%E7%A0%81%E5%8F%98%E5%8C%96%E8%87%AA%E5%8A%A8%E5%86%B7%E9%87%8D%E5%90%AF/</url>
+      <content type="html"><![CDATA[<p>传统的Java Web开发一般都会提供热重载的方式，方便开发人员在代码发生变化的时候，无需手动重启应用，就可以刷新到效果。用惯了的人，在用<code>Vert.x</code>开发的时候多少会有点不习惯，不过<code>Vert.x</code>程序启动速度还是很可观的，所以也勉强能忍。<br>后来通读文档的时候，发现有个关于<code>redeploy</code>的介绍，似乎能用，又似乎不好用的，直到看到官方的<a href="https://github.com/vert-x3/vertx-examples/tree/master/gradle-redeploy" target="_blank" rel="noopener">Vert.x 3.2 Gradle redeploy project</a>总算豁然开朗了。<br>核心代码无非下面几行<br><figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">// Vert.<span class="keyword">x</span> watches <span class="keyword">for</span> <span class="keyword">file</span> <span class="keyword">changes</span> in <span class="keyword">all</span> subdirectories</span><br><span class="line">// of src/ but <span class="keyword">only</span> <span class="keyword">for</span> <span class="keyword">files</span> with .java extension</span><br><span class="line">def watchForChange = <span class="string">'src/**/*.java'</span></span><br><span class="line"></span><br><span class="line">// Vert.<span class="keyword">x</span> will <span class="keyword">call</span> this task <span class="keyword">on</span> <span class="keyword">changes</span></span><br><span class="line">def doOnChange</span><br><span class="line"><span class="keyword">if</span> (System.getProperty(<span class="string">"os.name"</span>).toLowerCase().contains(<span class="string">"windows"</span>)) &#123;</span><br><span class="line">  doOnChange = <span class="string">'.\\gradlew classes'</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  doOnChange = <span class="string">'./gradlew classes'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">run &#123;</span><br><span class="line">  <span class="keyword">args</span> = [<span class="string">'run'</span>, mainVerticleName, <span class="string">"--redeploy=$watchForChange"</span>, <span class="string">"--launcher-class=$mainClassName"</span>, <span class="string">"--on-redeploy=$doOnChange"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>我也尝试了一下，的确可用，但是这个官方示例还是有个地方写的不好，就是关于文件分割符的判断，恰好这个在我之前的帖子里面提到过，见<a href="https://www.kankanzhijian.com/2018/07/26/编写跨操作系统Java代码时动态获取文件分隔符/">编写跨操作系统Java代码时动态获取文件分隔符</a><br>所以上面的<code>gradle</code>代码关于<code>doOnChange</code>声明就可以简化成下面的样子了<br><figure class="highlight flix"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">doOnChange</span> </span>= <span class="string">".$&#123;File.separator&#125;gradlew classes"</span></span><br></pre></td></tr></table></figure></p><p>测试成功</p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vert.x </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>家长的责任及义务</title>
       <link href="/2018/08/13/%E5%AE%B6%E9%95%BF%E7%9A%84%E8%B4%A3%E4%BB%BB%E5%8F%8A%E4%B9%89%E5%8A%A1/"/>
       <url>/2018/08/13/%E5%AE%B6%E9%95%BF%E7%9A%84%E8%B4%A3%E4%BB%BB%E5%8F%8A%E4%B9%89%E5%8A%A1/</url>
@@ -385,9 +406,9 @@
     </entry>
     
     <entry>
-      <title>编写跨操作系统Java代码时动态或许文件分隔符</title>
-      <link href="/2018/07/26/%E7%BC%96%E5%86%99%E8%B7%A8%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FJava%E4%BB%A3%E7%A0%81%E6%97%B6%E5%8A%A8%E6%80%81%E6%88%96%E8%AE%B8%E6%96%87%E4%BB%B6%E5%88%86%E9%9A%94%E7%AC%A6/"/>
-      <url>/2018/07/26/%E7%BC%96%E5%86%99%E8%B7%A8%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FJava%E4%BB%A3%E7%A0%81%E6%97%B6%E5%8A%A8%E6%80%81%E6%88%96%E8%AE%B8%E6%96%87%E4%BB%B6%E5%88%86%E9%9A%94%E7%AC%A6/</url>
+      <title>编写跨操作系统Java代码时动态获取文件分隔符</title>
+      <link href="/2018/07/26/%E7%BC%96%E5%86%99%E8%B7%A8%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FJava%E4%BB%A3%E7%A0%81%E6%97%B6%E5%8A%A8%E6%80%81%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6%E5%88%86%E9%9A%94%E7%AC%A6/"/>
+      <url>/2018/07/26/%E7%BC%96%E5%86%99%E8%B7%A8%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FJava%E4%BB%A3%E7%A0%81%E6%97%B6%E5%8A%A8%E6%80%81%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6%E5%88%86%E9%9A%94%E7%AC%A6/</url>
       <content type="html"><![CDATA[<h3 id="大概有以下几种思路"><a href="#大概有以下几种思路" class="headerlink" title="大概有以下几种思路"></a>大概有以下几种思路</h3><ol><li><code>File.separator</code>系统相关的默认名称分隔符，为方便起见，表示为字符串。 该字符串包含单个字符，即separatorChar。</li><li><code>FileSystems.getDefault().getSeparator()</code>返回名称分隔符，表示为字符串。<br>名称分隔符用于分隔路径字符串中的名称。 实现可能支持多个名称分隔符，在这种情况下，此方法返回特定于实现的默认名称分隔符。 通过调用toString（）方法创建路径字符串时使用此分隔符。<br>对于默认提供程序，此方法返回与java.io.File.separator相同的分隔符。</li><li><code>System.getProperty(&quot;file.separator&quot;)</code></li></ol><p>正常情况下，选择第一种，就ok了。第二种是在Java7时代追加的，功能更为强大。第三种也不错，因为额外提供通过<code>-Dfile.separator=</code>参数来指定的特性。</p>]]></content>
       
       <categories>
@@ -456,11 +477,11 @@
       
         <tags>
             
-            <tag> IntelliJ IDEA </tag>
-            
             <tag> gradle </tag>
             
             <tag> 乱码 </tag>
+            
+            <tag> IntelliJ IDEA </tag>
             
         </tags>
       
