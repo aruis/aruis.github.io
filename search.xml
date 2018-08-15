@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>PostgreSQL中实现更新默认值（一）</title>
+      <link href="/2018/08/16/PostgreSQL%E4%B8%AD%E5%AE%9E%E7%8E%B0%E6%9B%B4%E6%96%B0%E9%BB%98%E8%AE%A4%E5%80%BC%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+      <url>/2018/08/16/PostgreSQL%E4%B8%AD%E5%AE%9E%E7%8E%B0%E6%9B%B4%E6%96%B0%E9%BB%98%E8%AE%A4%E5%80%BC%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+      <content type="html"><![CDATA[<p>业务系统中，经常会在设计表的时候，考虑这两个字段：新增时间、修改时间。前者用数据库的基础功能即可实现，后者就要采取一些手段了。<br>在<code>PostgreSQL</code>中的最佳实践是采用触发器，捕捉<code>UPDATE</code>实践，虽然听起来很可怕，但其实并不难。</p><ol><li><p>首先创建一个函数，作用就是给一行数据，追加某个值（这里我用的字段名是<code>t_update</code>）</p> <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> <span class="keyword">REPLACE</span> <span class="keyword">FUNCTION</span> update_modified_column()</span><br><span class="line">  <span class="keyword">RETURNS</span> <span class="keyword">TRIGGER</span> <span class="keyword">AS</span> $$</span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">  NEW.t_update = <span class="keyword">now</span>();</span><br><span class="line">  RETURN NEW;</span><br><span class="line"><span class="keyword">END</span>;</span><br><span class="line">$$</span><br><span class="line">language 'plpgsql';</span><br></pre></td></tr></table></figure></li></ol><ol start="2"><li><p>然后就是把这个函数怼到触发器上</p> <figure class="highlight oxygene"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> TRIGGER tgr_auto_t_update</span><br><span class="line">  BEFORE UPDATE</span><br><span class="line">  <span class="keyword">ON</span> a_table</span><br><span class="line">  <span class="keyword">FOR</span> <span class="keyword">EACH</span> ROW EXECUTE <span class="function"><span class="keyword">PROCEDURE</span> <span class="title">update_modified_column</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure></li></ol><p>这样就大功告成了。但是如果有很多表的话，感觉还是有重复劳动，不够优雅。明天我将结合昨天提到的表继承，最大化的减少工作量，用更优雅的方法实现更新默认值的功能。</p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PostgreSQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>PostgreSQL中用递归CTE获取一张表的所有祖先表</title>
       <link href="/2018/08/15/PostgreSQL%E4%B8%AD%E7%94%A8%E9%80%92%E5%BD%92CTE%E8%8E%B7%E5%8F%96%E4%B8%80%E5%BC%A0%E8%A1%A8%E7%9A%84%E6%89%80%E6%9C%89%E7%A5%96%E5%85%88%E8%A1%A8/"/>
       <url>/2018/08/15/PostgreSQL%E4%B8%AD%E7%94%A8%E9%80%92%E5%BD%92CTE%E8%8E%B7%E5%8F%96%E4%B8%80%E5%BC%A0%E8%A1%A8%E7%9A%84%E6%89%80%E6%9C%89%E7%A5%96%E5%85%88%E8%A1%A8/</url>
