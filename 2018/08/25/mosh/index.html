@@ -16,7 +16,7 @@ ga('create','UA-123510178-1','auto');ga('send','pageview');
 <figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">yum <span class="keyword">install</span> mosh</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>防火墙放行端口，端口从<code>60000</code>排队起步，根据同时可能产生的连接数量，适当放行几个就好</p>
-<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">firewall-<span class="keyword">cmd</span><span class="bash"> --add-port=60000-60010/udp --permanent</span></span><br><span class="line"><span class="bash">firewall-cmd --reload</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">firewall-cmd --add-port=60000-60010/udp --permanent</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>客户端同样安装<code>mosh</code></p>
 <figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">brew </span><span class="keyword">install </span>mosh</span><br></pre></td></tr></table></figure>
