@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>ssh连接保活，mosh初体验</title>
+      <link href="/2018/08/25/mosh/"/>
+      <url>/2018/08/25/mosh/</url>
+      <content type="html"><![CDATA[<p>传统的<code>ssh</code>最恼人的就是放着不动，没多久就丢了。有时候<code>tail -f</code>跟踪一个日志，一会日志没动静，可能<code>ssh</code>就已经阵亡了，而我还没反应过来，还琢磨着日志该出来了。烦。<br>前两天研究<code>iTerm2</code>的时候，看到有人分享<code>mosh</code>的相关知识，提到它最大的优点就是<code>ssh</code>保活。马上决定一试。</p><ol><li><p>服务端安装</p><figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">yum <span class="keyword">install</span> mosh</span><br></pre></td></tr></table></figure></li><li><p>防火墙放行端口，端口从<code>60000</code>排队起步，根据同时可能产生的连接数量，适当放行几个就好</p><figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">firewall-<span class="keyword">cmd</span><span class="bash"> --add-port=60000-60010/udp --permanent</span></span><br><span class="line"><span class="bash">firewall-cmd --reload</span></span><br></pre></td></tr></table></figure></li><li><p>客户端同样安装<code>mosh</code></p><figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">brew </span><span class="keyword">install </span>mosh</span><br></pre></td></tr></table></figure></li><li><p>客户端使用</p> <figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">mosh -ssh=<span class="string">"ssh -p 3322"</span> root@<span class="number">192.168</span><span class="number">.0</span><span class="number">.88</span></span><br></pre></td></tr></table></figure><p> 上面的<code>-ssh</code>命令主要是用在<code>ssh</code>端口不是开在<code>22</code>的情况下，需要指定端口。因为<code>mosh</code>自己的<code>-p</code>是指的<code>mosh</code>自身要用的<code>udp</code>端口。<br> 另外，如果你维护了<code>～/.ssh/config</code>文件的话，那么恭喜你，<code>mosh</code>可以直接读取这个<code>config</code>，也就是说，之前<code>ssh a_server</code>可以无缝替换成<code>mosh a_server</code></p></li><li><p>排错，如果遇到客户端访问不了服务器，并且有如下提示</p> <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">locale: Cannot <span class="builtin-name">set</span> LC_CTYPE <span class="keyword">to</span><span class="built_in"> default </span>locale: <span class="literal">No</span> such file <span class="keyword">or</span> directory</span><br><span class="line">locale: Cannot <span class="builtin-name">set</span> LC_ALL <span class="keyword">to</span><span class="built_in"> default </span>locale: <span class="literal">No</span> such file <span class="keyword">or</span> directory</span><br><span class="line"><span class="built_in">..</span>.</span><br><span class="line"><span class="built_in">..</span>.</span><br><span class="line">Connection <span class="keyword">to</span> xxx.xxx.xxx.xxx closed.</span><br><span class="line">/usr/local/bin/mosh: Did <span class="keyword">not</span> <span class="builtin-name">find</span> mosh<span class="built_in"> server </span>startup message. (Have you installed mosh on your server?)</span><br></pre></td></tr></table></figure><p> 可以尝试在服务器上的<code>~/.bashrc</code>文件追加这两行解决</p> <figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line"><span class="builtin-name">export</span> <span class="attribute">LANG</span>=en_US.UTF-8</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">LC_ALL</span>=en_US.UTF-8</span><br></pre></td></tr></table></figure></li><li><p>最后说下实际体验感受<br> 的确大大延长了<code>ssh</code>的可用时间，但是像网上说的能坚持个个把月，很遗憾我并没有那么幸运，不过<code>mosh</code>仍然是个值得推荐的工具。</p></li></ol>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Javalin又一个小而美的Java Web框架</title>
       <link href="/2018/08/24/javalin/"/>
       <url>/2018/08/24/javalin/</url>
