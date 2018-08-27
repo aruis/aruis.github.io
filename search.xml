@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>Gradle中的sourceCompatibility与targetCompatibility</title>
+      <link href="/2018/08/27/sourceCompatibility_and_targetCompatibility_in_gradle/"/>
+      <url>/2018/08/27/sourceCompatibility_and_targetCompatibility_in_gradle/</url>
+      <content type="html"><![CDATA[<p><code>Gradle</code>中有两个属性，我也是一知半解。今天正好要练习下<code>Java10</code>，那就先把这两个属性的问题测试透了再说。那就是<code>sourceCompatibility</code>和<code>targetCompatibility</code>。<br>简单的说，<code>sourceCompatibility</code>属性跟编译环境有关，而<code>targetCompatibility</code>属性跟运行环境有关。<br>至少有这么几个原则，是不能违背的：</p><ol><li><code>sourceCompatibility</code>不能比<code>targetCompatibility</code>大</li><li><code>targetCompatibility</code>不能比目标客户端运行环境的<code>JavaVersion</code>大</li><li><code>targetCompatibility</code>不能比当前<code>Gradle</code>使用的<code>JavaVersion</code>大</li></ol><p>总结起来就是这样<br><figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">代码用的语言特性对应的JavaVersion ≦ <span class="keyword">sourceCompatibility</span> ≦ <span class="keyword">targetCompatibility</span> ≦ Gradle使用的JavaVersion ≦ 客户端环境的JavaVersion</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> gradle </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>PostgreSQL中关于SCHEMA和SEARCH_PATH的一些技巧</title>
       <link href="/2018/08/26/postgresql_schema_and_search_path/"/>
       <url>/2018/08/26/postgresql_schema_and_search_path/</url>
