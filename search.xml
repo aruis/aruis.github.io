@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>上墙纪念</title>
+      <link href="/2018/08/28/vertx_example_contributors/"/>
+      <url>/2018/08/28/vertx_example_contributors/</url>
+      <content type="html"><![CDATA[<p><img src="/media/15354179433179.jpg" alt=""><br><a href="https://github.com/vert-x3/vertx-examples" target="_blank" rel="noopener">vertx-examples</a>项目合并了我一次<code>PR</code>，所以我的ID出现在<a href="https://github.com/vert-x3/vertx-examples/graphs/contributors" target="_blank" rel="noopener">contributors</a>里了。应该是为数不多的亚裔面孔。嗨皮。</p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> contributors </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Gradle中的sourceCompatibility与targetCompatibility</title>
       <link href="/2018/08/27/sourceCompatibility_and_targetCompatibility_in_gradle/"/>
       <url>/2018/08/27/sourceCompatibility_and_targetCompatibility_in_gradle/</url>
@@ -746,11 +767,11 @@
       
         <tags>
             
-            <tag> IntelliJ IDEA </tag>
-            
             <tag> gradle </tag>
             
             <tag> 乱码 </tag>
+            
+            <tag> IntelliJ IDEA </tag>
             
         </tags>
       
