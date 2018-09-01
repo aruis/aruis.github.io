@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>相当靠谱的FastDFS Docker镜像</title>
+      <link href="/2018/09/01/fastdfs_docker/"/>
+      <url>/2018/09/01/fastdfs_docker/</url>
+      <content type="html"><![CDATA[<p>该项目是我在网上搜的，迄今为止个人感觉最靠谱的<code>FastDFS</code>镜像，项目地址<a href="https://github.com/luhuiguo/fastdfs-docker" target="_blank" rel="noopener">https://github.com/luhuiguo/fastdfs-docker</a></p><p>开启一个<code>tracker</code><br><figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">docker run -dti <span class="params">--network=host</span> <span class="params">--name</span> tracker -v <span class="string">/var/fdfs/tracker</span>:<span class="string">/var/fdfs</span> luhuiguo/fastdfs tracker</span><br></pre></td></tr></table></figure></p><p>开启一个<code>storage</code><br><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">docker <span class="builtin-name">run</span> -dti <span class="attribute">--network</span>=host --name storage0 -e <span class="attribute">TRACKER_SERVER</span>=10.1.5.85:22122 -v /var/fdfs/storage0:/var/fdfs luhuiguo/fastdfs storage</span><br></pre></td></tr></table></figure></p><p>开启一个<code>storage</code>，并指定<code>Group</code><br><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">docker <span class="builtin-name">run</span> -dti <span class="attribute">--network</span>=host --name storage2 -e <span class="attribute">TRACKER_SERVER</span>=10.1.5.85:22122 -e <span class="attribute">GROUP_NAME</span>=group2 -e <span class="attribute">PORT</span>=22222 -v /var/fdfs/storage2:/var/fdfs luhuiguo/fastdfs storage</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Docker </tag>
+            
+            <tag> FastDFS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>记一个八岁小女孩</title>
       <link href="/2018/08/31/eight_years_girl/"/>
       <url>/2018/08/31/eight_years_girl/</url>
@@ -826,11 +849,11 @@
       
         <tags>
             
+            <tag> IntelliJ IDEA </tag>
+            
             <tag> gradle </tag>
             
             <tag> 乱码 </tag>
-            
-            <tag> IntelliJ IDEA </tag>
             
         </tags>
       
