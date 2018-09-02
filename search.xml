@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>ssh中文乱码</title>
+      <link href="/2018/09/02/ssh_chinese_garbled/"/>
+      <url>/2018/09/02/ssh_chinese_garbled/</url>
+      <content type="html"><![CDATA[<p>ssh远程到服务器后，遇到中文乱码，建议通过<code>locale</code>检查当前的字符集，如果遇到<code>LC_ALL=</code>无值，十有八九是要出问题的。<br>此时可以通过执行<code>export  LC_ALL=zh_CN.UTF-8</code>临时解决。<br>当然，把上面这句添加到<code>.bash_profile</code>中，就可以永久解决了。 就像这样<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># .bash_profile</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Get the aliases and functions</span></span><br><span class="line"><span class="keyword">if</span> [ -f ~/.bashrc ]; <span class="keyword">then</span></span><br><span class="line">        . ~/.bashrc</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># User specific environment and startup programs</span></span><br><span class="line"></span><br><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/bin</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> PATH</span><br><span class="line"><span class="built_in">export</span>  LC_ALL=zh_CN.UTF-8</span><br></pre></td></tr></table></figure></p><p>补充一点，用<code>en_US.UTF-8</code>代替上文的<code>zh_CN.UTF-8</code>也是同样有效的。</p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 乱码 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>相当靠谱的FastDFS Docker镜像</title>
       <link href="/2018/09/01/fastdfs_docker/"/>
       <url>/2018/09/01/fastdfs_docker/</url>
@@ -76,9 +97,9 @@
       
         <tags>
             
-            <tag> Spring </tag>
-            
             <tag> groovy </tag>
+            
+            <tag> Spring </tag>
             
         </tags>
       
