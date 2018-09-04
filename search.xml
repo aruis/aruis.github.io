@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>Gradle插件下载不下来的解决方案</title>
+      <link href="/2018/09/04/gradle_plugin_download_error/"/>
+      <url>/2018/09/04/gradle_plugin_download_error/</url>
+      <content type="html"><![CDATA[<p>字符乱码和互联网不互联，是困扰中国程序员的两大问题。比如在使用<code>gradle</code>的时候，有时候就会遇到官方插件下载不下来的情况。<br>比如使用<code>org.hidetake.ssh</code>插件时，如果按照文档所述，直接这样写<br><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">plugins</span> &#123;</span><br><span class="line">  <span class="attribute">id</span> <span class="string">'org.hidetake.ssh'</span> version <span class="string">'2.9.0'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>有时候就会遇到网络问题，因为此时要去访问<code>gradle.org</code>官网去申请插件，而不知道什么时候这个网络就不通了。<br>此时我们可以通过细化<code>buildscript</code>的<code>repositories</code>来解决问题，也就是在<code>plugins</code>之前，增加<code>buildscript</code>的配置内容，整体代码如下<br><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">buildscript</span> &#123;</span><br><span class="line">    <span class="section">repositories</span> &#123;</span><br><span class="line">        <span class="section">maven</span> &#123;</span><br><span class="line">            <span class="attribute">url</span> <span class="string">"http://maven.aliyun.com/nexus/content/groups/public"</span></span><br><span class="line">        &#125;</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">plugins &#123;</span><br><span class="line">    <span class="attribute">id</span> <span class="string">"org.hidetake.ssh"</span> version <span class="string">"2.9.0"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p><em>这里我们通过使用阿里云的<code>maven</code>服务器地址，理论上还能在国内获得更快的资源访问速度。</em></p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> gradle </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>vim必知必会</title>
       <link href="/2018/09/03/vim_note/"/>
       <url>/2018/09/03/vim_note/</url>
