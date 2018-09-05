@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>ubuntu里查看软件包信息</title>
+      <link href="/2018/09/05/ubuntu_show_soft_info/"/>
+      <url>/2018/09/05/ubuntu_show_soft_info/</url>
+      <content type="html"><![CDATA[<p>以<code>postgresql-10-plv8</code>这个软件包为例，需要知道软件包的一些必要信息，比如版本、项目主页、大小、简单说明之类的，可以用如下命令查看：<br><figure class="highlight gauss"><table><tr><td class="code"><pre><span class="line">apt <span class="keyword">show</span> postgresql<span class="number">-10</span>-plv8</span><br></pre></td></tr></table></figure></p><p>对于早期版本的ubuntu（&lt;14.04），可以使用这个命令<br><figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">apt-<span class="keyword">cache </span><span class="keyword">show </span>postgresql-10-plv8</span><br></pre></td></tr></table></figure></p><p>另外一种方式也是极好的，就是利用<code>aptitude</code>，前提是你先安装了它，那么就可以这么用：<br><figure class="highlight gauss"><table><tr><td class="code"><pre><span class="line">aptitude <span class="keyword">show</span> postgresql<span class="number">-10</span>-plv8</span><br></pre></td></tr></table></figure></p><p><code>aptitude</code>比前者强的地方是它能告诉你该软件包是否已经安装</p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ubuntu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Gradle插件下载不下来的解决方案</title>
       <link href="/2018/09/04/gradle_plugin_download_error/"/>
       <url>/2018/09/04/gradle_plugin_download_error/</url>
