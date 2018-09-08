@@ -3,6 +3,21 @@
   
     
     <entry>
+      <title>使用Google Trends了解某一技术的全球态势</title>
+      <link href="/2018/09/08/Google_Trends/"/>
+      <url>/2018/09/08/Google_Trends/</url>
+      <content type="html"><![CDATA[<p>今天想介绍的东西很简单了，但却异常强大，就是<code>Google Trends</code>。使用方法非常简单，访问<a href="https://trends.google.com/trends/explore" target="_blank" rel="noopener">trends.google.com</a>即可。<br>那么来看看我自己通过<code>Google Trends</code>发掘的一些有意思的事情吧。<br><img src="/media/15363698300629.jpg" alt=""><br><img src="/media/15363699317160.jpg" alt=""><br><img src="/media/15363701237412.jpg" alt=""><br><img src="/media/15363701562662.jpg" alt=""></p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
       <title>IntelliJ IDEA中那些锦上添花的小技巧</title>
       <link href="/2018/09/07/IntelliJ_IDEA_tips/"/>
       <url>/2018/09/07/IntelliJ_IDEA_tips/</url>
@@ -971,11 +986,11 @@
       
         <tags>
             
+            <tag> IntelliJ IDEA </tag>
+            
             <tag> gradle </tag>
             
             <tag> 乱码 </tag>
-            
-            <tag> IntelliJ IDEA </tag>
             
         </tags>
       
