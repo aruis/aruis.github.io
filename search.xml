@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>Groovy迭代器中的return陷阱</title>
+      <link href="/2018/09/10/groovy_return_in_each/"/>
+      <url>/2018/09/10/groovy_return_in_each/</url>
+      <content type="html"><![CDATA[<p><code>groovy</code>从不会让人失望，如果有，那就是接下来我要说的这种情况：<br><figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br><span class="line"><span class="keyword">def</span> test(List list) &#123;</span><br><span class="line">    list.each &#123;</span><br><span class="line">        <span class="keyword">if</span> (it &gt; <span class="number">3</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> it</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">println test(list)</span><br></pre></td></tr></table></figure></p><p>我们期望的结果<code>4</code>，也就是找到第一个比3大的数字就返回了，然而事与愿违，得到的结果是这样<br><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>]</span><br></pre></td></tr></table></figure></p><p>整个list都被打印了出来，其实<code>test</code>方法最终返回的东西是<code>list.each{...}</code>，而且<code>.each</code>方法的返回值是<code>the self List</code>，所以最后把<code>list</code>又原封不动打印了一遍也就不足为奇了。<br>那我们写的那行<code>return</code>干吗了，答案是，它既不会是方法返回，也不会使<code>each closure</code>返回，它在这里的作用跟<code>continue</code>类似，仅仅是让它后面的代码不在这次循环执行，仅此而已。</p><h4 id="那怎么才能打断一个each，然后让上面的方法提前return呢？"><a href="#那怎么才能打断一个each，然后让上面的方法提前return呢？" class="headerlink" title="那怎么才能打断一个each，然后让上面的方法提前return呢？"></a>那怎么才能打断一个<code>each</code>，然后让上面的方法提前<code>return</code>呢？</h4><p><strong>答案是，不能用<code>each</code>，得用<code>find</code>或者<code>any</code>之类的，</strong>有明显截断语义的迭代器。这里还是首推<code>find</code>，因为<code>any</code>返回值是<code>boolean</code>，能帮我们截断迭代，但是不适用于找东西的场景。</p><p>用<code>find</code>改造一下代码，如下<br><figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> test(List list) &#123;</span><br><span class="line">    <span class="keyword">return</span> list.find &#123;</span><br><span class="line">        <span class="keyword">if</span> (it &gt; <span class="number">3</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> it</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>由于<code>groovy</code>方法中的<code>return</code>是可以省略的，更进一步，就写成这样<br><figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> test(List list) &#123;</span><br><span class="line">   list.find &#123;</span><br><span class="line">        <span class="keyword">if</span> (it &gt; <span class="number">3</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> it</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>再次之前执行<code>println test(list)</code>，得到结果<code>4</code>，一切归于完美了。</p><h3 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h3><p>这里不得不说下<code>Kotlin</code>，它应付上面描述的场景就非常得心应手了。首先，默认情况下<code>return</code>就是代表让一个方法返回，这符合一个程序员的直觉。<br>在不想扩大<code>return</code>的打击范围，而仅仅只想结束一个<code>lambda</code>的时候，可以使用<code>标签返回</code>，类似这样<br><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">list.forEach&#123;</span><br><span class="line">    <span class="keyword">if</span> (it &gt; <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span><span class="symbol">@forEach</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>如果上面的语法糖，让你觉得有点故弄玄虚了，还可以使用更容易理解的匿名函数，就像这样<br><figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">list.forEach(<span class="function"><span class="title">fun</span><span class="params">(it)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (it &gt; <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p><p><strong>我是非常喜欢<code>groovy</code>的，她已经陪伴我8个年头了，几乎我手上所有的项目都离不开<code>groovy</code>的身影。我甚至用她写过<code>Android</code>程序。不过不得不承认，<code>Kotlin</code>作为后起之秀，的确在很多方向上更进一步，考虑的场景也更为全面。期待<code>groovy</code>的<code>3.0</code>能够发力一波。</strong></p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> groovy </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>用JavaScript在PostgreSQL中写存储过程</title>
       <link href="/2018/09/09/plv8_in_postgresql/"/>
       <url>/2018/09/09/plv8_in_postgresql/</url>
