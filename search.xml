@@ -3,6 +3,21 @@
   
     
     <entry>
+      <title>iTerm最佳实践</title>
+      <link href="/2018/09/11/iTerm_best_practices/"/>
+      <url>/2018/09/11/iTerm_best_practices/</url>
+      <content type="html"><![CDATA[<p><img src="/media/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-11%2010.09.15.png" alt=""></p><p><img src="/media/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-11%2009.16.40.png" alt=""><br><img src="/media/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-09-11%2009.19.37.png" alt=""></p><h3 id="另注两个最常用的快捷键："><a href="#另注两个最常用的快捷键：" class="headerlink" title="另注两个最常用的快捷键："></a>另注两个最常用的快捷键：</h3><h4 id="横向分屏-⌘D"><a href="#横向分屏-⌘D" class="headerlink" title="横向分屏 ⌘D"></a>横向分屏 <code>⌘D</code></h4><h4 id="纵向分屏-⇧⌘D"><a href="#纵向分屏-⇧⌘D" class="headerlink" title="纵向分屏 ⇧⌘D"></a>纵向分屏 <code>⇧⌘D</code></h4>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
       <title>Groovy迭代器中的return陷阱</title>
       <link href="/2018/09/10/groovy_return_in_each/"/>
       <url>/2018/09/10/groovy_return_in_each/</url>
@@ -255,9 +270,9 @@
       
         <tags>
             
-            <tag> Spring </tag>
-            
             <tag> groovy </tag>
+            
+            <tag> Spring </tag>
             
         </tags>
       
