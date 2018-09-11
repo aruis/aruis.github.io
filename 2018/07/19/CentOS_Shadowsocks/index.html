@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>CentOS系统使用Shadowsocks搭建代理服务 | 槛槛之间，点点滴滴</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create','UA-123510178-1','auto');ga('send','pageview');
+</script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = 'https://hm.baidu.com/hm.js?' + 'dc0b3f580e4dfc98653bf8c517228321';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+  })();
+  </script></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">CentOS系统使用Shadowsocks搭建代理服务</h1><a id="logo" href="/.">槛槛之间，点点滴滴</a><p class="description">企图做个槛外人，但其实不过在槛槛之间徘徊罢了</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">CentOS系统使用Shadowsocks搭建代理服务</h1><div class="post-meta">Jul 19, 2018<span> | </span><span class="category"><a href="/categories/实用技巧/">实用技巧</a></span></div><a class="disqus-comment-count" data-disqus-identifier="2018/07/19/CentOS_Shadowsocks/" href="/2018/07/19/CentOS_Shadowsocks/#disqus_thread"></a><div class="post-content"><ol>
+<li>确认pip是否安装，命令<code>pip help</code>，返回如图信息，说明已安装<br><img src="/media/15319616591142.jpg" alt=""><br>如果返回下图，说明未安装<br><img src="/media/15319617008516.jpg" alt=""><br>未安装需要执行以下子步骤：<ul>
+<li><code>yum -y install epel-release</code></li>
+<li><code>yum install python-pip</code></li>
+</ul>
+</li>
+<li>通过pip安装shadowsocks，命令<code>pip install shadowsocks</code></li>
+<li><p>准备shadowsocks的配置文件，找个地方放就行，比如<code>/root/shadowsocks.json</code>，文件内容如下：</p>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"server"</span>: <span class="string">"0.0.0.0"</span>,</span><br><span class="line">  <span class="string">"server_port"</span>: <span class="number">1988</span>,</span><br><span class="line">  <span class="string">"local_address"</span>: <span class="string">"0.0.0.0"</span>,</span><br><span class="line">  <span class="string">"local_port"</span>: <span class="number">1080</span>,</span><br><span class="line">  <span class="string">"password"</span>: “xyz<span class="string">",</span></span><br><span class="line">  <span class="string">"timeout"</span>: <span class="number">300</span>,</span><br><span class="line">  <span class="string">"method"</span>: <span class="string">"aes-256-cfb"</span>,</span><br><span class="line">  <span class="string">"fast_open"</span>: false,</span><br><span class="line">  <span class="string">"workers"</span>: <span class="number">5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 其中<code>server_port</code>、<code>passoword</code>、<code>method</code>三个参数比较重要，分别对应:代理服务所在端口、链接密码、加密方式，回头要用到。</p>
+</li>
+<li>准备好配置文件之后，就可以启动shadowsocks服务了，命令为<code>ssserver -c /root/shadowsocks.json -d start</code>，至此shadowsocks服务启动完毕，然后就可以用客户端连接了。</li>
+<li>客户端下载地址在都在github上，这里给出最常用的mac版和windows版<ul>
+<li><a href="https://github.com/shadowsocks/ShadowsocksX-NG/releases" target="_blank" rel="noopener">mac</a></li>
+<li><a href="https://github.com/shadowsocks/shadowsocks-windows/releases" target="_blank" rel="noopener">windows</a></li>
+</ul>
+</li>
+<li>客户端安装完毕，就可以配置服务器连接了，这里给个参考配置：<br> <img src="/media/15319627604059.jpg" alt=""><br>地址就是服务器所在的地址，备注随意，剩下的三个配置，正好对应上面提过的配置。</li>
+<li>确定shadowsocks client是启动状态，就可以享受不一样的网络了。</li>
+</ol>
+</div><div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>aruis</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="/2018/07/19/CentOS_Shadowsocks/">http://www.kankanzhijian.com/2018/07/19/CentOS_Shadowsocks/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客文章均系本人原创，转载请注名出处</li></ul></div><br><script type="text/javascript" src="/js/share.js?v=0.0.0" async></script><a class="article-share-link" data-url="http://www.kankanzhijian.com/2018/07/19/CentOS_Shadowsocks/" data-id="cjlx4hojc0001jwxvb8o5v9ua" data-qrcode="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3aQW7DMAwF0dz/0i7QXRd25pNyAVGjVeAAEZ8XDCnq88Hr+l13T54/kyd33y5eMmTI2JZxPS4S0DPy7slzDDw2GTJknMN4TrJ8G5I60wRN/gBkyJAho08iRacMGTJkrGKkSZOXkjJkyJDxzCBNbLplrcV9vReXIUPGhox0MPCfn1+cb8iQIWMTxhWu9Eiu9l7jqGTIkDGa0TkmqzW6QVMKkMEUVIYMGdsy+AWINDnyKxqd0cKf/w0ZMmSMZqTH+pzKj/DSoeZthStDhozRDD4S6A8+a1c3ir24DBkyRjDSQrA/jOS/hl6TDBkyRjPIBv2Srnbolja6MmTImM3gCZdvVhtwLkjQMmTIGMcgSXZBkwlKydoIU4YMGScwOs1qrdTjgaZNsgwZMqYyeIpcFShvmIOoZMiQMZqRllx8JNm5FlYbecqQIWMqo7ZN2tDysIoXy2TIkHEYg7e1vMXtjELRtzJkyBjNSFMh2YCXeunYoDiJlSFDxuaM2uWt93IdAaDBgAwZMoYyeOtIikueOvtJXIYMGbMZtWFkOoZML1h0rmLIkCFjHuMKVy2gdITAi0IZMmScwEgbVJ6CSdBfWtPSAZwMGTKmMtIk2H9P/eGBDBkyzmTwzTiJX+xY0O7KkCFDRiMR147qSGzFhCtDhowDGHx4SY7SOgWlDBkyTmOkh/VpQGm48YhUhgwZoxm1Kw7psX6NsQwgQ4aMXRk/VCoUGeHRTZQAAAAASUVORK5CYII=">分享</a><div class="tags"><a href="/tags/代理/">代理</a></div><div class="post-nav"><a class="pre" href="/2018/07/20/cas_show_username_in_login_success_page/">如何在cas登录成功页面显示用户名</a><a class="next" href="/2018/07/18/gradle_task_use_ssh/">用Gradle自动发布程序至Linux服务器</a></div><div id="disqus_thread"><div class="btn_click_load"><button class="disqus_click_btn">阅读评论（请确保 Disqus 可以正常加载）</button></div><script type="text/javascript">var disqus_config = function () {
+    this.page.url = 'http://www.kankanzhijian.com/2018/07/19/CentOS_Shadowsocks/';
+    this.page.identifier = '2018/07/19/CentOS_Shadowsocks/';
+    this.page.title = 'CentOS系统使用Shadowsocks搭建代理服务';
+  };</script><script type="text/javascript" id="disqus-lazy-load-script">$.ajax({
+url: 'https://disqus.com/next/config.json',
+timeout: 2500,
+type: 'GET',
+success: function(){
+  var d = document;
+  var s = d.createElement('script');
+  s.src = '//kankanzhijian.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', + new Date());
+  (d.head || d.body).appendChild(s);
+  $('.disqus_click_btn').css('display', 'none');
+},
+error: function() {
+  $('.disqus_click_btn').css('display', 'block');
+}
+});</script><script type="text/javascript" id="disqus-click-load">$('.btn_click_load').click(() => {  //click to load comments
+    (() => { // DON'T EDIT BELOW THIS LINE
+        var d = document;
+        var s = d.createElement('script');
+        s.src = '//kankanzhijian.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', + new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+    $('.disqus_click_btn').css('display','none');
+});</script><script type="text/javascript" id="disqus-count-script">$(function() {
+     var xhr = new XMLHttpRequest();
+     xhr.open('GET', '//disqus.com/next/config.json', true);
+     xhr.timeout = 2500;
+     xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4 && xhr.status === 200) {
+         $('.post-meta .post-comments-count').show();
+         var s = document.createElement('script');
+         s.id = 'dsq-count-scr';
+         s.src = 'https://kankanzhijian.disqus.com/count.js';
+         s.async = true;
+         (document.head || document.body).appendChild(s);
+       }
+     };
+     xhr.ontimeout = function () { xhr.abort(); };
+     xhr.send(null);
+   });
+</script></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/实用技巧/">实用技巧</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/文艺中年/">文艺中年</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/游记/">游记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/程序人生/">程序人生</a><span class="category-list-count">53</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计相关/">设计相关</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/groovy/" style="font-size: 15px;">groovy</a> <a href="/tags/代理/" style="font-size: 15px;">代理</a> <a href="/tags/gradle/" style="font-size: 15px;">gradle</a> <a href="/tags/乱码/" style="font-size: 15px;">乱码</a> <a href="/tags/IDEA/" style="font-size: 15px;">IDEA</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/Geb/" style="font-size: 15px;">Geb</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/PostgreSQL/" style="font-size: 15px;">PostgreSQL</a> <a href="/tags/Vert-x/" style="font-size: 15px;">Vert.x</a> <a href="/tags/Cordova/" style="font-size: 15px;">Cordova</a> <a href="/tags/Docker/" style="font-size: 15px;">Docker</a> <a href="/tags/FastDFS/" style="font-size: 15px;">FastDFS</a> <a href="/tags/GitHub/" style="font-size: 15px;">GitHub</a> <a href="/tags/IntelliJ-IDEA/" style="font-size: 15px;">IntelliJ IDEA</a> <a href="/tags/Spring/" style="font-size: 15px;">Spring</a> <a href="/tags/WEB/" style="font-size: 15px;">WEB</a> <a href="/tags/Kotlin/" style="font-size: 15px;">Kotlin</a> <a href="/tags/UI设计/" style="font-size: 15px;">UI设计</a> <a href="/tags/tomcat/" style="font-size: 15px;">tomcat</a> <a href="/tags/ubuntu/" style="font-size: 15px;">ubuntu</a> <a href="/tags/contributors/" style="font-size: 15px;">contributors</a> <a href="/tags/vim/" style="font-size: 15px;">vim</a> <a href="/tags/Mac/" style="font-size: 15px;">Mac</a> <a href="/tags/cas/" style="font-size: 15px;">cas</a> <a href="/tags/教育子女/" style="font-size: 15px;">教育子女</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/09/11/iTerm_best_practices/">iTerm最佳实践</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/10/groovy_return_in_each/">Groovy迭代器中的return陷阱</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/09/plv8_in_postgresql/">用JavaScript在PostgreSQL中写存储过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/08/Google_Trends/">使用Google Trends了解某一技术的全球态势</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/07/IntelliJ_IDEA_tips/">IntelliJ IDEA中那些锦上添花的小技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/06/break_through_baiduwangpan/">免百度网盘客户端下载大文件并突破非会员限速</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/05/ubuntu_show_soft_info/">ubuntu里查看软件包信息</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/04/gradle_plugin_download_error/">Gradle插件下载不下来的解决方案</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/03/vim_note/">vim必知必会</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/02/ssh_chinese_garbled/">ssh中文乱码</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-comment-o"> 最近评论</i></div><script type="text/javascript" src="//kankanzhijian.disqus.com/recent_comments_widget.js?num_items=5&amp;hide_avatars=1&amp;avatar_size=32&amp;excerpt_length=20&amp;hide_mods=1"></script></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">槛槛之间，点点滴滴.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.3.5/jquery.fancybox.min.css"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
