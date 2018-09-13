@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>给异步的Vert.x程序做单元测试</title>
+      <link href="/2018/09/13/vertx_unit_test/"/>
+      <url>/2018/09/13/vertx_unit_test/</url>
+      <content type="html"><![CDATA[<p>异步的程序先天不好单元测试，尤其是按照传统的<code>JUnit</code>思路来弄，肯定是不行的。好在<code>Vert.x</code>想到了这一点，所以提供了<code>vertx-unit</code>包，专门考虑了对异步代码的测试。<br>使用起来也很简单，首先<br><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">testCompile</span> "<span class="selector-tag">io</span><span class="selector-class">.vertx</span><span class="selector-pseudo">:vertx-unit</span><span class="selector-pseudo">:3.5.3"</span></span><br></pre></td></tr></table></figure></p><p>然后创建一个测试类<br><figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RunWith</span>(VertxUnitRunner.<span class="keyword">class</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JUnitTestSuite</span> &#123;</span></span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> testSomething(TestContext context) &#123;</span><br><span class="line">    context.assertFalse(<span class="literal">false</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>如果要是测试异步程序，只需要调用<code>TestContext</code>的<code>async()</code>方法即可。然后直到手动调用其<code>complete()</code>方法，整个测试过程才会结束。请看例子：<br><figure class="highlight cs"><table><tr><td class="code"><pre><span class="line">@Test</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testSomething</span>(<span class="params">TestContext context</span>) </span>&#123;</span><br><span class="line">    def <span class="keyword">async</span> = context.<span class="keyword">async</span>()</span><br><span class="line">    Vertx.vertx().setTimer(<span class="number">3000</span>, &#123;</span><br><span class="line">        context.assertFalse(<span class="literal">false</span>)</span><br><span class="line">        <span class="keyword">async</span>.complete()</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p><code>async</code>方法的注释写得还是很详细的<br><figure class="highlight oxygene"><table><tr><td class="code"><pre><span class="line"><span class="keyword">Create</span> <span class="keyword">and</span> returns a <span class="keyword">new</span> <span class="keyword">async</span> object, the returned <span class="keyword">async</span> controls the completion <span class="keyword">of</span> the test. Calling the <span class="keyword">Async</span>.complete() completes the <span class="keyword">async</span> operation.</span><br><span class="line"></span><br><span class="line">The test <span class="keyword">case</span> will complete when all the <span class="keyword">async</span> objects have their <span class="keyword">Async</span>.complete() <span class="function"><span class="keyword">method</span> <span class="title">called</span> <span class="title">at</span> <span class="title">least</span> <span class="title">once</span>.</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">This</span> <span class="title">method</span> <span class="title">shall</span> <span class="title">be</span> <span class="title">used</span> <span class="title">for</span> <span class="title">creating</span> <span class="title">asynchronous</span> <span class="title">exit</span> <span class="title">points</span> <span class="title">for</span> <span class="title">the</span> <span class="title">executed</span> <span class="title">test</span>.</span></span><br></pre></td></tr></table></figure></p><p>更多内容请参考官方文档：<a href="https://vertx.io/docs/vertx-unit/java/" target="_blank" rel="noopener">vertx-unit</a></p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vert.x </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>再谈CompletableFuture</title>
       <link href="/2018/09/12/CompletableFuture_something/"/>
       <url>/2018/09/12/CompletableFuture_something/</url>
@@ -291,9 +312,9 @@
       
         <tags>
             
-            <tag> groovy </tag>
-            
             <tag> Spring </tag>
+            
+            <tag> groovy </tag>
             
         </tags>
       
@@ -1064,11 +1085,11 @@
       
         <tags>
             
+            <tag> IntelliJ IDEA </tag>
+            
             <tag> gradle </tag>
             
             <tag> 乱码 </tag>
-            
-            <tag> IntelliJ IDEA </tag>
             
         </tags>
       
