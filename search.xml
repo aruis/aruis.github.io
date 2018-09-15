@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>reactive-pg-client实现数据库到应用程序的数据推送</title>
+      <link href="/2018/09/15/reactive-pg-client_notify/"/>
+      <url>/2018/09/15/reactive-pg-client_notify/</url>
+      <content type="html"><![CDATA[<p>昨天聊过，依托<code>reactive-pg-client</code>可以做很多传统<code>JDBC</code>无法实现的事情，比如<code>PostgreSQL</code>的消息推送（<code>notify</code>和<code>listen</code>）。有了这种功能，我们就可以轻易实现从数据库层主向业务逻辑代码推送消息的功能。可以说，又一次为我们打开了新世界的大门。</p><h3 id="先来回顾下PostgreSQL的notify和listen"><a href="#先来回顾下PostgreSQL的notify和listen" class="headerlink" title="先来回顾下PostgreSQL的notify和listen"></a>先来回顾下<code>PostgreSQL</code>的<code>notify</code>和<code>listen</code></h3><p>主要参考<a href="http://www.postgres.cn/docs/10/sql-notify.html" target="_blank" rel="noopener">官方文档</a>，其实非常简单，核心<code>SQL</code>就两句话：</p><ul><li><p>发消息：</p>  <figure class="highlight abnf"><table><tr><td class="code"><pre><span class="line">NOTIFY channel_name<span class="comment">;</span></span><br></pre></td></tr></table></figure><p>  <code>NOTIFY</code>是一个关键字，后面跟着的第一参数是，频道的名字，这个是用户随便定义的，只要之后跟<code>LISTEN</code>的保持一致即可。<code>NOTIFY</code>还有第二个可选参数，就是消息内容，类型也必须是字符串，并且长度限制在<code>8000</code>字节。<br>  <code>NOTIFY channel_name message_body</code>还有一种等效的写法，也就是</p>  <figure class="highlight ada"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> pg_notify(channel_name，message_body）</span><br></pre></td></tr></table></figure><p>  后者的好处是可以用到<code>SQL</code>的预编译特性。</p></li><li>收消息：  <figure class="highlight abnf"><table><tr><td class="code"><pre><span class="line">LISTEN channel_name<span class="comment">;</span></span><br></pre></td></tr></table></figure></li></ul><p>这里补充几个知识点：</p><ul><li><code>NOTIFY</code>/<code>LISTEN</code>这些语法不是<code>SQL</code> 标准，属于<code>PostgreSQL</code>特有的功能</li><li>跟<code>LISTEN</code>相反的，有<code>UNLISTEN</code>可供使用</li><li><code>NOTIFY</code>是广播模式，也就是所有同频道的<code>LISTEN</code>都能接收到信息</li><li>先<code>NOTIFY</code>，再<code>LISTEN</code>是没有效果的。这个也符合直觉。</li><li>想测试的话，最好借助<code>PostgreSQL</code>自带的<code>psql</code>环境，可以很容易测试，其他<code>SQL</code>客户端程序可能就没那么友好了。</li></ul><h3 id="有了PostgreSQL的基础知识储备，我们就可以用reactive-pg-client尝试一把了"><a href="#有了PostgreSQL的基础知识储备，我们就可以用reactive-pg-client尝试一把了" class="headerlink" title="有了PostgreSQL的基础知识储备，我们就可以用reactive-pg-client尝试一把了"></a>有了<code>PostgreSQL</code>的基础知识储备，我们就可以用<code>reactive-pg-client</code>尝试一把了</h3><p>直接上代码<br><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">pgClient.getConnection &#123;</span><br><span class="line">           def conn = it.result()</span><br><span class="line"></span><br><span class="line">           conn.notificationHandler(&#123; notification -&gt;</span><br><span class="line">               println(<span class="string">"Received $&#123;notification.payload&#125; on channel $&#123;notification.channel&#125;"</span>)</span><br><span class="line">               context.assertEquals(notification.payload, message)</span><br><span class="line">               context.assertEquals(notification.channel, channelName)</span><br><span class="line">               async.complete()</span><br><span class="line">           &#125;)</span><br><span class="line"></span><br><span class="line">           conn.preparedQuery(<span class="string">"LISTEN $channelName"</span>, &#123; ar -&gt;</span><br><span class="line">               println(<span class="string">"Subscribed to channel"</span>)</span><br><span class="line"></span><br><span class="line">               conn.preparedQuery(<span class="string">'''select pg_notify($1,$2)'''</span>, Tuple.of(channelName, message), &#123;&#125;)</span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure></p><p>没什么复杂的，通过<code>reactive-pg-client</code>拿到<code>connection</code>之后，先用这个<code>connection</code>注册个<code>notificationHandler</code>用来接收消息。但是此时还不够，还必须在同<code>connection</code>上执行<code>LISTEN</code>的<code>SQL</code>语句，才能保证之前的<code>notificationHandler</code>是有效的。至于<code>NOTIFY</code>语句并不要求非要用这个<code>connection</code>，这也是符合我们业务需求的。<br>以上完整代码，可以在我的<a href="https://github.com/aruis/studyvertx/blob/master/src/test/groovy/com/aruistar/studyvertx/ReactivePostgresClientTest.groovy" target="_blank" rel="noopener">github</a>中找到。</p><p>明天，我讲演示基于<code>reactive-pg-client</code>的数据库事务demo。</p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PostgreSQL </tag>
+            
+            <tag> Vert.x </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>性能封神的数据库访问库reactive-pg-client初探</title>
       <link href="/2018/09/14/reactive-pg-client_start/"/>
       <url>/2018/09/14/reactive-pg-client_start/</url>
@@ -335,9 +358,9 @@
       
         <tags>
             
-            <tag> Spring </tag>
-            
             <tag> groovy </tag>
+            
+            <tag> Spring </tag>
             
         </tags>
       
@@ -1108,11 +1131,11 @@
       
         <tags>
             
-            <tag> IntelliJ IDEA </tag>
-            
             <tag> gradle </tag>
             
             <tag> 乱码 </tag>
+            
+            <tag> IntelliJ IDEA </tag>
             
         </tags>
       
@@ -1238,9 +1261,9 @@
       
         <tags>
             
-            <tag> gradle </tag>
-            
             <tag> 前端 </tag>
+            
+            <tag> gradle </tag>
             
             <tag> vue </tag>
             
