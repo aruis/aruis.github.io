@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>ios12中关闭app内购</title>
+      <link href="/2018/09/17/ios12_close_In-App_Purchase/"/>
+      <url>/2018/09/17/ios12_close_In-App_Purchase/</url>
+      <content type="html"><![CDATA[<p>之前版本的<code>IOS</code>中，是通过<code>访问限制</code>菜单，限制应用程序内购的。这个功能在<code>设置</code>-&gt;<code>通用</code>下可以找到。然后在<code>IOS12</code>中，我们已经找不到了。很显然，它被挪到了另一个地方。当然还是能找到的</p><h2 id="设置中，找到屏幕使用时间"><a href="#设置中，找到屏幕使用时间" class="headerlink" title="设置中，找到屏幕使用时间"></a>设置中，找到<code>屏幕使用时间</code></h2><p><img src="/media/IMG_7610.png" alt="IMG_7610"></p><h2 id="然后选择内容和隐私访问限制"><a href="#然后选择内容和隐私访问限制" class="headerlink" title="然后选择内容和隐私访问限制"></a>然后选择<code>内容和隐私访问限制</code></h2><p><img src="/media/IMG_7611.png" alt="IMG_7611"></p><h2 id="找到iTunes-Store与App-Store购买项目"><a href="#找到iTunes-Store与App-Store购买项目" class="headerlink" title="找到iTunes Store与App Store购买项目"></a>找到<code>iTunes Store与App Store购买项目</code></h2><p><img src="/media/IMG_7612.png" alt="IMG_7612"></p><h2 id="就可以管理是否允许内购了"><a href="#就可以管理是否允许内购了" class="headerlink" title="就可以管理是否允许内购了"></a>就可以管理是否允许内购了</h2><p><img src="/media/IMG_7613.png" alt="IMG_7613"></p>]]></content>
+      
+      <categories>
+          
+          <category> 工具技巧 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ios </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>reactive-pg-client中的数据库事务</title>
       <link href="/2018/09/16/transaction_in_reactive-pg-client/"/>
       <url>/2018/09/16/transaction_in_reactive-pg-client/</url>
@@ -381,9 +402,9 @@
       
         <tags>
             
-            <tag> groovy </tag>
-            
             <tag> Spring </tag>
+            
+            <tag> groovy </tag>
             
         </tags>
       
@@ -1154,11 +1175,11 @@
       
         <tags>
             
+            <tag> IntelliJ IDEA </tag>
+            
             <tag> gradle </tag>
             
             <tag> 乱码 </tag>
-            
-            <tag> IntelliJ IDEA </tag>
             
         </tags>
       
