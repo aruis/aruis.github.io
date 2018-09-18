@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>深度学习入门 矩阵的乘法</title>
+      <link href="/2018/09/18/deep_learning_start_matrix_dot/"/>
+      <url>/2018/09/18/deep_learning_start_matrix_dot/</url>
+      <content type="html"><![CDATA[<p>刚开始看<code>《深度学习入门 基于Python的理论与实现》</code>，非常好的一本书。<br>复习一个重要的知识点，矩阵的乘法：<img src="/media/IMG_6764.jpg" alt=""></p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 深度学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>ios12中关闭app内购</title>
       <link href="/2018/09/17/ios12_close_In-App_Purchase/"/>
       <url>/2018/09/17/ios12_close_In-App_Purchase/</url>
