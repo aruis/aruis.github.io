@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>使用certbot-auto给nginx加上免费https证书</title>
+      <link href="/2018/09/19/certbot-auto_nginx/"/>
+      <url>/2018/09/19/certbot-auto_nginx/</url>
+      <content type="html"><![CDATA[<h3 id="准备python3环境（以下非唯一方法）"><a href="#准备python3环境（以下非唯一方法）" class="headerlink" title="准备python3环境（以下非唯一方法）"></a>准备python3环境（以下非唯一方法）</h3><figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">yum <span class="keyword">install </span>rh-python36</span><br><span class="line"><span class="keyword">scl </span>enable rh-python36 <span class="keyword">bash</span></span><br></pre></td></tr></table></figure><h3 id="准备certbot-auto工具"><a href="#准备certbot-auto工具" class="headerlink" title="准备certbot-auto工具"></a>准备<code>certbot-auto</code>工具</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">wget https:<span class="comment">//dl.eff.org/certbot-auto</span></span><br><span class="line">chmod +x certbot-<span class="keyword">auto</span></span><br></pre></td></tr></table></figure><h3 id="准备nginx站点"><a href="#准备nginx站点" class="headerlink" title="准备nginx站点"></a>准备nginx站点</h3><figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">yum <span class="keyword">install</span> nginx</span><br></pre></td></tr></table></figure><p>然后去<code>/etc/nginx/conf.d/</code>准备自己的站点配置文件，命名为<code>www.yourdomain.com.conf</code><br>最简单的配置内容如下：<br><figure class="highlight lsl"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        <span class="section">listen</span>       <span class="number">80</span> ;</span><br><span class="line">        server_name  www.yourdomain.com;</span><br><span class="line">        root         /usr/share/nginx/html;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page <span class="number">404</span> /<span class="number">404.</span>html;</span><br><span class="line">            location = /<span class="number">40</span>x.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span> /<span class="number">50</span>x.html;</span><br><span class="line">            location = /<span class="number">50</span>x.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p><h3 id="运行certbot-auto"><a href="#运行certbot-auto" class="headerlink" title="运行certbot-auto"></a>运行<code>certbot-auto</code></h3><figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="string">./certbot-auto</span> <span class="params">--nginx</span></span><br></pre></td></tr></table></figure><p>之后根据向导一步步操作即可，大概就是输入一下自己的有效邮箱，输入几个<code>Y</code>（同意），选一下刚创建的那个<code>nginx</code>配置文件就ok了。<br>如果出现<br><figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">No supported Python <span class="keyword">package</span> <span class="title">available to install. Aborting bootstrap!</span></span><br></pre></td></tr></table></figure></p><p>可以尝试这个命令<br><figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="string">./certbot-auto</span> <span class="params">--nginx</span> <span class="params">--no-bootstrop</span></span><br></pre></td></tr></table></figure></p><h3 id="定时更新证书"><a href="#定时更新证书" class="headerlink" title="定时更新证书"></a>定时更新证书</h3><p>默认证书的有效期是90天，所以我们需要设置定时任务，隔断时间就<code>renew</code>下，通过<code>crontab -e</code>配置即可，内容如下<br><figure class="highlight basic"><table><tr><td class="code"><pre><span class="line"><span class="symbol">0 </span><span class="number">3</span> * * * /root/letsencrypt/certbot-<span class="keyword">auto</span> renew --quiet</span><br></pre></td></tr></table></figure></p><p><code>renew</code>命令会在确定证书快要到期的时候，才真正<code>renew</code>证书的。</p><h3 id="其他技巧："><a href="#其他技巧：" class="headerlink" title="其他技巧："></a>其他技巧：</h3><ul><li>针对上面的工具及域名拍错，访问<a href="https://letsdebug.net/" target="_blank" rel="noopener">https://letsdebug.net/</a></li><li>查看证书情况（有效期），访问<a href="https://crt.sh/" target="_blank" rel="noopener">https://crt.sh/</a></li></ul>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> nginx </tag>
+            
+            <tag> https </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>深度学习入门 矩阵的乘法</title>
       <link href="/2018/09/18/deep_learning_start_matrix_dot/"/>
       <url>/2018/09/18/deep_learning_start_matrix_dot/</url>
