@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>PostgreSQL中文文档正确的搜索方式</title>
+      <link href="/2018/09/21/PostgreSQL_doc_search/"/>
+      <url>/2018/09/21/PostgreSQL_doc_search/</url>
+      <content type="html"><![CDATA[<p>今天介绍的主要是搜索引擎使用技巧，其实跟<code>PostgreSQL</code>关系不大，仅仅以对<code>PostgreSQL</code>的中文文档搜搜举个例子。<br>比如想了解<code>PostgreSQL</code>关于<code>string</code>类型的数据库内置函数。最直观的搜索方式，是去<code>google</code>搜<code>postgres string function</code>，这当然是一种符合直觉方式。通常情况下<code>google</code>给出的结果会不赖，如图：<img src="/media/15375090092852.jpg" alt=""><br>但是有个问题，默认搜到的内容都是英文的，这可能不利于中国的小伙伴细致地学习。但其实，我们已经有一个汉化过的文档版本，静静地躺在<a href="http://www.postgres.cn" target="_blank" rel="noopener">PostgreSQL 中文社区</a>，并且社区提供多个版本的汉化文档，比如：<a href="http://www.postgres.cn/docs/10/" target="_blank" rel="noopener">10</a>、<a href="http://www.postgres.cn/docs/9.6/" target="_blank" rel="noopener">9.6</a><br>我们最理想的，就是期望<code>google</code>能把关键词的搜索范围限制在中文文档的地址内。其实这对搜索引擎是个再常见不过的需求了，很多小伙伴也早就知道了，那就是<code>site:</code>。<br>当我们希望把<code>postgres string function</code>的搜索范围仅限制在中文文档<a href="http://www.postgres.cn/docs/10/" target="_blank" rel="noopener">10</a>这个版本上时，仅需要在之前的搜索内容中增加<code>site</code>关键字限制范围，最终输入给<code>google</code>如下<br><figure class="highlight delphi"><table><tr><td class="code"><pre><span class="line">postgres <span class="keyword">string</span> <span class="function"><span class="keyword">function</span> <span class="title">site</span>:</span>http:<span class="comment">//www.postgres.cn/docs/10</span></span><br></pre></td></tr></table></figure></p><p><em>（其实上面的postgres也可以省略了）</em></p><p>来看看结果吧：<img src="/media/15375096548094.jpg" alt=""><br>现在看起来就很完美了，</p>]]></content>
+      
+      <categories>
+          
+          <category> 工具技巧 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PostgreSQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>nginx中使用rewrite重定向</title>
       <link href="/2018/09/20/nginx_rewrite/"/>
       <url>/2018/09/20/nginx_rewrite/</url>
