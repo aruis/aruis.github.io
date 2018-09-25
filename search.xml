@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>PostgreSQL中对用户重命名需要注意的</title>
+      <link href="/2018/09/25/PostgreSQL_rename_notice/"/>
+      <url>/2018/09/25/PostgreSQL_rename_notice/</url>
+      <content type="html"><![CDATA[<p>在<code>PostgreSQL</code>中，如果需要对数据库用户重命名，其实很简单，就是<br><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">ALTER<span class="built_in"> USER </span>name RENAME <span class="keyword">TO</span> new_name</span><br></pre></td></tr></table></figure></p><p>但是你会收到一个提示<br><figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">NOTICE:  MD5 password cleared because of <span class="keyword">role</span> <span class="title">rename</span></span><br></pre></td></tr></table></figure></p><p>这里面传递了两个信息：</p><ol><li>改用户名，就是改角色名，因为在<code>PostgreSQL</code>中，用户等价于角色，唯一的区别就是，角色分可以登陆和不可以登陆的，而用户就是能登陆的角色。</li><li>改了用户名，密码就丢了。</li></ol><p>今天主要讨论的，就是上面第二点问题。为啥<strong>改个用户名，密码就给我干掉了？</strong>，这很违背常识。<br>但其实是有原因的：</p><ul><li><p>首先，<code>PostgreSQL</code>中存放的密码，是MD5加密的，当然是不可逆的，这个大家能理解。<br>  这个通过这条<code>SQL</code>能够查到</p>  <figure class="highlight n1ql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> rolname,rolpassword <span class="keyword">FROM</span> pg_authid;</span><br></pre></td></tr></table></figure></li><li><p>但是<code>rolpassword</code>并不是<code>md5(password)</code>直接得出的，里面存的其实是</p>  <figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line"><span class="string">"md5"</span>+md5(<span class="name">username+password</span>)</span><br></pre></td></tr></table></figure><p>  这么一个情况，也就是说，如果你设置<code>joe</code>用户的密码是<code>xyz</code>的话，实际上<code>rolpassword</code>列存的值，相当于</p>  <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="string">'md5'</span>||<span class="keyword">md5</span>(<span class="string">'joe'</span>||<span class="string">'xyz'</span>);</span><br></pre></td></tr></table></figure></li><li><p>这就解释了，为什么用户名改了，密码就丢了。因为用户名本就是密码的一部分，如果加密过后的值不跟着改变的话，新的用户名沿用固定的算法，是无法登陆的。而<code>PostgreSQL</code>永远也不会知道曾经的密码是多少，所以不能自动帮用户更新<code>rolpassword</code>，这就只能靠用户自己重新设置一次密码了。</p></li><li>说白了，<code>PostgreSQL</code>也是好心，她是有苦衷的。</li></ul>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PostgreSQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>在git中使用submodule</title>
       <link href="/2018/09/23/submodule_in_git/"/>
       <url>/2018/09/23/submodule_in_git/</url>
@@ -509,9 +530,9 @@
       
         <tags>
             
-            <tag> Spring </tag>
-            
             <tag> groovy </tag>
+            
+            <tag> Spring </tag>
             
         </tags>
       
@@ -1282,11 +1303,11 @@
       
         <tags>
             
-            <tag> IntelliJ IDEA </tag>
-            
             <tag> gradle </tag>
             
             <tag> 乱码 </tag>
+            
+            <tag> IntelliJ IDEA </tag>
             
         </tags>
       
@@ -1412,9 +1433,9 @@
       
         <tags>
             
-            <tag> gradle </tag>
-            
             <tag> 前端 </tag>
+            
+            <tag> gradle </tag>
             
             <tag> vue </tag>
             
