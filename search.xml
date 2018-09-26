@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>关于Java收费政策的解读</title>
+      <link href="/2018/09/26/java_is_still_free/"/>
+      <url>/2018/09/26/java_is_still_free/</url>
+      <content type="html"><![CDATA[<p>随着<code>Java 11</code>的正式推出，关于<code>Java</code>收费的言论又开始甚嚣尘上。然后国外一众大神，写了这篇著名的<a href="https://itnext.io/java-is-still-free-c02aef8c9e04" target="_blank" rel="noopener">Java Is Still Free</a>帖子。这里，我总结一下其中的重点，供你参考（这里只谈商业用途，这才是各位老板最关心的）：</p><ol><li>如果你在使用<code>Oracle JDK8</code> ，那么到<code>2019年1月</code>之后将不会获得免费的更新。如果需要更新就得考虑付费。如果不在乎更新的话，继续随便用，没毛病。</li><li><p>从<code>JDK 9</code>开始（    2017年9月发布），每六个月，就会发布一个大版本，如下表</p><p> | 版本 | 发布时间 |<br> | — | — |<br> | 9 | 2017年9月  |<br> | 10 | 2018年3月 |<br> | 11 | 2018年9月 |<br> | 12 | 2019年3月 |<br> | 13 | 2019年9月 |  </p></li><li><p>一旦有新的大版本发布，上一个版本的<code>Oracle JDK</code>将不再提供免费的更新维护。此时你有三个选择：</p><ul><li>升级到最新的<code>Oracle JDK</code></li><li>使用<code>Open JDK</code></li><li>给<code>Oracle</code>付费，仍可对当前版本获得更新 </li></ul></li></ol><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul><li>不在乎更新的，随便耍</li><li>在乎更新的，并且能紧跟<code>Oracle</code>步伐的，没影响，继续用最新版的<code>Oracle JDK</code>就是</li><li>想及时获取补丁，但又不习惯半年升级一次大版本的，就用<code>Open JDK</code></li><li><code>Open JDK</code>的供应商很多，甚至自己编译都行，这里我推荐<a href="https://www.azul.com/downloads/zulu/" target="_blank" rel="noopener">zulu</a></li></ul>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>PostgreSQL中对用户重命名需要注意的</title>
       <link href="/2018/09/25/PostgreSQL_rename_notice/"/>
       <url>/2018/09/25/PostgreSQL_rename_notice/</url>
@@ -530,9 +551,9 @@
       
         <tags>
             
-            <tag> groovy </tag>
-            
             <tag> Spring </tag>
+            
+            <tag> groovy </tag>
             
         </tags>
       
@@ -1433,9 +1454,9 @@
       
         <tags>
             
-            <tag> 前端 </tag>
-            
             <tag> gradle </tag>
+            
+            <tag> 前端 </tag>
             
             <tag> vue </tag>
             
