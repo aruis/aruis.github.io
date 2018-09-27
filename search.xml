@@ -3,6 +3,21 @@
   
     
     <entry>
+      <title>Safari 12不再支持不安全的扩展</title>
+      <link href="/2018/09/27/Safari12_install_safariextz/"/>
+      <url>/2018/09/27/Safari12_install_safariextz/</url>
+      <content type="html"><![CDATA[<p>升级到<code>Safari 12</code>后，好几个浏览器扩展都直接挂了，当我尝试重新安装<code>惠惠购物助手</code>时，出现了如下提示：<br><img src="/media/15380151275481.jpg" alt="Safari浏览器不再支持不安全的扩展"></p><p>现在转过弯了，<code>Safari 12</code>肯定是更新了扩展安装策略。向<code>Chrome</code>的思路靠拢了，没经过官方审核的扩展无法安装。<br>道高一尺，魔高一丈。还是有办法绕过这个机制的。<br>网上搜了一些解决方案，大多没有配图，而且有些步骤还是比较模糊。下面我给出具体步骤：</p><ol><li>下载浏览器扩展，此处我以<code>youdaogouwu.safariextz</code>为例</li><li><p>解压<code>youdaogouwu.safariextz</code>，这里有个关键点，用老办法重命名后缀为<code>zip</code>是无法解压的。但是重命名后缀为<code>rar</code>就可以了。这可能跟你电脑里装的软件解压工具有关。我电脑里装的是<code>keka</code>。解压成功后如图：<img src="/media/15380172675854.jpg" alt=""></p></li><li><p>打开<code>Safari</code>的设置，找到<code>高级</code>，勾选<code>在菜单栏中显示“开发”菜单</code>，如图：<img src="/media/15380173560777.jpg" alt=""></p></li><li><p>在<code>开发</code>菜单中找到<code>显示扩展构建器</code>，如图：<img src="/media/15380174874853.jpg" alt=""></p></li><li><p>打开之，找到左下角的<code>➕</code>，选<code>添加扩展</code>，如图：<img src="/media/15380182351986.jpg" alt=""></p></li></ol><ol start="6"><li><p>之后在弹框中选择直接解压后文件中的文件夹<code>YoudaoGouwu.safariextension</code>，如图：<img src="/media/15380177660522.jpg" alt=""></p></li><li><p>之后就会在<code>扩展构建器</code>中看到<code>惠惠购物助手</code>了，然后点击右上角的运行，如图：<img src="/media/15380183216923.jpg" alt=""></p></li></ol><ol start="8"><li>按提示输入一次密码后大功告成，现在回到<code>Safari</code>的设置中，就可以看到<code>惠惠购物助手</code>已经安装完毕了：<img src="/media/15380180870297.jpg" alt=""></li></ol><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>上面解压缩的文件夹不可以删除，如果删除，当<code>Safari</code>重启后，扩展也会跟着丢失。所以记得好好保存。</p>]]></content>
+      
+      <categories>
+          
+          <category> 工具技巧 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
       <title>关于Java收费政策的解读</title>
       <link href="/2018/09/26/java_is_still_free/"/>
       <url>/2018/09/26/java_is_still_free/</url>
@@ -1324,11 +1339,11 @@
       
         <tags>
             
+            <tag> IntelliJ IDEA </tag>
+            
             <tag> gradle </tag>
             
             <tag> 乱码 </tag>
-            
-            <tag> IntelliJ IDEA </tag>
             
         </tags>
       
@@ -1454,9 +1469,9 @@
       
         <tags>
             
-            <tag> gradle </tag>
-            
             <tag> 前端 </tag>
+            
+            <tag> gradle </tag>
             
             <tag> vue </tag>
             
