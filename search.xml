@@ -3,6 +3,21 @@
   
     
     <entry>
+      <title>徐州贾汪马庄村</title>
+      <link href="/2018/09/30/mazhuang-jiawang-xuzhou/"/>
+      <url>/2018/09/30/mazhuang-jiawang-xuzhou/</url>
+      <content type="html"><![CDATA[<p>这是去年（2017年），总书记来徐州考察时着重去的一个村庄。虽然谈不上风景优美，但是环境尚可，村里产的网红香包算是名副其实，最便宜要三十块钱一个，价格也还可以。<br><img src="/media/ORG_DSC04585.jpg" alt=""><br><img src="/media/ORG_DSC04583.jpg" alt=""><br><img src="/media/ORG_DSC04575.jpg" alt=""></p>]]></content>
+      
+      <categories>
+          
+          <category> 游记 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
       <title>PostgreSQL中使用Python编写存储过程实现科学计算</title>
       <link href="/2018/09/29/PostgreSQL-python-function/"/>
       <url>/2018/09/29/PostgreSQL-python-function/</url>
@@ -1511,9 +1526,9 @@
       
         <tags>
             
-            <tag> 前端 </tag>
-            
             <tag> gradle </tag>
+            
+            <tag> 前端 </tag>
             
             <tag> vue </tag>
             
