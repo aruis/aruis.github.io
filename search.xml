@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>备份mysql整库并还原到另外一处</title>
+      <link href="/2018/10/08/mysql-dump-restore/"/>
+      <url>/2018/10/08/mysql-dump-restore/</url>
+      <content type="html"><![CDATA[<figure class="highlight brainfuck"><table><tr><td class="code"><pre><span class="line"><span class="comment">mysqldump</span> <span class="literal">-</span><span class="comment">uXXX</span> <span class="literal">-</span><span class="comment">pXXX</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">host=XXX</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">port=3306</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">all</span><span class="literal">-</span><span class="comment">databases</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">triggers</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">routines</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">events</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">add</span><span class="literal">-</span><span class="comment">drop</span><span class="literal">-</span><span class="comment">database</span>  <span class="literal">-</span><span class="literal">-</span><span class="comment">skip</span><span class="literal">-</span><span class="comment">add</span><span class="literal">-</span><span class="comment">locks</span> <span class="literal">-</span><span class="comment">C|</span> <span class="comment">mysql</span> <span class="literal">-</span><span class="comment">uXXX</span> <span class="literal">-</span><span class="comment">pXXX</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">host=XXX</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">port=3306</span> <span class="comment">test</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>徐州贾汪马庄村</title>
       <link href="/2018/09/30/mazhuang-jiawang-xuzhou/"/>
       <url>/2018/09/30/mazhuang-jiawang-xuzhou/</url>
@@ -1526,9 +1547,9 @@
       
         <tags>
             
-            <tag> gradle </tag>
-            
             <tag> 前端 </tag>
+            
+            <tag> gradle </tag>
             
             <tag> vue </tag>
             
