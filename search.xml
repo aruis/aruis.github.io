@@ -6,7 +6,7 @@
       <title>完整卸载MacOS里的JDK</title>
       <link href="/2018/11/28/uninstall_jdk_in_macos/"/>
       <url>/2018/11/28/uninstall_jdk_in_macos/</url>
-      <content type="html"><![CDATA[<p>首先，所有的资料在<code>java</code>官方网站都有提供，我这里做个搬运工，只罗列一下重点。</p><ol><li>下载<a href="https://javadl-esd-secure.oracle.com/update/jut/JavaUninstallTool.dmg" target="_blank" rel="noopener">工具</a>，并运行之</li><li>打开终端，执行命令移除相关文件夹<ul><li>sudo rm -fr /Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin </li><li>sudo rm -fr /Library/PreferencePanes/JavaControlPanel.prefPane </li><li>sudo rm -fr ~/Library/Application\ Support/Oracle/Java</li></ul></li></ol>]]></content>
+      <content type="html"><![CDATA[<p>首先，所有的资料在<a href="https://www.java.com/en/download/help/mac_uninstall_java.xml" target="_blank" rel="noopener">java官方网站</a>都有提供，我这里做个搬运工，只罗列一下重点。</p><ol><li>下载<a href="https://javadl-esd-secure.oracle.com/update/jut/JavaUninstallTool.dmg" target="_blank" rel="noopener">工具</a>，并运行之</li><li>打开终端，执行命令移除相关文件夹<ul><li>sudo rm -fr /Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin </li><li>sudo rm -fr /Library/PreferencePanes/JavaControlPanel.prefPane </li><li>sudo rm -fr ~/Library/Application\ Support/Oracle/Java</li></ul></li></ol>]]></content>
       
       <categories>
           
