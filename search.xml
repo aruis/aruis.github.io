@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>突破mac系统要求密码不能小于4个字符的限制</title>
+      <link href="/2018/12/08/password_more_than_4_char_in_macos/"/>
+      <url>/2018/12/08/password_more_than_4_char_in_macos/</url>
+      <content type="html"><![CDATA[<ol><li><code>pwpolicy getaccountpolicies &gt; temp.xml</code></li><li>编辑temp.xml文件，例如<code>vim temp.xml</code></li><li>删除第一行<code>Getting global account policies</code>文字，保证这个文件以<code>&lt;?xml</code>开头</li><li><p>找到</p> <figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">&lt;<span class="keyword">string</span>&gt;policyAttributePassword matches <span class="string">'^$|.&#123;4,&#125;+'</span>&lt;/<span class="keyword">string</span>&gt;</span><br></pre></td></tr></table></figure><p> 替换成</p> <figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">&lt;<span class="keyword">string</span>&gt;policyAttributePassword matches <span class="string">'^$|.&#123;1,&#125;+'</span>&lt;/<span class="keyword">string</span>&gt;</span><br></pre></td></tr></table></figure><p> 保存</p></li><li><code>sudo pwpolicy setaccountpolicies temp.xml</code></li><li>此时就可以设置最少字符长度为1个密码了</li></ol>]]></content>
+      
+      <categories>
+          
+          <category> 实用技巧 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Mac </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>完整卸载MacOS里的JDK</title>
       <link href="/2018/11/28/uninstall_jdk_in_macos/"/>
       <url>/2018/11/28/uninstall_jdk_in_macos/</url>
