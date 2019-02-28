@@ -3,9 +3,30 @@
   
     
     <entry>
+      <title>几个较新的Vert.x例子</title>
+      <link href="/2019/02/28/vertx_demo_2019/"/>
+      <url>/2019/02/28/vertx_demo_2019/</url>
+      <content type="html"><![CDATA[<ul><li><a href="https://github.com/yuri-mednikov/bike-share" target="_blank" rel="noopener">https://github.com/yuri-mednikov/bike-share</a></li><li><a href="https://github.com/PharosProduction/tutorial-vertx-microservices-java" target="_blank" rel="noopener">https://github.com/PharosProduction/tutorial-vertx-microservices-java</a></li><li><a href="https://github.com/migibert/vertx-in-production" target="_blank" rel="noopener">https://github.com/migibert/vertx-in-production</a></li><li><a href="https://github.com/marceloandradep/vertx-example" target="_blank" rel="noopener">https://github.com/marceloandradep/vertx-example</a></li></ul><p>基本上都是2019年新鲜出炉的几个项目，还算比较新</p>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vert.x </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>PostgreSQL中执行即时代码段(匿名存储过程)</title>
-      <link href="/2019/02/27/PostgreSQL%E4%B8%AD%E7%9A%84%E5%8C%BF%E5%90%8D%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/"/>
-      <url>/2019/02/27/PostgreSQL%E4%B8%AD%E7%9A%84%E5%8C%BF%E5%90%8D%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B/</url>
+      <link href="/2019/02/27/postgresql_%20execute_an_anonymous_codeblock/"/>
+      <url>/2019/02/27/postgresql_%20execute_an_anonymous_codeblock/</url>
       <content type="html"><![CDATA[<p>某些时候需要执行过程化的逻辑，单纯靠组织<code>SQL</code>语句已经完成不了了，这个时候一般需要引入存储过程用以实现。但是如果只是单纯执行一段逻辑，而不是要封装一个函数，用来接收参数复用，完全可以通过<code>DO</code>语句执行一个匿名代码段。这样就可以避免：创建存储过程 -&gt; 调用存储过程 -&gt; 删除存储过程的窘境。<br>这里给出一个简短的<code>SQL</code>演示：<br><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DO</span></span><br><span class="line">  $$</span><br><span class="line">    <span class="keyword">declare</span></span><br><span class="line">      i <span class="built_in">int</span> := <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">      <span class="keyword">raise</span> <span class="keyword">notice</span> <span class="string">'il:%'</span>,i;</span><br><span class="line">      <span class="keyword">declare</span></span><br><span class="line">        i <span class="built_in">int</span>;</span><br><span class="line">      <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">raise</span> <span class="keyword">notice</span> <span class="string">'i2:%'</span>,i;</span><br><span class="line">      <span class="keyword">end</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    $$ <span class="keyword">language</span> plpgsql;</span><br></pre></td></tr></table></figure></p>]]></content>
       
       <categories>
