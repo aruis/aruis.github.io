@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>利用pg_stat_statements排查PostgreSQL中的慢SQL</title>
+      <link href="/2019/03/24/pg_stat_statements/"/>
+      <url>/2019/03/24/pg_stat_statements/</url>
+      <content type="html"><![CDATA[<ol><li>编辑<code>postgresql.conf</code><ul><li><code>shared_preload_libraries = &#39;pg_stat_statements&#39;</code></li><li><code>track_activity_query_size = 16384</code></li></ul></li><li>启用扩展<code>create extension pg_stat_statements</code></li><li>查找慢<code>SQL</code><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">round</span>((<span class="number">100</span> * total_time / <span class="keyword">sum</span>(total_time) <span class="keyword">over</span> ())::<span class="built_in">numeric</span>, <span class="number">2</span>) <span class="keyword">percent</span>,</span><br><span class="line">       <span class="keyword">round</span>(total_time::<span class="built_in">numeric</span>, <span class="number">2</span>) <span class="keyword">as</span>                                total,</span><br><span class="line">       calls,</span><br><span class="line">       <span class="keyword">round</span>(mean_time::<span class="built_in">numeric</span>, <span class="number">2</span>)  <span class="keyword">as</span>                                mean,</span><br><span class="line">       <span class="keyword">query</span></span><br><span class="line"><span class="keyword">from</span> pg_stat_statements</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> total_time <span class="keyword">desc</span>;</span><br></pre></td></tr></table></figure></li></ol>]]></content>
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PostgreSQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>几个较新的Vert.x例子</title>
       <link href="/2019/02/28/vertx_demo_2019/"/>
       <url>/2019/02/28/vertx_demo_2019/</url>
