@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>槛槛之间，点点滴滴</title>
+  
+  <subtitle>牧云踏歌的博客，企图做个槛外人，但其实不过在槛槛之间徘徊罢了</subtitle>
+  <link href="http://www.kankanzhijian.com/atom.xml" rel="self"/>
+  
+  <link href="http://www.kankanzhijian.com/"/>
+  <updated>2020-11-26T09:11:26.573Z</updated>
+  <id>http://www.kankanzhijian.com/</id>
+  
+  <author>
+    <name>aruis</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PostgreSQL频繁更新数据的大表查询计划可能会搞错的应对方案</title>
+    <link href="http://www.kankanzhijian.com/2020/11/05/autovacuum-analyze-scale-factor/"/>
+    <id>http://www.kankanzhijian.com/2020/11/05/autovacuum-analyze-scale-factor/</id>
+    <published>2020-11-05T00:57:49.000Z</published>
+    <updated>2020-11-26T09:11:26.573Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="PostgreSQL" scheme="http://www.kankanzhijian.com/tags/PostgreSQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>找出Postgres中占用磁盘最多的表</title>
+    <link href="http://www.kankanzhijian.com/2020/10/30/postgres_table_disk_used_order/"/>
+    <id>http://www.kankanzhijian.com/2020/10/30/postgres_table_disk_used_order/</id>
+    <published>2020-10-30T06:15:10.000Z</published>
+    <updated>2020-11-16T00:57:58.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="PostgreSQL" scheme="http://www.kankanzhijian.com/tags/PostgreSQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用pg_stat_statements排查PostgreSQL中的慢SQL</title>
+    <link href="http://www.kankanzhijian.com/2019/03/24/pg_stat_statements/"/>
+    <id>http://www.kankanzhijian.com/2019/03/24/pg_stat_statements/</id>
+    <published>2019-03-24T13:26:07.000Z</published>
+    <updated>2020-10-30T06:17:08.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="PostgreSQL" scheme="http://www.kankanzhijian.com/tags/PostgreSQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>几个较新的Vert.x例子</title>
+    <link href="http://www.kankanzhijian.com/2019/02/28/vertx_demo_2019/"/>
+    <id>http://www.kankanzhijian.com/2019/02/28/vertx_demo_2019/</id>
+    <published>2019-02-28T05:46:04.000Z</published>
+    <updated>2019-02-28T05:50:39.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="Vert.x" scheme="http://www.kankanzhijian.com/tags/Vert-x/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL中执行即时代码段(匿名存储过程)</title>
+    <link href="http://www.kankanzhijian.com/2019/02/27/postgresql_%20execute_an_anonymous_codeblock/"/>
+    <id>http://www.kankanzhijian.com/2019/02/27/postgresql_%20execute_an_anonymous_codeblock/</id>
+    <published>2019-02-27T01:52:29.000Z</published>
+    <updated>2019-02-27T02:04:13.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="PostgreSQL" scheme="http://www.kankanzhijian.com/tags/PostgreSQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PortgreSQL中找到那些被大量顺序扫表没走索引的表</title>
+    <link href="http://www.kankanzhijian.com/2019/02/25/lot_of_seq_scan_in_postgresql/"/>
+    <id>http://www.kankanzhijian.com/2019/02/25/lot_of_seq_scan_in_postgresql/</id>
+    <published>2019-02-25T06:18:06.000Z</published>
+    <updated>2019-02-25T06:27:15.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="PostgreSQL" scheme="http://www.kankanzhijian.com/tags/PostgreSQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用groovy实现根据规则校验单据数据</title>
+    <link href="http://www.kankanzhijian.com/2019/02/20/groovy_validating_form_on%20dynamic_rules/"/>
+    <id>http://www.kankanzhijian.com/2019/02/20/groovy_validating_form_on%20dynamic_rules/</id>
+    <published>2019-02-20T06:38:04.000Z</published>
+    <updated>2019-02-20T09:22:57.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="groovy" scheme="http://www.kankanzhijian.com/tags/groovy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>突破mac系统要求密码不能小于4个字符的限制</title>
+    <link href="http://www.kankanzhijian.com/2018/12/08/password_more_than_4_char_in_macos/"/>
+    <id>http://www.kankanzhijian.com/2018/12/08/password_more_than_4_char_in_macos/</id>
+    <published>2018-12-08T09:47:00.000Z</published>
+    <updated>2018-12-08T10:00:29.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="实用技巧" scheme="http://www.kankanzhijian.com/categories/%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
+    
+    
+    <category term="Mac" scheme="http://www.kankanzhijian.com/tags/Mac/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>完整卸载MacOS里的JDK</title>
+    <link href="http://www.kankanzhijian.com/2018/11/28/uninstall_jdk_in_macos/"/>
+    <id>http://www.kankanzhijian.com/2018/11/28/uninstall_jdk_in_macos/</id>
+    <published>2018-11-28T00:18:01.000Z</published>
+    <updated>2018-11-28T00:22:50.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="工具技巧" scheme="http://www.kankanzhijian.com/categories/%E5%B7%A5%E5%85%B7%E6%8A%80%E5%B7%A7/"/>
+    
+    
+    <category term="Java" scheme="http://www.kankanzhijian.com/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL日期字段同时实现新增默认值及修改默认值</title>
+    <link href="http://www.kankanzhijian.com/2018/10/15/MySQL_column_default_current_timestamp/"/>
+    <id>http://www.kankanzhijian.com/2018/10/15/MySQL_column_default_current_timestamp/</id>
+    <published>2018-10-15T07:47:05.000Z</published>
+    <updated>2018-10-15T07:55:12.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="MySQL" scheme="http://www.kankanzhijian.com/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用postgrest全自动生成面向表的RESTful接口</title>
+    <link href="http://www.kankanzhijian.com/2018/10/10/postgrest/"/>
+    <id>http://www.kankanzhijian.com/2018/10/10/postgrest/</id>
+    <published>2018-10-10T07:58:38.000Z</published>
+    <updated>2018-10-10T08:05:48.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="PostgreSQL" scheme="http://www.kankanzhijian.com/tags/PostgreSQL/"/>
+    
+    <category term="RESTful" scheme="http://www.kankanzhijian.com/tags/RESTful/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>备份mysql整库并还原到另外一处</title>
+    <link href="http://www.kankanzhijian.com/2018/10/08/mysql-dump-restore/"/>
+    <id>http://www.kankanzhijian.com/2018/10/08/mysql-dump-restore/</id>
+    <published>2018-10-08T08:56:17.000Z</published>
+    <updated>2018-10-09T08:54:10.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="MySQL" scheme="http://www.kankanzhijian.com/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>徐州贾汪马庄村</title>
+    <link href="http://www.kankanzhijian.com/2018/09/30/mazhuang-jiawang-xuzhou/"/>
+    <id>http://www.kankanzhijian.com/2018/09/30/mazhuang-jiawang-xuzhou/</id>
+    <published>2018-09-30T06:26:54.000Z</published>
+    <updated>2018-09-30T06:41:18.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="游记" scheme="http://www.kankanzhijian.com/categories/%E6%B8%B8%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL中使用Python编写存储过程实现科学计算</title>
+    <link href="http://www.kankanzhijian.com/2018/09/29/PostgreSQL-python-function/"/>
+    <id>http://www.kankanzhijian.com/2018/09/29/PostgreSQL-python-function/</id>
+    <published>2018-09-29T02:36:35.000Z</published>
+    <updated>2019-01-28T03:46:25.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="PostgreSQL" scheme="http://www.kankanzhijian.com/tags/PostgreSQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL中的行级权限/数据权限/行安全策略</title>
+    <link href="http://www.kankanzhijian.com/2018/09/28/PostgreSQL-rowsecurity/"/>
+    <id>http://www.kankanzhijian.com/2018/09/28/PostgreSQL-rowsecurity/</id>
+    <published>2018-09-28T02:10:07.000Z</published>
+    <updated>2018-09-28T07:24:42.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="PostgreSQL" scheme="http://www.kankanzhijian.com/tags/PostgreSQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Safari 12不再支持不安全的扩展</title>
+    <link href="http://www.kankanzhijian.com/2018/09/27/Safari12_install_safariextz/"/>
+    <id>http://www.kankanzhijian.com/2018/09/27/Safari12_install_safariextz/</id>
+    <published>2018-09-27T02:23:52.000Z</published>
+    <updated>2018-09-27T03:24:24.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="工具技巧" scheme="http://www.kankanzhijian.com/categories/%E5%B7%A5%E5%85%B7%E6%8A%80%E5%B7%A7/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>关于Java收费政策的解读</title>
+    <link href="http://www.kankanzhijian.com/2018/09/26/java_is_still_free/"/>
+    <id>http://www.kankanzhijian.com/2018/09/26/java_is_still_free/</id>
+    <published>2018-09-26T01:12:13.000Z</published>
+    <updated>2018-09-26T01:56:06.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="Java" scheme="http://www.kankanzhijian.com/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL中对用户重命名需要注意的</title>
+    <link href="http://www.kankanzhijian.com/2018/09/25/PostgreSQL_rename_notice/"/>
+    <id>http://www.kankanzhijian.com/2018/09/25/PostgreSQL_rename_notice/</id>
+    <published>2018-09-25T03:05:17.000Z</published>
+    <updated>2018-09-25T03:21:46.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="PostgreSQL" scheme="http://www.kankanzhijian.com/tags/PostgreSQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在git中使用submodule</title>
+    <link href="http://www.kankanzhijian.com/2018/09/23/submodule_in_git/"/>
+    <id>http://www.kankanzhijian.com/2018/09/23/submodule_in_git/</id>
+    <published>2018-09-22T23:53:15.000Z</published>
+    <updated>2018-09-24T03:29:16.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="git" scheme="http://www.kankanzhijian.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PostgreSQL中文文档正确的搜索方式</title>
+    <link href="http://www.kankanzhijian.com/2018/09/21/PostgreSQL_doc_search/"/>
+    <id>http://www.kankanzhijian.com/2018/09/21/PostgreSQL_doc_search/</id>
+    <published>2018-09-21T05:44:54.000Z</published>
+    <updated>2018-09-21T06:03:06.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="工具技巧" scheme="http://www.kankanzhijian.com/categories/%E5%B7%A5%E5%85%B7%E6%8A%80%E5%B7%A7/"/>
+    
+    
+    <category term="PostgreSQL" scheme="http://www.kankanzhijian.com/tags/PostgreSQL/"/>
+    
+  </entry>
+  
+</feed>
