@@ -104,31 +104,6 @@
     
     
     <entry>
-      <title>PostgreSQL中的匿名存储过程</title>
-      <link href="/2019/02/27/postgres_%20execute%20_an_anonymous_code_block/"/>
-      <url>/2019/02/27/postgres_%20execute%20_an_anonymous_code_block/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      <categories>
-          
-          <category> 程序人生 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> PostgreSQL </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>PostgreSQL中执行即时代码段(匿名存储过程)</title>
       <link href="/2019/02/27/postgresql_%20execute_an_anonymous_codeblock/"/>
       <url>/2019/02/27/postgresql_%20execute_an_anonymous_codeblock/</url>
