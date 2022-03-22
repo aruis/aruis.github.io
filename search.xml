@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>maupassant主题在Apple M1上不能用的问题</title>
+      <link href="/2022/03/22/maupassant-in-apple-silicon/"/>
+      <url>/2022/03/22/maupassant-in-apple-silicon/</url>
+      
+        <content type="html"><![CDATA[<p>我这个博客是用<a href="https://hexo.io/zh-cn/">hexo</a> 搭建的，说实话<code>node</code>的技术栈真是很烦，各种依赖非常重，借用一位朋友的话说”天下苦<code>node</code>久矣”。</p><p>不过对我来说，平时开发也不用<code>node</code>了，现在就用用<code>blog</code>嘛，也不是不能忍。</p><p>谁成想，两年前换了<code>Apple M1</code>后，情况都变了。<code>blog</code>直接跑不起来了，当时我一直以为是<code>hexo</code>的问题，很无奈就只能停更了。</p><p>中间陆陆续续，各种东西也在适配，我也都顺手尝试了几次，不过无疾而终，这也就导致了我这个<code>blog</code>断更了这么久。</p><p><code>失之东隅，收之桑榆</code>，虽然<code>blog</code>都长草了，但是<a href="https://space.bilibili.com/24370353">B站</a> 倒是有点蒸蒸日上的感觉。</p><p>时间来到了<code>2022</code>年，我突然觉得视频的形式虽然受众广，也适合安利教程啊、软件啊、开箱评测类的东西。但是本质上，视频对沉淀自己，其实没有<code>blog</code>来的深刻。</p><p>所以<code>blog</code>还是不能丢，从今天起，我要回归这个<code>blog</code>，继续记录生活与技术。</p><p>回归标题，说说我是怎么解决之前我的<code>blog</code>无法<code>hexo g -d</code>的问题。</p><p>经研究发现不是<code>hexo</code>的问题，而是我用的这款皮肤<code>maupassant</code>，它依赖一个包<code>hexo-renderer-sass</code>，众所周知，<code>sass</code>的一些生态在<code>node</code>里就是万恶之源啊。</p><p>但其实<code>sass</code>大部分情况下也早就适配<code>M1</code>了，只是这个<code>hexo-renderer-sass</code>已经三年没人管了。实在没办法，我只能自己<code>fork</code>了一下，改了一下依赖。</p><p>也就是把下面这段：</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&quot;dependencies&quot;: &#123;</span><br><span class="line"> &quot;node-sass&quot;: &quot;^4.5.3&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>改成了:</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&quot;dependencies&quot;: &#123;</span><br><span class="line"> &quot;node-sass&quot;: &quot;^7.0.1&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这个时候，回到我自己的<code>blog</code>项目的<code>package.json</code>文件，手动添加依赖：</p><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&quot;dependencies&quot;: &#123;</span><br><span class="line">  ...</span><br><span class="line">  &quot;hexo-renderer-sass&quot;: &quot;github:aruis/hexo-renderer-sass&quot;,</span><br><span class="line">  ...</span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure><p>然后<code>npm install</code>，就万事大吉了。</p><p>就这样，我的<code>blog</code>就复活了，😄</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Mac </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>PostgreSQL频繁更新数据的大表查询计划可能会搞错的应对方案</title>
       <link href="/2020/11/05/autovacuum-analyze-scale-factor/"/>
       <url>/2020/11/05/autovacuum-analyze-scale-factor/</url>

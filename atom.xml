@@ -6,7 +6,7 @@
   <link href="http://www.kankanzhijian.com/atom.xml" rel="self"/>
   
   <link href="http://www.kankanzhijian.com/"/>
-  <updated>2020-11-26T09:11:26.573Z</updated>
+  <updated>2022-03-22T12:48:11.096Z</updated>
   <id>http://www.kankanzhijian.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>maupassant主题在Apple M1上不能用的问题</title>
+    <link href="http://www.kankanzhijian.com/2022/03/22/maupassant-in-apple-silicon/"/>
+    <id>http://www.kankanzhijian.com/2022/03/22/maupassant-in-apple-silicon/</id>
+    <published>2022-03-22T09:12:44.000Z</published>
+    <updated>2022-03-22T12:48:11.096Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="Mac" scheme="http://www.kankanzhijian.com/tags/Mac/"/>
+    
+  </entry>
   
   <entry>
     <title>PostgreSQL频繁更新数据的大表查询计划可能会搞错的应对方案</title>
@@ -486,31 +511,6 @@
     
     
     <category term="git" scheme="http://www.kankanzhijian.com/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL中文文档正确的搜索方式</title>
-    <link href="http://www.kankanzhijian.com/2018/09/21/PostgreSQL_doc_search/"/>
-    <id>http://www.kankanzhijian.com/2018/09/21/PostgreSQL_doc_search/</id>
-    <published>2018-09-21T05:44:54.000Z</published>
-    <updated>2018-09-21T06:03:06.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="工具技巧" scheme="http://www.kankanzhijian.com/categories/%E5%B7%A5%E5%85%B7%E6%8A%80%E5%B7%A7/"/>
-    
-    
-    <category term="PostgreSQL" scheme="http://www.kankanzhijian.com/tags/PostgreSQL/"/>
     
   </entry>
   
