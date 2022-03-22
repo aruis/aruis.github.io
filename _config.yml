@@ -4,7 +4,7 @@
 
 # Site
 title: 槛槛之间，点点滴滴
-subtitle: 企图做个槛外人，但其实不过在槛槛之间徘徊罢了
+subtitle: 牧云踏歌的博客，企图做个槛外人，但其实不过在槛槛之间徘徊罢了
 description:
 keywords:
 author: aruis
@@ -85,3 +85,11 @@ deploy:
   repo: https://github.com/aruis/aruis.github.io.git
   branch: static
 
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit:
+  content_limit_delim: ' '
