@@ -6,7 +6,7 @@
   <link href="http://www.kankanzhijian.com/atom.xml" rel="self"/>
   
   <link href="http://www.kankanzhijian.com/"/>
-  <updated>2022-03-22T12:48:11.096Z</updated>
+  <updated>2022-03-25T07:07:57.264Z</updated>
   <id>http://www.kankanzhijian.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PostGIS 初体验</title>
+    <link href="http://www.kankanzhijian.com/2022/03/25/postgis-first-look/"/>
+    <id>http://www.kankanzhijian.com/2022/03/25/postgis-first-look/</id>
+    <published>2022-03-25T06:17:43.000Z</published>
+    <updated>2022-03-25T07:07:57.264Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="PostgreSQL" scheme="http://www.kankanzhijian.com/tags/PostgreSQL/"/>
+    
+  </entry>
   
   <entry>
     <title>maupassant主题在Apple M1上不能用的问题</title>
@@ -486,31 +511,6 @@
     
     
     <category term="PostgreSQL" scheme="http://www.kankanzhijian.com/tags/PostgreSQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在git中使用submodule</title>
-    <link href="http://www.kankanzhijian.com/2018/09/23/submodule_in_git/"/>
-    <id>http://www.kankanzhijian.com/2018/09/23/submodule_in_git/</id>
-    <published>2018-09-22T23:53:15.000Z</published>
-    <updated>2018-09-24T03:29:16.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
-    
-    
-    <category term="git" scheme="http://www.kankanzhijian.com/tags/git/"/>
     
   </entry>
   
