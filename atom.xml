@@ -6,7 +6,7 @@
   <link href="http://www.kankanzhijian.com/atom.xml" rel="self"/>
   
   <link href="http://www.kankanzhijian.com/"/>
-  <updated>2022-03-25T07:07:57.264Z</updated>
+  <updated>2022-03-27T03:17:52.134Z</updated>
   <id>http://www.kankanzhijian.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《社会契约论》读后小记</title>
+    <link href="http://www.kankanzhijian.com/2022/03/27/du-contrat-social/"/>
+    <id>http://www.kankanzhijian.com/2022/03/27/du-contrat-social/</id>
+    <published>2022-03-27T01:37:49.000Z</published>
+    <updated>2022-03-27T03:17:52.134Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="读书日记" scheme="http://www.kankanzhijian.com/categories/%E8%AF%BB%E4%B9%A6%E6%97%A5%E8%AE%B0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>PostGIS 初体验</title>
@@ -486,31 +509,6 @@
     
     
     <category term="Java" scheme="http://www.kankanzhijian.com/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL中对用户重命名需要注意的</title>
-    <link href="http://www.kankanzhijian.com/2018/09/25/PostgreSQL_rename_notice/"/>
-    <id>http://www.kankanzhijian.com/2018/09/25/PostgreSQL_rename_notice/</id>
-    <published>2018-09-25T03:05:17.000Z</published>
-    <updated>2018-09-25T03:21:46.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
-    
-    
-    <category term="PostgreSQL" scheme="http://www.kankanzhijian.com/tags/PostgreSQL/"/>
     
   </entry>
   
