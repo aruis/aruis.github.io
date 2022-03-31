@@ -6,7 +6,7 @@
   <link href="http://www.kankanzhijian.com/atom.xml" rel="self"/>
   
   <link href="http://www.kankanzhijian.com/"/>
-  <updated>2022-03-30T08:35:17.649Z</updated>
+  <updated>2022-03-31T02:00:48.247Z</updated>
   <id>http://www.kankanzhijian.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《程序员的38堂成长课》读后小记</title>
+    <link href="http://www.kankanzhijian.com/2022/03/31/becoming-a-batter-programmer/"/>
+    <id>http://www.kankanzhijian.com/2022/03/31/becoming-a-batter-programmer/</id>
+    <published>2022-03-31T01:17:30.000Z</published>
+    <updated>2022-03-31T02:00:48.247Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="读书日记" scheme="http://www.kankanzhijian.com/categories/%E8%AF%BB%E4%B9%A6%E6%97%A5%E8%AE%B0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>能力的四个阶段</title>
@@ -486,29 +509,6 @@
     
     
     <category term="PostgreSQL" scheme="http://www.kankanzhijian.com/tags/PostgreSQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Safari 12不再支持不安全的扩展</title>
-    <link href="http://www.kankanzhijian.com/2018/09/27/Safari12_install_safariextz/"/>
-    <id>http://www.kankanzhijian.com/2018/09/27/Safari12_install_safariextz/</id>
-    <published>2018-09-27T02:23:52.000Z</published>
-    <updated>2018-09-27T03:24:24.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="工具技巧" scheme="http://www.kankanzhijian.com/categories/%E5%B7%A5%E5%85%B7%E6%8A%80%E5%B7%A7/"/>
-    
     
   </entry>
   
