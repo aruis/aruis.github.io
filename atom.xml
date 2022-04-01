@@ -6,7 +6,7 @@
   <link href="http://www.kankanzhijian.com/atom.xml" rel="self"/>
   
   <link href="http://www.kankanzhijian.com/"/>
-  <updated>2022-03-31T02:00:48.247Z</updated>
+  <updated>2022-04-01T09:48:53.870Z</updated>
   <id>http://www.kankanzhijian.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用VGG16训练CIFAR-10的一次失败记录</title>
+    <link href="http://www.kankanzhijian.com/2022/04/01/use-vgg16-at-cifar10/"/>
+    <id>http://www.kankanzhijian.com/2022/04/01/use-vgg16-at-cifar10/</id>
+    <published>2022-04-01T09:23:56.000Z</published>
+    <updated>2022-04-01T09:48:53.870Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="Keras" scheme="http://www.kankanzhijian.com/tags/Keras/"/>
+    
+    <category term="DeepLearning" scheme="http://www.kankanzhijian.com/tags/DeepLearning/"/>
+    
+  </entry>
   
   <entry>
     <title>《程序员的38堂成长课》读后小记</title>
@@ -468,31 +495,6 @@
     <id>http://www.kankanzhijian.com/2018/09/29/PostgreSQL-python-function/</id>
     <published>2018-09-29T02:36:35.000Z</published>
     <updated>2019-01-28T03:46:25.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
-    
-    
-    <category term="PostgreSQL" scheme="http://www.kankanzhijian.com/tags/PostgreSQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL中的行级权限/数据权限/行安全策略</title>
-    <link href="http://www.kankanzhijian.com/2018/09/28/PostgreSQL-rowsecurity/"/>
-    <id>http://www.kankanzhijian.com/2018/09/28/PostgreSQL-rowsecurity/</id>
-    <published>2018-09-28T02:10:07.000Z</published>
-    <updated>2018-09-28T07:24:42.000Z</updated>
     
     
       
