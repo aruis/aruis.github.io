@@ -59,7 +59,7 @@ baidu_search: false ## Use Baidu search, true/false.
 swiftype: ## Your swiftype_key, e.g. m7b11ZrsT8Me7gzApciT
 self_search: true ## Use a jQuery-based local search engine, true/false.
 google_analytics: UA-123510178-1 ## Your Google Analytics tracking id, e.g. UA-42425684-2
-baidu_analytics: dc0b3f580e4dfc98653bf8c517228321 ## Your Baidu Analytics tracking id, e.g. 8006843039519956000
+baidu_analytics: cb57d6270614f565f1d62009fe3ef740 ## Your Baidu Analytics tracking id, e.g. 8006843039519956000
 fancybox: true ## If you want to use fancybox please set the value to true.
 show_category_count: false ## If you want to show the count of categories in the sidebar widget please set the value to true.
 toc_number: true ## If you want to add list number to toc please set the value to true.
@@ -90,7 +90,7 @@ plantuml: ## Using PlantUML to generate UML diagram, must install hexo-filter-pl
   render: "PlantUMLServer" ## Local or PlantUMLServer.
   outputFormat: "svg" ## Common options: svg/png
 copycode: true ## If you want to enable one-click copy of the code blocks, set the value to true.
-dark: false ## If you want to toggle between light/dark themes, set the value to true.
+dark: true ## If you want to toggle between light/dark themes, set the value to true.
 totop: true ## If you want to use the rocketship button to return to the top, set the value to true.
 external_css: false ## If you want to load an external CSS file, set the value to true and create a file named "external.css" in the source/css folder.
 
