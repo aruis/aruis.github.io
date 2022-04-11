@@ -6,7 +6,7 @@
   <link href="http://www.kankanzhijian.com/atom.xml" rel="self"/>
   
   <link href="http://www.kankanzhijian.com/"/>
-  <updated>2022-04-01T09:48:53.870Z</updated>
+  <updated>2022-04-11T08:51:21.766Z</updated>
   <id>http://www.kankanzhijian.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在windows里杀进程，遭遇提示：没有此任务的实例在运行</title>
+    <link href="http://www.kankanzhijian.com/2022/04/11/kill-pid-in-windows/"/>
+    <id>http://www.kankanzhijian.com/2022/04/11/kill-pid-in-windows/</id>
+    <published>2022-04-11T08:14:07.000Z</published>
+    <updated>2022-04-11T08:51:21.766Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="运维" scheme="http://www.kankanzhijian.com/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+  </entry>
   
   <entry>
     <title>使用VGG16训练CIFAR-10的一次失败记录</title>
@@ -486,31 +511,6 @@
     
     <category term="游记" scheme="http://www.kankanzhijian.com/categories/%E6%B8%B8%E8%AE%B0/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL中使用Python编写存储过程实现科学计算</title>
-    <link href="http://www.kankanzhijian.com/2018/09/29/PostgreSQL-python-function/"/>
-    <id>http://www.kankanzhijian.com/2018/09/29/PostgreSQL-python-function/</id>
-    <published>2018-09-29T02:36:35.000Z</published>
-    <updated>2019-01-28T03:46:25.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
-    
-    
-    <category term="PostgreSQL" scheme="http://www.kankanzhijian.com/tags/PostgreSQL/"/>
     
   </entry>
   

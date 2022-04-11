@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>在windows里杀进程，遭遇提示：没有此任务的实例在运行</title>
+      <link href="/2022/04/11/kill-pid-in-windows/"/>
+      <url>/2022/04/11/kill-pid-in-windows/</url>
+      
+        <content type="html"><![CDATA[<p>今天有被windows给坑了一把，有个几个进程死活结束不掉，还遇到提示：“没有此任务的实例在运行”，所以做个笔记。</p><p>以名称为<code>xxx.exe</code>、<code>PID</code>为<code>1024</code>为例，正常来说，杀掉一个进程命令如下：</p><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">taskkill <span class="regexp">/F /</span>PID <span class="number">1024</span></span><br></pre></td></tr></table></figure><p>如果杀不掉，可能是因为有父进程影响，需要先杀父进程，而获取父进程的命令为：</p><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">wmic process where <span class="attribute">ProcessId</span>=1024 <span class="built_in">get</span> ParentProcessId</span><br></pre></td></tr></table></figure><p>如果不知道子进程的<code>PID</code>，但是知道进程名字，也可以试试这个：</p><figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">wmic process <span class="keyword">where</span> <span class="type">name</span>=&quot;xxx.exe&quot; <span class="keyword">call</span> terminate</span><br></pre></td></tr></table></figure><p>总之找到父进程<code>PID</code>后，再用第一行命令去杀父进程才是正解。</p><p>另外补充一下，如果不知道<code>PID</code>，想用进程名作为参数，可以用这条：</p><figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">taskkill <span class="string">/IM</span> <span class="string">&quot;xxx.exe&quot;</span> <span class="string">/F</span></span><br></pre></td></tr></table></figure><p>如果你喜欢用<code>PowerShell</code>，还可以用下面两个命令：</p><figure class="highlight vhdl"><table><tr><td class="code"><pre><span class="line">Stop-<span class="keyword">Process</span> -Name <span class="string">&quot;xxx.exe&quot;</span> -<span class="keyword">Force</span></span><br><span class="line">Stop-<span class="keyword">Process</span> -ID <span class="number">1024</span> -<span class="keyword">Force</span></span><br></pre></td></tr></table></figure><p>分别对应了用名称或者<code>PID</code>杀进程。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 运维 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>使用VGG16训练CIFAR-10的一次失败记录</title>
       <link href="/2022/04/01/use-vgg16-at-cifar10/"/>
       <url>/2022/04/01/use-vgg16-at-cifar10/</url>
