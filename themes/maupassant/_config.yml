@@ -119,6 +119,8 @@ widgets: ## Six widgets in sidebar provided: search, category, tag, recent_posts
 links:
   - title: 葛涛宁的博客
     url: https://getaoning.com
+  - title: TONY'S TOY BLOG
+    url: https://www.tony-bro.com
 
 timeline:
   - num: 1
