@@ -6,7 +6,7 @@
   <link href="http://www.kankanzhijian.com/atom.xml" rel="self"/>
   
   <link href="http://www.kankanzhijian.com/"/>
-  <updated>2022-04-12T07:54:03.709Z</updated>
+  <updated>2022-04-12T08:18:21.355Z</updated>
   <id>http://www.kankanzhijian.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>cnn-cifar10</title>
+    <link href="http://www.kankanzhijian.com/2022/04/12/cnn-cifar10/"/>
+    <id>http://www.kankanzhijian.com/2022/04/12/cnn-cifar10/</id>
+    <published>2022-04-12T07:56:29.000Z</published>
+    <updated>2022-04-12T08:18:21.355Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="Keras" scheme="http://www.kankanzhijian.com/tags/Keras/"/>
+    
+    <category term="DeepLearning" scheme="http://www.kankanzhijian.com/tags/DeepLearning/"/>
+    
+  </entry>
   
   <entry>
     <title>在windows里杀进程，遭遇提示：没有此任务的实例在运行</title>
@@ -488,29 +515,6 @@
     
     
     <category term="MySQL" scheme="http://www.kankanzhijian.com/tags/MySQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>徐州贾汪马庄村</title>
-    <link href="http://www.kankanzhijian.com/2018/09/30/mazhuang-jiawang-xuzhou/"/>
-    <id>http://www.kankanzhijian.com/2018/09/30/mazhuang-jiawang-xuzhou/</id>
-    <published>2018-09-30T06:26:54.000Z</published>
-    <updated>2018-09-30T06:41:18.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="游记" scheme="http://www.kankanzhijian.com/categories/%E6%B8%B8%E8%AE%B0/"/>
-    
     
   </entry>
   

@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>cnn-cifar10</title>
+      <link href="/2022/04/12/cnn-cifar10/"/>
+      <url>/2022/04/12/cnn-cifar10/</url>
+      
+        <content type="html"><![CDATA[<p>之前用<code>VGG16</code><a href="https://www.kankanzhijian.com/2022/04/01/use-vgg16-at-cifar10/">训练了一次</a><code>CIFAR10</code>数据集，我还说用<code>VGG16</code>会有一个不错的起点呢，毕竟是业界训练好的模型嘛。结果今天用自建的卷积神经网络一测，结果出乎意料，自建的神经网络虽然训练精度的上升没有之前的快，但是验证精度也能达到<code>75%</code>的水平，跟上次区别不大。同时，虽然这次迭代次数有增加，但是得益于模型简化了许多，训练速度也提升了不少。话不多说，上结果：</p><p><img src="/media/CleanShot%202022-04-12%20at%2016.17.14.png" alt="CleanShot 2022-04-12 at 16.17.14"></p><hr><p>看来<code>75%</code>的验证精度对这个数据集来说是到瓶颈了，下次要尝试使用数据增强技术了。看看不能不有一点突破。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Keras </tag>
+            
+            <tag> DeepLearning </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>在windows里杀进程，遭遇提示：没有此任务的实例在运行</title>
       <link href="/2022/04/11/kill-pid-in-windows/"/>
       <url>/2022/04/11/kill-pid-in-windows/</url>
