@@ -36,7 +36,13 @@ html.dataset.dark = localStorage.dark;
 <figure class="highlight vhdl"><table><tr><td class="code"><pre><span class="line">Stop-<span class="keyword">Process</span> -Name <span class="string">&quot;xxx.exe&quot;</span> -<span class="keyword">Force</span></span><br><span class="line">Stop-<span class="keyword">Process</span> -ID <span class="number">1024</span> -<span class="keyword">Force</span></span><br></pre></td></tr></table></figure>
 
 <p>分别对应了用名称或者<code>PID</code>杀进程。</p>
-</div><div class="post-copyright"><script type="text/javascript" src="/js/copyright.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copyright.css"><p><span>本文标题：</span>在windows里杀进程，遭遇提示：没有此任务的实例在运行</p><p><span>文章作者：</span>牧云踏歌</p><p><span>发布时间：</span>2022-04-11</p><p><span>最后更新：</span>2022-04-11</p><p><span>原始链接：</span><a href="/2022/04/11/kill-pid-in-windows/">http://www.kankanzhijian.com/2022/04/11/kill-pid-in-windows/</a><span class="copy-path"><i class="fa fa-clipboard" data-clipboard-text="http://www.kankanzhijian.com/2022/04/11/kill-pid-in-windows/"></i></span></p><p><span>版权声明：</span>本博客文章均系本人原创，转载请注名出处</p></div><br><div class="tags"><a href="/tags/%E8%BF%90%E7%BB%B4/"><i class="fa fa-tag"></i>运维</a></div><div class="post-nav"><a class="next" href="/2022/04/01/use-vgg16-at-cifar10/">使用VGG16训练CIFAR-10的一次失败记录</a></div><div id="waline"></div><script src="https://cdn.jsdelivr.net/npm/@waline/client"></script><script>Waline({
+<hr>
+<p>后来我又遇到一种情况，即使用上面的方式还是不行。无意中发现可以这样：</p>
+<p><img src="/media/CleanShot%202022-04-11%20at%2017.28.53.png" alt="CleanShot 2022-04-11 at 17.28.53"></p>
+<p>在任务管理器，选中杀不掉的进程，右键-&gt;<code>分析等待链</code>，</p>
+<p><img src="/media/CleanShot%202022-04-11%20at%2017.29.11.png" alt="CleanShot 2022-04-11 at 17.29.11"></p>
+<p>然后可以把它列出的在<code>等待链</code>中的进程进行结束，就可以杀死之前不能杀死的进程了。</p>
+</div><div class="post-copyright"><script type="text/javascript" src="/js/copyright.js" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copyright.css"><p><span>本文标题：</span>在windows里杀进程，遭遇提示：没有此任务的实例在运行</p><p><span>文章作者：</span>牧云踏歌</p><p><span>发布时间：</span>2022-04-11</p><p><span>最后更新：</span>2022-04-12</p><p><span>原始链接：</span><a href="/2022/04/11/kill-pid-in-windows/">http://www.kankanzhijian.com/2022/04/11/kill-pid-in-windows/</a><span class="copy-path"><i class="fa fa-clipboard" data-clipboard-text="http://www.kankanzhijian.com/2022/04/11/kill-pid-in-windows/"></i></span></p><p><span>版权声明：</span>本博客文章均系本人原创，转载请注名出处</p></div><br><div class="tags"><a href="/tags/%E8%BF%90%E7%BB%B4/"><i class="fa fa-tag"></i>运维</a></div><div class="post-nav"><a class="next" href="/2022/04/01/use-vgg16-at-cifar10/">使用VGG16训练CIFAR-10的一次失败记录</a></div><div id="waline"></div><script src="https://cdn.jsdelivr.net/npm/@waline/client"></script><script>Waline({
   el: '#waline',
   serverURL: 'https://blog-api-n81h9yupz-aruis.vercel.app',
   pageSize: '15',
