@@ -6,7 +6,7 @@
   <link href="http://www.kankanzhijian.com/atom.xml" rel="self"/>
   
   <link href="http://www.kankanzhijian.com/"/>
-  <updated>2022-04-12T12:23:18.667Z</updated>
+  <updated>2022-04-14T14:16:35.699Z</updated>
   <id>http://www.kankanzhijian.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用简单的CNN训练CIFAR10，理解padding=&#39;same&#39;的含义</title>
+    <link href="http://www.kankanzhijian.com/2022/04/14/cnn-cifar10-try-2/"/>
+    <id>http://www.kankanzhijian.com/2022/04/14/cnn-cifar10-try-2/</id>
+    <published>2022-04-14T08:01:53.000Z</published>
+    <updated>2022-04-14T14:16:35.699Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="Keras" scheme="http://www.kankanzhijian.com/tags/Keras/"/>
+    
+    <category term="DeepLearning" scheme="http://www.kankanzhijian.com/tags/DeepLearning/"/>
+    
+  </entry>
   
   <entry>
     <title>普普通通的CNN训练CIFAR-10</title>
@@ -490,31 +517,6 @@
     <category term="PostgreSQL" scheme="http://www.kankanzhijian.com/tags/PostgreSQL/"/>
     
     <category term="RESTful" scheme="http://www.kankanzhijian.com/tags/RESTful/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>备份mysql整库并还原到另外一处</title>
-    <link href="http://www.kankanzhijian.com/2018/10/08/mysql-dump-restore/"/>
-    <id>http://www.kankanzhijian.com/2018/10/08/mysql-dump-restore/</id>
-    <published>2018-10-08T08:56:17.000Z</published>
-    <updated>2018-10-09T08:54:10.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
-    
-    
-    <category term="MySQL" scheme="http://www.kankanzhijian.com/tags/MySQL/"/>
     
   </entry>
   
