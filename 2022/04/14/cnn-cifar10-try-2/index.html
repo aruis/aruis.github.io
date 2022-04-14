@@ -25,7 +25,7 @@ html.dataset.dark = localStorage.dark;
 <blockquote>
 <p><strong>padding</strong>: one of “valid” or “same” (case-insensitive). “valid” means no padding. “same” results in padding with zeros evenly to the left&#x2F;right or up&#x2F;down of the input. When padding&#x3D;”same” and strides&#x3D;1, the output has the same size as the input.</p>
 </blockquote>
-<p><code>padding</code>设置为<code>true</code>后，会对输入的上下左右进行填充，并且如果<code>strides</code>（步幅）设置为<code>1</code>后，输入与输出的大小应该相同。如果拿<code>4*4</code>的输入为例，用<code>3*3</code>的卷积以步幅为<code>1</code>进行运算时。应该在上下左右四边每边补充一组数据，形成一个<code>6*6</code>的输入，这样在和<code>3*3</code>做以步幅为<code>1</code>做卷积的时候，输出才会是<code>4*4</code>。</p>
+<p><code>padding</code>设置为<code>true</code>后，会对输入的上下左右进行填充，并且如果<code>strides</code>（步幅）设置为<code>1</code>后，输入与输出的大小应该相同。如果拿<code>4*4</code>的输入为例，用<code>3*3</code>的卷积以步幅为<code>1</code>进行运算时。应该在上下左右四边每边补充一组数据，形成一个<code>6*6</code>的输入，这样在和<code>3*3</code>做以步幅为<code>1</code>做卷积的时候，输出才会是<code>4*4</code>（6-3+1&#x3D;4）。</p>
 <p>回到本例，<code>CIFAR10</code>的原始大小是<code>32*32</code>的，如果没有<code>padding=&#39;same&#39;</code>，那么在与<code>3*3</code>做步幅为<code>1</code>的卷积时，输出的大小就应该是<code>32-2</code>，也就是<code>30*30</code>了。</p>
 <p>关于<code>padding</code>参数的解释就到这，至于为什么增加<code>padding</code>之后，训练的结果朝着更好的方向发展。或者说，如果不提供<code>padding</code>，会使训练结果变差，在<code>《深度学习入门 基于Python的理论与实现》</code>这本书中有这样的解释：</p>
 <blockquote>
