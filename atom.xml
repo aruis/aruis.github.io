@@ -6,7 +6,7 @@
   <link href="http://www.kankanzhijian.com/atom.xml" rel="self"/>
   
   <link href="http://www.kankanzhijian.com/"/>
-  <updated>2022-04-14T14:17:36.705Z</updated>
+  <updated>2022-04-15T07:15:10.729Z</updated>
   <id>http://www.kankanzhijian.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>通过加深网络把CIFAR10的训练精度提升到80%</title>
+    <link href="http://www.kankanzhijian.com/2022/04/15/cnn-cifar10-try-3-deep/"/>
+    <id>http://www.kankanzhijian.com/2022/04/15/cnn-cifar10-try-3-deep/</id>
+    <published>2022-04-15T05:51:06.000Z</published>
+    <updated>2022-04-15T07:15:10.729Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="Keras" scheme="http://www.kankanzhijian.com/tags/Keras/"/>
+    
+    <category term="DeepLearning" scheme="http://www.kankanzhijian.com/tags/DeepLearning/"/>
+    
+  </entry>
   
   <entry>
     <title>使用简单的CNN训练CIFAR10，理解padding=&#39;same&#39;的含义</title>
@@ -490,33 +517,6 @@
     
     
     <category term="MySQL" scheme="http://www.kankanzhijian.com/tags/MySQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用postgrest全自动生成面向表的RESTful接口</title>
-    <link href="http://www.kankanzhijian.com/2018/10/10/postgrest/"/>
-    <id>http://www.kankanzhijian.com/2018/10/10/postgrest/</id>
-    <published>2018-10-10T07:58:38.000Z</published>
-    <updated>2018-10-10T08:05:48.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
-    
-    
-    <category term="PostgreSQL" scheme="http://www.kankanzhijian.com/tags/PostgreSQL/"/>
-    
-    <category term="RESTful" scheme="http://www.kankanzhijian.com/tags/RESTful/"/>
     
   </entry>
   
