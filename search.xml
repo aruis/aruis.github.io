@@ -8,7 +8,7 @@
       <link href="/2022/04/18/disable-metal-gpu-on-apple-silicon/"/>
       <url>/2022/04/18/disable-metal-gpu-on-apple-silicon/</url>
       
-        <content type="html"><![CDATA[<p>在苹果<code>M1</code>系列芯片上运行<code>tensorflow</code>是可以通过插件<code>tensorflow-metal</code>进行<code>GPU</code>训练加速的，并且随着操作系统的升级以及插件的不断完善，<code>M1</code>的训练性能正在稳步提高，这也是苹果官方推荐的做法。</p><p>不过某些情况下，我们还是需要关闭<code>GPU</code>加速，仅使用<code>CPU</code>进行加速。那么以下这段代码可以帮助你临时禁用<code>GPU</code>，而把训练的压力转移到<code>CPU</code>上来。</p><figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line">tf<span class="selector-class">.config</span><span class="selector-class">.set_visible_devices</span>(<span class="selector-attr">[]</span>, <span class="string">&#x27;GPU&#x27;</span>)</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<p>在苹果<code>M1</code>系列芯片上运行<code>tensorflow</code>是可以通过插件<code>tensorflow-metal</code>进行<code>GPU</code>训练加速的，并且随着操作系统的升级以及插件的不断完善，<code>M1</code>的训练性能正在稳步提高，这也是苹果官方推荐的做法。</p><p>不过某些情况下，我们还是需要关闭<code>GPU</code>加速，仅使用<code>CPU</code>进行训练。那么以下这段代码可以帮助你临时禁用<code>GPU</code>，而把训练的压力转移到<code>CPU</code>上来。</p><figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line"></span><br><span class="line">tf<span class="selector-class">.config</span><span class="selector-class">.set_visible_devices</span>(<span class="selector-attr">[]</span>, <span class="string">&#x27;GPU&#x27;</span>)</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
