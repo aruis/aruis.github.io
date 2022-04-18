@@ -6,7 +6,7 @@
   <link href="http://www.kankanzhijian.com/atom.xml" rel="self"/>
   
   <link href="http://www.kankanzhijian.com/"/>
-  <updated>2022-04-15T07:15:10.729Z</updated>
+  <updated>2022-04-18T12:20:39.637Z</updated>
   <id>http://www.kankanzhijian.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在Apple Silicon上关闭M1的GPU，仅用CPU进行Tensorflow训练</title>
+    <link href="http://www.kankanzhijian.com/2022/04/18/disable-metal-gpu-on-apple-silicon/"/>
+    <id>http://www.kankanzhijian.com/2022/04/18/disable-metal-gpu-on-apple-silicon/</id>
+    <published>2022-04-18T12:13:48.000Z</published>
+    <updated>2022-04-18T12:20:39.637Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="DeepLearning" scheme="http://www.kankanzhijian.com/tags/DeepLearning/"/>
+    
+  </entry>
   
   <entry>
     <title>通过加深网络把CIFAR10的训练精度提升到80%</title>
@@ -492,31 +517,6 @@
     
     
     <category term="Java" scheme="http://www.kankanzhijian.com/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL日期字段同时实现新增默认值及修改默认值</title>
-    <link href="http://www.kankanzhijian.com/2018/10/15/MySQL_column_default_current_timestamp/"/>
-    <id>http://www.kankanzhijian.com/2018/10/15/MySQL_column_default_current_timestamp/</id>
-    <published>2018-10-15T07:47:05.000Z</published>
-    <updated>2018-10-15T07:55:12.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
-    
-    
-    <category term="MySQL" scheme="http://www.kankanzhijian.com/tags/MySQL/"/>
     
   </entry>
   
