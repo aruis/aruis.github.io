@@ -6,7 +6,7 @@
   <link href="http://www.kankanzhijian.com/atom.xml" rel="self"/>
   
   <link href="http://www.kankanzhijian.com/"/>
-  <updated>2022-04-21T09:53:59.633Z</updated>
+  <updated>2022-04-28T05:32:51.221Z</updated>
   <id>http://www.kankanzhijian.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>通过Data Augmentation把CIFAR10的训练精度提升到89%</title>
+    <link href="http://www.kankanzhijian.com/2022/04/28/cnn-cifar10-try-5-data-augmentation/"/>
+    <id>http://www.kankanzhijian.com/2022/04/28/cnn-cifar10-try-5-data-augmentation/</id>
+    <published>2022-04-28T02:42:36.000Z</published>
+    <updated>2022-04-28T05:32:51.221Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="Keras" scheme="http://www.kankanzhijian.com/tags/Keras/"/>
+    
+    <category term="DeepLearning" scheme="http://www.kankanzhijian.com/tags/DeepLearning/"/>
+    
+  </entry>
   
   <entry>
     <title>通过BatchNormalization把CIFAR10的训练精度提升到85%</title>
@@ -494,31 +521,6 @@
     
     
     <category term="groovy" scheme="http://www.kankanzhijian.com/tags/groovy/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>突破mac系统要求密码不能小于4个字符的限制</title>
-    <link href="http://www.kankanzhijian.com/2018/12/08/password_more_than_4_char_in_macos/"/>
-    <id>http://www.kankanzhijian.com/2018/12/08/password_more_than_4_char_in_macos/</id>
-    <published>2018-12-08T09:47:00.000Z</published>
-    <updated>2018-12-08T10:00:29.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="实用技巧" scheme="http://www.kankanzhijian.com/categories/%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
-    
-    
-    <category term="Mac" scheme="http://www.kankanzhijian.com/tags/Mac/"/>
     
   </entry>
   
