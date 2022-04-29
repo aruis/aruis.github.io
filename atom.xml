@@ -6,7 +6,7 @@
   <link href="http://www.kankanzhijian.com/atom.xml" rel="self"/>
   
   <link href="http://www.kankanzhijian.com/"/>
-  <updated>2022-04-28T05:32:51.221Z</updated>
+  <updated>2022-04-29T02:31:13.705Z</updated>
   <id>http://www.kankanzhijian.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>简单训练一下Animal-10的数据（第一版，精度很拉垮）</title>
+    <link href="http://www.kankanzhijian.com/2022/04/29/cnn-animal10-try-1/"/>
+    <id>http://www.kankanzhijian.com/2022/04/29/cnn-animal10-try-1/</id>
+    <published>2022-04-29T01:50:23.000Z</published>
+    <updated>2022-04-29T02:31:13.705Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="Keras" scheme="http://www.kankanzhijian.com/tags/Keras/"/>
+    
+    <category term="DeepLearning" scheme="http://www.kankanzhijian.com/tags/DeepLearning/"/>
+    
+  </entry>
   
   <entry>
     <title>通过Data Augmentation把CIFAR10的训练精度提升到89%</title>
@@ -496,31 +523,6 @@
     
     
     <category term="PostgreSQL" scheme="http://www.kankanzhijian.com/tags/PostgreSQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用groovy实现根据规则校验单据数据</title>
-    <link href="http://www.kankanzhijian.com/2019/02/20/groovy_validating_form_on%20dynamic_rules/"/>
-    <id>http://www.kankanzhijian.com/2019/02/20/groovy_validating_form_on%20dynamic_rules/</id>
-    <published>2019-02-20T06:38:04.000Z</published>
-    <updated>2019-02-20T09:22:57.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
-    
-    
-    <category term="groovy" scheme="http://www.kankanzhijian.com/tags/groovy/"/>
     
   </entry>
   
