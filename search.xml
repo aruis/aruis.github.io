@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>给已存在 PostgreSQL 服务安装 TimescaleDB 插件</title>
+      <link href="/2024/02/01/install-timescaledb-as-extension/"/>
+      <url>/2024/02/01/install-timescaledb-as-extension/</url>
+      
+        <content type="html"><![CDATA[<p>仅以<code>docker</code>版的<code>PostgreSQL 16</code>为例。</p><figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">apt update</span></span><br></pre></td></tr></table></figure><figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">apt install lsb-release wget</span><br></pre></td></tr></table></figure><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">echo <span class="string">&quot;deb https://packagecloud.io/timescale/timescaledb/debian/ $(lsb_release -c -s) main&quot;</span> | sudo tee <span class="regexp">/etc/</span>apt<span class="regexp">/sources.list.d/</span>timescaledb.list</span><br></pre></td></tr></table></figure><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">wget --quiet -O - https:<span class="regexp">//</span>packagecloud.io<span class="regexp">/timescale/</span>timescaledb/gpgkey | sudo apt-key add -</span><br></pre></td></tr></table></figure><figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">apt update</span></span><br></pre></td></tr></table></figure><figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">apt</span> install timescaledb-<span class="number">2</span>-postgresql-<span class="number">16</span></span><br></pre></td></tr></table></figure><figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">timescaledb-tune</span></span><br></pre></td></tr></table></figure><figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">docker restart xxx</span></span><br></pre></td></tr></table></figure><figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">EXTENSION</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> timescaledb;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> PostgreSQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>简单训练一下Animal-10的数据（第一版，精度很拉垮）</title>
       <link href="/2022/04/29/cnn-animal10-try-1/"/>
       <url>/2022/04/29/cnn-animal10-try-1/</url>

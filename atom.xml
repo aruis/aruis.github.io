@@ -6,7 +6,7 @@
   <link href="http://www.kankanzhijian.com/atom.xml" rel="self"/>
   
   <link href="http://www.kankanzhijian.com/"/>
-  <updated>2022-04-29T02:56:25.285Z</updated>
+  <updated>2024-02-01T07:17:44.975Z</updated>
   <id>http://www.kankanzhijian.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>给已存在 PostgreSQL 服务安装 TimescaleDB 插件</title>
+    <link href="http://www.kankanzhijian.com/2024/02/01/install-timescaledb-as-extension/"/>
+    <id>http://www.kankanzhijian.com/2024/02/01/install-timescaledb-as-extension/</id>
+    <published>2024-02-01T07:15:15.000Z</published>
+    <updated>2024-02-01T07:17:44.975Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+    
+    
+    <category term="PostgreSQL" scheme="http://www.kankanzhijian.com/tags/PostgreSQL/"/>
+    
+  </entry>
   
   <entry>
     <title>简单训练一下Animal-10的数据（第一版，精度很拉垮）</title>
@@ -482,31 +507,6 @@
     <id>http://www.kankanzhijian.com/2019/02/27/postgresql_%20execute_an_anonymous_codeblock/</id>
     <published>2019-02-27T01:52:29.000Z</published>
     <updated>2019-02-27T02:04:13.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
-    
-    
-    <category term="PostgreSQL" scheme="http://www.kankanzhijian.com/tags/PostgreSQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PortgreSQL中找到那些被大量顺序扫表没走索引的表</title>
-    <link href="http://www.kankanzhijian.com/2019/02/25/lot_of_seq_scan_in_postgresql/"/>
-    <id>http://www.kankanzhijian.com/2019/02/25/lot_of_seq_scan_in_postgresql/</id>
-    <published>2019-02-25T06:18:06.000Z</published>
-    <updated>2019-02-25T06:27:15.000Z</updated>
     
     
       
