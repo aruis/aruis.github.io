@@ -6,7 +6,7 @@
   <link href="http://www.kankanzhijian.com/atom.xml" rel="self"/>
   
   <link href="http://www.kankanzhijian.com/"/>
-  <updated>2024-02-01T07:17:44.975Z</updated>
+  <updated>2024-02-20T09:46:49.261Z</updated>
   <id>http://www.kankanzhijian.com/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>基于命令的 macOS 资源监控工具 asitop，可以监控CPU、GPU功耗</title>
+    <link href="http://www.kankanzhijian.com/2024/02/20/install-and-use-asitop/"/>
+    <id>http://www.kankanzhijian.com/2024/02/20/install-and-use-asitop/</id>
+    <published>2024-02-20T09:39:04.000Z</published>
+    <updated>2024-02-20T09:46:49.261Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="实用技巧" scheme="http://www.kankanzhijian.com/categories/%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
+    
+    
+    <category term="Mac" scheme="http://www.kankanzhijian.com/tags/Mac/"/>
+    
+  </entry>
+  
+  <entry>
     <title>给已存在 PostgreSQL 服务安装 TimescaleDB 插件</title>
     <link href="http://www.kankanzhijian.com/2024/02/01/install-timescaledb-as-extension/"/>
     <id>http://www.kankanzhijian.com/2024/02/01/install-timescaledb-as-extension/</id>
     <published>2024-02-01T07:15:15.000Z</published>
-    <updated>2024-02-01T07:17:44.975Z</updated>
+    <updated>2024-02-01T07:18:21.587Z</updated>
     
     
       
@@ -498,31 +523,6 @@
     
     
     <category term="Vert.x" scheme="http://www.kankanzhijian.com/tags/Vert-x/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PostgreSQL中执行即时代码段(匿名存储过程)</title>
-    <link href="http://www.kankanzhijian.com/2019/02/27/postgresql_%20execute_an_anonymous_codeblock/"/>
-    <id>http://www.kankanzhijian.com/2019/02/27/postgresql_%20execute_an_anonymous_codeblock/</id>
-    <published>2019-02-27T01:52:29.000Z</published>
-    <updated>2019-02-27T02:04:13.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="程序人生" scheme="http://www.kankanzhijian.com/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
-    
-    
-    <category term="PostgreSQL" scheme="http://www.kankanzhijian.com/tags/PostgreSQL/"/>
     
   </entry>
   
