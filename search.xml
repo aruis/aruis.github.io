@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>使用jcmd对JVM进程进行查询及管理</title>
+      <link href="/2024/02/22/jcmd-tutorial/"/>
+      <url>/2024/02/22/jcmd-tutorial/</url>
+      
+        <content type="html"><![CDATA[<p><code>jcmd</code> 是 Java 开发工具包（JDK）中提供的一个多功能工具，它可以用于发送诊断命令请求到 Java 虚拟机（JVM）。这些命令涵盖了从性能监控、线程堆栈跟踪到堆转储等多个方面，使得 <code>jcmd</code> 成为 JVM 管理和性能分析中非常强大的工具。以下是一些 <code>jcmd</code> 的常用功能：</p><h3 id="1-查看-JVM-概要信息"><a href="#1-查看-JVM-概要信息" class="headerlink" title="1. 查看 JVM 概要信息"></a>1. 查看 JVM 概要信息</h3><ul><li><strong>VM.version</strong>：显示 JVM 的版本信息。</li><li><strong>VM.flags</strong>：显示 JVM 启动时的参数。</li><li><strong>VM.system_properties</strong>：显示 JVM 的系统属性。</li><li><strong>VM.command_line</strong>：显示 JVM 启动时使用的命令行参数。</li></ul><h3 id="2-性能监控"><a href="#2-性能监控" class="headerlink" title="2. 性能监控"></a>2. 性能监控</h3><ul><li><strong>VM.uptime</strong>：显示 JVM 的运行时间。</li><li><strong>VM.statistics</strong>：显示 JVM 的性能统计信息。</li></ul><h3 id="3-垃圾收集（GC）相关"><a href="#3-垃圾收集（GC）相关" class="headerlink" title="3. 垃圾收集（GC）相关"></a>3. 垃圾收集（GC）相关</h3><ul><li><strong>GC.class_histogram</strong>：打印出堆中对象的直方图，可以用于分析哪些类的实例占用了较多的内存。</li><li><strong>GC.run</strong>：触发一次垃圾收集。</li><li><strong>GC.heap_dump</strong>：生成堆转储文件，用于后续的内存分析。</li><li><strong>GC.run_finalization</strong>：触发对象的终结过程。</li></ul><h3 id="4-线程相关"><a href="#4-线程相关" class="headerlink" title="4. 线程相关"></a>4. 线程相关</h3><ul><li><strong>Thread.print</strong>：打印所有线程的堆栈跟踪，这对于分析线程死锁或者查找性能瓶颈非常有用。</li></ul><h3 id="5-Java-Flight-Recorder-JFR-相关"><a href="#5-Java-Flight-Recorder-JFR-相关" class="headerlink" title="5. Java Flight Recorder (JFR) 相关"></a>5. Java Flight Recorder (JFR) 相关</h3><ul><li><strong>JFR.start</strong>：启动一个新的 Java Flight Recorder (JFR) 事件录制。</li><li><strong>JFR.stop</strong>：停止一个 JFR 事件录制。</li><li><strong>JFR.dump</strong>：将当前的 JFR 事件录制数据写入到文件。</li></ul><h3 id="6-动态追踪"><a href="#6-动态追踪" class="headerlink" title="6. 动态追踪"></a>6. 动态追踪</h3><ul><li><strong>VM.dynlibs</strong>：显示所有动态库的信息。</li><li><strong>VM.native_memory</strong>：显示 JVM 的本地内存使用情况（需要启用本地内存跟踪）。</li></ul><h3 id="7-配置信息"><a href="#7-配置信息" class="headerlink" title="7. 配置信息"></a>7. 配置信息</h3><ul><li><strong>VM.set_flag</strong>：动态更改 JVM 的某些标志值。</li></ul><p><code>jcmd</code> 提供的命令非常强大，可以帮助开发者和运维人员监控和调试 Java 应用。使用 <code>jcmd</code> 时，首先需要知道目标 Java 进程的进程 ID（PID），然后可以使用 <code>jcmd &lt;PID&gt; &lt;command&gt;</code> 的形式来执行命令。如果不确定可用的命令，可以简单地运行 <code>jcmd &lt;PID&gt; help</code> 来获取支持的命令列表。</p><p>在使用 <code>jcmd</code> 进行性能分析和调试时，应当谨慎，特别是在生产环境中，因为某些命令（如生成堆转储）可能会对应用性能产生影响。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 程序人生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>基于命令的 macOS 资源监控工具 asitop，可以监控CPU、GPU功耗</title>
       <link href="/2024/02/20/install-and-use-asitop/"/>
       <url>/2024/02/20/install-and-use-asitop/</url>
